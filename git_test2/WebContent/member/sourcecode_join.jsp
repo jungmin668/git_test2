@@ -101,7 +101,12 @@ function focusMove(obj, m_length, next_obj){
 								<col>
 							</colgroup>
 							<tbody>
-								<tr>
+				<tr>
+                     <th>회원구분</th>  
+                     <td style="text-align:left;"><input type="radio" name="mem_flag"  value="일반" /> 일반
+						&nbsp;&nbsp;&nbsp;<input type="radio" name="mem_flag"  value="병원관리자" />병원관리자</td>                  
+				</tr>
+					<tr>
                      <th>이름</th>
                      <td style="text-align:left;"><input type="text" name="name"  value="" class="join_input" /></td>
                   </tr>
@@ -230,10 +235,6 @@ function focusMove(obj, m_length, next_obj){
 						<span>이메일 수신동의</span></td>
 					</td>    
                    </tr>
-                  <tr>
-                     <th>그다음?</th>
-                     <td style="text-align:left;"><input type="text" name="etc"  value="" class="join_input" style="width:400px;" /></td>
-                  </tr>
 							</tbody>
 						</table>
 					</div>
