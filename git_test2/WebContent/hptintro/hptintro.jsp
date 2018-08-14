@@ -52,7 +52,11 @@ dao.close();
 <!--[if lt IE 9]>
 <script type="text/javascript" src="/common/js/libs/html5shiv-printshiv.js"></script>
 <![endif]-->
-
+<style>
+h3, div{
+	font-size:1.1em;
+}
+</style>
 <script>
 /* $(document).ready(function(){
 	//setSnb('snb1');
@@ -113,7 +117,7 @@ dao.close();
 									<img src="../images/inner1.jpg" alt="병원사진" style="width:750px">
 								</div>
 								<br />
-								<div style="font-size:2em;">
+								<div>
 								${dto.hp_explain }
 								</div>
 							</div>							

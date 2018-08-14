@@ -31,7 +31,7 @@
 	<!-- header -->
 	<header id="header">
 		<div class="inner">
-			<div class="logo"><a href="<%=request.getContextPath() %>/member/login.jsp"><img src="../images/apago_가로.png" style="width:300px; height:60px;" alt="apago_logo" /></a></div>
+			<div class="logo"><a href="<%=request.getContextPath() %>/member/login.jsp"><img src="./images/go_big.png" style="width:300px; height:60px;" alt="apago_logo" /></a></div>
 			<div class="gnb">
 				<ul>
 					

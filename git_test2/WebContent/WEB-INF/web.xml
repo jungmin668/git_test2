@@ -45,6 +45,16 @@
   	<url-pattern>/Member/LoginProc</url-pattern>
   </servlet-mapping>
     
+  <!-- 네아로 구현 -->
+  <servlet>
+  	<servlet-name>NaverCheck</servlet-name>
+  	<servlet-class>member.NaverCheck</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>NaverCheck</servlet-name>
+  	<url-pattern>/NaverCheck.json</url-pattern>
+  </servlet-mapping>  
+    
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>

@@ -1,6 +1,19 @@
+<%@page import="java.math.BigInteger"%>
+<%@page import="java.security.SecureRandom"%>
+<%@page import="java.net.URLEncoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%
+    String clientId = "AZk2SWQ3d_Adr28suG1r";//애플리케이션 클라이언트 아이디값";
+    String redirectURI = URLEncoder.encode("http://localhost:8080/git_test2/member/callback.jsp", "UTF-8");
+    SecureRandom random = new SecureRandom();
+    String state = new BigInteger(130, random).toString();
+    String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
+    apiURL += "&client_id=" + clientId;
+    apiURL += "&redirect_uri=" + redirectURI;
+    apiURL += "&state=" + state;
+    session.setAttribute("state", state);
+ %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,10 +86,10 @@
 					<dt><em>로그인 사이트&nbsp;▶ </em></dt>
 					<dd>
 						<ul>
-							<li><a href="/pmc/">네이버 로그인</a></li>
-							<li><a href="/ilsan/">구글 로그인</a></li>
-							<li><a href="/busan/">페이스북 로그인</a></li>
-							<li><a href="/sanggye/">인스타 로그인</a></li>
+							<li><a href="<%=apiURL%>">네이버 로그인</a></li>
+							<li><a href="#">구글 로그인</a></li>
+							<li><a href="#">페이스북 로그인</a></li>
+							<li><a href="#">인스타 로그인</a></li>
 						</ul>
 					</dd>
 				</dl>
