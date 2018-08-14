@@ -1,4 +1,4 @@
-<%@page import="util.PagingUtil"%>
+<%@page import="util.PagingUtil"%> 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,10 +12,11 @@
 <body>
 <div class="container">
 	<%@ include file="../sourcecopy_header.jsp" %>
+	<br/>
 	<div style="text-align:center;">
 	<b><span style="color:red; font-size:20pt">우리 병원의 총 평점은   점 입니다.</span></b>
 	</div>
-	
+	<br/><br/>
 	<div class="inner">
 		<!-- aside -->
 		<aside id="aside">
