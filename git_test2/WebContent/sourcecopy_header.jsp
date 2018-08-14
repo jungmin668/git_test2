@@ -110,7 +110,7 @@
 				<!-- LNB -->
 				<nav class="lnb">
 					<ul>
-						<li><a href="#" class="depth01">병원소개</a>
+						<li><a href="<%=request.getContextPath() %>/hptintro/hptintro.jsp" class="depth01">병원소개</a>
 							<div class="depth02">
 								<div class="inner">
 									<span class="tit_depth02">예약/조회/<span class="dis_inBlock">발급</span></span>

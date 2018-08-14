@@ -36,13 +36,13 @@ dao.close();
 <title>병원소개</title>
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="../common/css/base.css">
-<link rel="stylesheet" href="../common/css/ui_style.css?180711">
-<link rel="stylesheet" href="../common/css/common.css?180604">
-<link rel="stylesheet" href="../common/css/layout.css?180315">
-<link rel="stylesheet" href="../common/css/content.css?1807172">
-<link rel="stylesheet" href="../common/css/colorChange.css">
-<link rel="stylesheet" href="../common/css/content_seoul.css?1805141">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/base.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/ui_style.css?180711">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/common.css?180604">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/layout.css?180315">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/content.css?1807172">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/colorChange.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/content_seoul.css?1805141">
 <!-- <script type="text/javascript" src="../common/js/libs/jquery-1.11.2.js"></script>
 <script type="text/javascript" src="../common/js/libs/jquery-ui-1.12.1.js"></script>
 <script type="text/javascript" src="../common/js/libs/jquery.browser.check.js"></script>
