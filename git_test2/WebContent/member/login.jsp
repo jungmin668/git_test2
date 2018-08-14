@@ -7,17 +7,18 @@
 <title>제목은 여기에</title>
 <!-- <link rel="stylesheet" href="../common/bootstrap3.3.7/css/bootstrap.min.css" />
 <script src="../common/bootstrap3.3.7/jquery/jquery-3.2.1.min.js"></script> -->
-<link rel="stylesheet" href="/common/css/base.css">
-<link rel="stylesheet" href="/common/css/ui_style.css?180711">
-<link rel="stylesheet" href="/common/css/common.css?180604">
-<link rel="stylesheet" href="/common/css/layout.css?180315">
-<link rel="stylesheet" href="/common/css/content.css?1807172">
-<link rel="stylesheet" href="/common/css/colorChange.css">
-<link rel="stylesheet" href="/common/css/content_seoul.css?1805141">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/base.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/ui_style.css?180711">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/common.css?180604">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/layout.css?180315">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/content.css?1807172">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/colorChange.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/content_seoul.css?1805141">
 </head>
 <body>
 
 <div id="container">
+	<%@ include file="../sourcecopy_header.jsp" %>
 		<!-- container-header -->
 		<div class="container-header">
 			<div class="inner">
@@ -66,7 +67,7 @@
 	}
 </script>
 								<div class="login-input">
-									<form method="post" action="login_fl.asp" name="loginFrm" id="login1" onsubmit="return loginValidate(this);">
+									<form method="post" action="../Member/LoginProc" name="loginFrm" id="login1" onsubmit="return loginValidate(this);">
 									<input type="hid-den" name="backUrl" value="${param.backUrl}"/>
 									<input type="hidden" name="hpid" value="DA">
 									<input type="hidden" name="r_url" id="r_url" value="/seoul/member/join.asp%3F%26rnd%3D70554">
@@ -180,6 +181,7 @@
 			</div>
 		</div>
 		<!--// contents-wrap -->
+		<%@ include file="../sourcecopy_bottom.jsp" %>
 	</div>
 
 </body>

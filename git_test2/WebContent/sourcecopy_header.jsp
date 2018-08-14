@@ -8,34 +8,36 @@
 <title>apago_header</title>
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="/common/css/base.css">
-<link rel="stylesheet" href="/common/css/ui_style.css?180711">
-<link rel="stylesheet" href="/common/css/common.css?180604">
-<link rel="stylesheet" href="/common/css/layout.css?180315">
-<link rel="stylesheet" href="/common/css/content.css?1807172">
-<link rel="stylesheet" href="/common/css/colorChange.css">
-<link rel="stylesheet" href="/common/css/content_seoul.css?1805141">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/base.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/ui_style.css?180711">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/common.css?180604">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/layout.css?180315">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/content.css?1807172">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/colorChange.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/content_seoul.css?1805141">
+<!-- 
 <script type="text/javascript" src="/common/js/libs/jquery-1.11.2.js"></script>
 <script type="text/javascript" src="/common/js/libs/jquery-ui-1.12.1.js"></script>
 <script type="text/javascript" src="/common/js/libs/jquery.browser.check.js"></script>
 <script type="text/javascript" src="/common/js/libs/modernizr.min.js?180413"></script>
 <script type="text/javascript" src="/common/js/plugins.js"></script>
 <script type="text/javascript" src="/common/js/ui.js?1807051"></script>
-<link rel="stylesheet" href="../common/bootstrap3.3.7/css/bootstrap.min.css" />
-<script src="../common/bootstrap3.3.7/jquery/jquery-3.2.1.min.js"></script>
+ -->
+<!-- <link rel="stylesheet" href="../common/bootstrap3.3.7/css/bootstrap.min.css" />
+<script src="../common/bootstrap3.3.7/jquery/jquery-3.2.1.min.js"></script> -->
 </head>
 <body>
 	
 	<!-- header -->
 	<header id="header">
 		<div class="inner">
-			<div class="logo"><a href="http://www.paik.ac.kr/seoul/main.asp"><img src="../images/apago_가로.png" style="width:300px; height:60px;" alt="apago_logo" /></a></div>
+			<div class="logo"><a href="<%=request.getContextPath() %>/member/login.jsp"><img src="../images/apago_가로.png" style="width:300px; height:60px;" alt="apago_logo" /></a></div>
 			<div class="gnb">
 				<ul>
 					
 					<!-- Before Login -->
-					<li><a href="https://www.paik.ac.kr/seoul/member/login.asp?p_url=/seoul/main.asp?" class="btn-login">로그인</a></li>
-					<li><a href="https://www.paik.ac.kr/seoul/member/agreement.asp" class="btn-join">회원가입</a></li>
+					<li><a href="<%=request.getContextPath() %>/member/login.jsp" class="btn-login">로그인</a></li>
+					<li><a href="<%=request.getContextPath() %>/member/sourcecode_join.jsp" class="btn-join">회원가입</a></li>
 					<!--// Before Login -->
 					
 					<li>
@@ -163,7 +165,7 @@
 								</div>
 							</div>
 						</li>
-						<li><a href="#" class="depth01">평점관리</a>
+						<li><a href="<%=request.getContextPath() %>/point/hpoint.jsp" class="depth01">평점관리</a>
 							<div class="depth02">
 								<div class="inner">
 									<span class="tit_depth02">이용안내</span>
@@ -191,8 +193,6 @@
 										<a href="/seoul/info/direction.asp" class="btn08">찾아오시는길</a>
 										<a href="/seoul/info/floor.asp" class="btn09">층별위치안내</a>
 										<a href="/seoul/info/parking_info.asp" class="btn10">주차안내</a>
-										<!-- <a href="/seoul/info/funeral.asp" class="btn11">장례식장</a>
-										<a href="/seoul/info/faq.asp" class="btn12">FAQ</a> -->
 									</div>
 								</div>
 							</div>
@@ -277,7 +277,7 @@
 				<button type="button" class="btn-srchWrap"><span class="ico ico-srch">검색</span></button>
 			</div>
 			<!-- 우측 바(네비게이션 바) -->
-			<%@ include file="../include/quick.jsp" %>
+			<%-- <%@ include file="../include/quick.jsp" %> --%>
 		</div>
 
 		<div class="bg-lnb"><!-- lnb bg --></div>

@@ -8,21 +8,21 @@
 <title>apago_bottom</title>
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="/common/css/base.css">
-<link rel="stylesheet" href="/common/css/ui_style.css?180711">
-<link rel="stylesheet" href="/common/css/common.css?180604">
-<link rel="stylesheet" href="/common/css/layout.css?180315">
-<link rel="stylesheet" href="/common/css/content.css?1807172">
-<link rel="stylesheet" href="/common/css/colorChange.css">
-<link rel="stylesheet" href="/common/css/content_seoul.css?1805141">
-<script type="text/javascript" src="/common/js/libs/jquery-1.11.2.js"></script>
-<script type="text/javascript" src="/common/js/libs/jquery-ui-1.12.1.js"></script>
-<script type="text/javascript" src="/common/js/libs/jquery.browser.check.js"></script>
-<script type="text/javascript" src="/common/js/libs/modernizr.min.js?180413"></script>
-<script type="text/javascript" src="/common/js/plugins.js"></script>
-<script type="text/javascript" src="/common/js/ui.js?1807051"></script>
-<link rel="stylesheet" href="../common/bootstrap3.3.7/css/bootstrap.min.css" />
-<script src="../common/bootstrap3.3.7/jquery/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/base.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/ui_style.css?180711">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/common.css?180604">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/layout.css?180315">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/content.css?1807172">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/colorChange.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/content_seoul.css?1805141">
+<%-- <script type="text/javascript" src="<%=request.getContextPath() %>/js/libs/jquery-1.11.2.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/libs/jquery-ui-1.12.1.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/libs/jquery.browser.check.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/libs/modernizr.min.js?180413"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/plugins.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/ui.js?1807051"></script> --%>
+<!-- <link rel="stylesheet" href="../common/bootstrap3.3.7/css/bootstrap.min.css" />
+<script src="../common/bootstrap3.3.7/jquery/jquery-3.2.1.min.js"></script> -->
 </head>
 <body>
 

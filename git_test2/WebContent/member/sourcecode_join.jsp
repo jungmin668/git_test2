@@ -9,9 +9,9 @@
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link href="../bootstrap3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<!-- <link href="../bootstrap3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="../bootstrap3.3.7/js/bootstrap.min.js"></script>
+<!-- <script src="../bootstrap3.3.7/js/bootstrap.min.js"></script> -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript">
 
@@ -87,7 +87,6 @@ function focusMove(obj, m_length, next_obj){
 					<h3 class="tit-line">개인정보 입력</h3>
 					<div class="tit-tableWrap mar-t30">
 						<h4 class="tit-table">필수입력사항</h4>
-						<p class="essential"><em class="emphasis-red">* 필수입력사항</em>입니다. 빠짐없이 기재해 주세요.(14세 미만은 회원가입이 되지 않습니다)</p>
 					</div>
 
 					<form name="memberFrm" id="regfm" action="/members/join_fl.asp" method="post" onsubmit="return mValidate(this);">
