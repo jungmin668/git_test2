@@ -45,7 +45,7 @@
 			<div class="info">
 				<!-- 로고 삽입 -->
 				<div class="apago_logo">
-					<img src="../images/apago_가로.png" style="width:250px; height:60px; padding-bottom:10px;" alt="아파GO로고" />
+					<img src="<%=request.getContextPath() %>/images/go_big.png" style="width:250px; height:60px; padding-bottom:10px;" alt="아파GO로고" />
 				</div>
 				<ul class="footer-link">
 					<li>
