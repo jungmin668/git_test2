@@ -27,7 +27,7 @@
 </head>
 <body>
 <!-- 상단영역 -->
-<%@ include file="../include/sourcecopy_header.jsp" %>
+<%@ include file="../sourcecopy_header.jsp" %>
 
 <!-- analyzer chart start -->
 
@@ -212,6 +212,6 @@
 </div>
 <!-- analyzer chart end -->
 <!-- 하단영역 -->
-<%@ include file="../include/sourcecopy_bottom.jsp" %>
+<%@ include file="../sourcecopy_bottom.jsp" %>
 </body>
 </html>
