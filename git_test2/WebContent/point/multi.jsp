@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="container">
-	<%@ include file="../include/sourcecopy_header.jsp" %>
+	<%@ include file="../sourcecopy_header.jsp" %>
 	<br/>
 	<div style="text-align:center;">
 	<b><span style="color:blue; font-size:13pt">우리 병원의 총 평점은 <%@include file="star.jsp" %>&nbsp;&nbsp;  입니다.</span></b>
@@ -103,7 +103,7 @@ td{
 	</div>
 	
 
-	<%@ include file="../include/sourcecopy_bottom.jsp" %>
+	<%@ include file="../sourcecopy_bottom.jsp" %>
 </div>
 </body>
 </html>
