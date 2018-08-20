@@ -28,3 +28,5 @@ create sequence seq_e
 insert into event values (seq_e.nextval, '필러', '필러 5회 할인',sysdate, 'a',0);
 insert into event values (seq_e.nextval, '지방흡입', '지방흡입 10회 할인',sysdate, 'a',0);
 insert into event values (seq_e.nextval, '보톡스', '보톡스 5회 할인',sysdate, 'a',0);
+
+commit;
