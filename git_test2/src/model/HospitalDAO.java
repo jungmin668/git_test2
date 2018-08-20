@@ -5,13 +5,14 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
- 
 public class HospitalDAO {
    
    Connection con; //오라클 서버와 연결할때 사용
@@ -113,5 +114,71 @@ public class HospitalDAO {
       
       return maps;
    }
+   
+ //게시판 리스트 가져오기(검색처리, 페이지처리)
+ 	public List<EventDTO> selectList(Map<String,Object> map){
+ 		
+ 		//1.결과 레코드셋을 담기위한 리스트계열 컬렉션생성 
+ 		List<EventDTO> bbs = new Vector<EventDTO>();
+ 		
+ 		//2.게시물 전체를 가져오기 위한 쿼리작성
+ 		String query = " "		
+ 			+" SELECT * FROM ( " 
+ 			+"	 SELECT Tb.*, ROWNUM rNum FROM ( "
+ 			+"	    SELECT E.* FROM event E ";
+
+ 		if(map.get("Word")!=null) 
+ 		{
+ 			if(map.get("Column").equals("both")) 
+ 			{
+ 				query +=" WHERE "
+ 				  + "title LIKE '%"+ map.get("Word") +"%' "
+ 				  +" OR "
+ 				  +" content LIKE '%"+ map.get("Word") +"%' ";
+ 			}
+ 			else {
+ 				query +=" WHERE "+ map.get("Column") +" "
+ 				  +" LIKE '%"+ map.get("Word") +"%' ";
+ 			}			
+ 		}else {
+ 			query += "    	ORDER BY num DESC "
+ 			    +"    ) Tb "
+ 			    +" ) "
+ 			    +" WHERE rNum BETWEEN ? AND ?";			
+ 		}	
+ 		System.out.println("쿼리문:"+ query);			
+ 			
+ 		try {
+ 			//3.prepare객체생성 및 실행
+ 			psmt = con.prepareStatement(query);
+ 			psmt.setString(2, map.get("start").toString());
+ 			psmt.setString(3, map.get("end").toString());			
+ 			//4.쿼리실행후 결과셋 돌려받음
+ 			rs = psmt.executeQuery();
+ 			
+ 			//5.결과셋의 갯수만큼 반복
+ 			while(rs.next()) {
+ 				
+ 				//6.결과셋을 하나씩 DTO객체에 저장
+ 				EventDTO dto = new EventDTO();
+ 				
+ 				dto.setE_num(rs.getInt(1));
+ 				dto.setE_title(rs.getString("title"));
+ 				dto.setE_content(rs.getString(3));
+ 				dto.setE_postdate(rs.getDate(4));
+ 				dto.setE_id(rs.getString("id"));
+ 				dto.setE_hits(rs.getInt(6));
+ 				
+ 				//7.DTO객체를 컬렉션에 추가
+ 				bbs.add(dto);
+ 			}
+ 		}
+ 		catch(Exception e) {
+ 			System.out.println("Select시 예외발생");
+ 			e.printStackTrace();
+ 		}
+ 		
+ 		return bbs;
+ 	} 	
    
 }

@@ -1,3 +1,5 @@
+<%@page import="model.EventDTO"%>
+<%@page import="model.HospitalDAO"%>
 <%@page import="util.PagingUtil"%> 
 <%@page import="java.util.List"%>
 <%@page import="java.util.HashMap"%>
@@ -9,16 +11,12 @@
 //한글처리
 request.setCharacterEncoding("UTF-8");
 
-String board_flag = 
-	request.getParameter("board_flag") == null ? "notice" : request.getParameter("board_flag");
-
 //커넥션풀로 변경
-
+HospitalDAO dao = new HospitalDAO();
 
 //매개변수 저장을 위한 컬렉션 생성(DAO로 전달)
 Map<String,Object> param = new HashMap<String,Object>();
 
-param.put("board_flag", board_flag);
 //문자열 검색 파라미터를 페이지 처리 메소드로
 //넘겨주기 위한 변수선언
 String queryStr = "";
@@ -73,7 +71,9 @@ param.put("end", end);
 순서를 보장하지 않기때문에 게시판 목록을 구현할때 문제가 
 될수있기 때문이다.
 */
+List<EventDTO> bbs = dao.selectList(param); 
 
+dao.close();
 %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/bootstrap3.3.7/css/bootstrap.min.css" />
