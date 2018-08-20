@@ -68,6 +68,7 @@ h3, div{
 </script>
 </head>
 <body>
+<%@ include file="../sourcecopy_header.jsp" %>
 <div id="wrapper">
 	<!-- header -->
 	
@@ -173,6 +174,7 @@ h3, div{
 
 	<!--// Footer -->
 </div>
+<%@ include file="../sourcecopy_bottom.jsp" %>
 </body>
 </html>
 

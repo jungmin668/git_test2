@@ -14,6 +14,24 @@ import model.HospitalMemberDTO;
 import sun.nio.cs.HistoricallyNamedCharset;
 import util.JavascriptUtil;
 import javax.servlet.jsp.JspWriter;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Date;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class register extends HttpServlet {
    @Override
@@ -38,11 +56,12 @@ public class register extends HttpServlet {
       HospitalMemberDTO dto = new HospitalMemberDTO(flag, name, gender, bir, id, pass, dis, mobile, tel, zipcode,
             addr1, addr2, email);
       HospitalDAO dao = new HospitalDAO();
-
+                  
       int af = dao.memberRegist(dto);
       if (af == 1) {
          System.out.println("회원가입 성공");
-         RequestDispatcher disp = req.getRequestDispatcher("../main/main.jsp");
+    	     	  
+         RequestDispatcher disp = req.getRequestDispatcher("../member/login.jsp");
          disp.forward(req, resp);
       } else {
          System.out.println("회원가입 실패");

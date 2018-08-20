@@ -37,7 +37,7 @@
 					
 					<!-- Before Login -->
 					<li><a href="<%=request.getContextPath() %>/member/login.jsp" class="btn-login">로그인</a></li>
-					<li><a href="<%=request.getContextPath() %>/member/join.jsp" class="btn-join">회원가입</a></li>
+					<li><a href="<%=request.getContextPath() %>/Captcha" class="btn-join">회원가입</a></li>
 					<!--// Before Login -->
 					
 					<li>
