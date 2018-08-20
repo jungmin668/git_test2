@@ -1,29 +1,11 @@
 <%@page import="util.JavascriptUtil"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../include/login_check.jsp" %>
-<%@ include file="../include/global_head.jsp" %>
-<%
-String board_flag = 
-request.getParameter("board_flag") == null ? "notice" : request.getParameter("board_flag");
-%>
-<%@ include file="common_space.jsp" %> 
 <body>
 	<center>
 	<div id="wrap">
-		<%@ include file="../include/top.jsp" %>
-
-		<img src="../images/space/sub_image.jpg" id="main_visual" />
-
 		<div class="contents_box">
-			<div class="left_contents">
-				<%@ include file = "../include/space_leftmenu.jsp" %>
-			</div>
 			<div class="right_contents">
-				<div class="top_title">
-					<img src="../images/space/<%=title_image %>" alt="<%=path_str %>" class="con_title" />
-					<p class="location"><img src="../images/center/house.gif" />&nbsp;&nbsp;열린공간&nbsp;>&nbsp;<%=path_str%><p>
-				</div>
 				<div>
 
 <script>
@@ -54,7 +36,6 @@ request.getParameter("board_flag") == null ? "notice" : request.getParameter("bo
 	<col width="20%"/>
 	<col width="*"/>
 </colgroup>
-<input type="hid-den" name="board_flag" value="<%=board_flag%>"/>
 <tbody>
 	<tr>
 		<th class="text-center" 
@@ -106,7 +87,7 @@ request.getParameter("board_flag") == null ? "notice" : request.getParameter("bo
 	<button type="submit" class="btn btn-danger">전송하기</button>
 	<button type="reset" class="btn">Reset</button>
 	<button type="button" class="btn btn-warning" 
-		onclick="location.href='sub0<%=flag%>_list.jsp';">
+		onclick="location.href='sub01_list.jsp';">
 		리스트보기</button>
 </div>
 </form>
@@ -114,11 +95,7 @@ request.getParameter("board_flag") == null ? "notice" : request.getParameter("bo
 				</div>
 			</div>
 		</div>
-		<%@ include file="../include/quick.jsp" %>
 	</div>
-
-
-	<%@ include file="../include/footer.jsp" %>
 	</center>
  </body>
 </html>

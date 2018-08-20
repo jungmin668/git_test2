@@ -76,8 +76,8 @@ param.put("end", end);
 
 %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<link rel="stylesheet" href="../bootstrap3.3.7/css/bootstrap.min.css" />
-<script src="../bootstrap3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/bootstrap3.3.7/css/bootstrap.min.css" />
+<script src="<%=request.getContextPath() %>/bootstrap3.3.7/js/bootstrap.min.js"></script>
 <body>
 <div class="container">
 	<%@ include file="../sourcecopy_header.jsp" %>
@@ -198,7 +198,7 @@ param.put("end", end);
 	<!-- 각종 버튼 부분 -->
 	<!-- <button type="reset" class="btn">Reset</button> -->
 		
-	<button type="button" class="btn btn-default" 
+	<button type="button" class="btn btn-success" 
 		onclick="location.href='sub01_t_write.jsp?'">글쓰기</button>
 				
 	<!-- <button type="button" class="btn btn-primary">수정하기</button>
