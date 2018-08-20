@@ -86,7 +86,7 @@
 					<dt><em>로그인 사이트&nbsp;▶ </em></dt>
 					<dd>
 						<ul>
-							<li><a href="<%=apiURL%>">네이버 로그인</a></li>
+							<li><a href="<%=apiURL%>"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a></li>
 							<li><a href="#">구글 로그인</a></li>
 							<li><a href="#">페이스북 로그인</a></li>
 							<li><a href="#">인스타 로그인</a></li>
@@ -122,4 +122,3 @@
 
 </body>
 </html>
-
