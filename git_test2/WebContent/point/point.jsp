@@ -10,8 +10,8 @@
 <script src="../common/bootstrap3.3.7/jquery/jquery-3.2.1.min.js"></script>
 </head>
 <body>
-<div class="container">
-	<%@ include file="../sourcecopy_header.jsp" %>
+<%@ include file="../sourcecopy_header.jsp" %>
+<div class="container">	
 	<br/>
 	<div style="text-align:center;">
 	<b><span style="color:red; font-size:20pt">우리 병원의 총 평점은   점 입니다.</span></b>
@@ -144,10 +144,8 @@ else
 
 		</article>
 		<!--// Contents -->
-	</div>
-	
-
-	<%@ include file="../sourcecopy_bottom.jsp" %>
+	</div>	
 </div>
+<%@ include file="../sourcecopy_bottom.jsp" %>
 </body>
 </html>

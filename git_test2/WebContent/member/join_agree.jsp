@@ -9,8 +9,8 @@
 <script src="../common/bootstrap3.3.7/jquery/jquery-3.2.1.min.js"></script>
 </head>
 <body>
-<div class="container">
 <%@ include file="../sourcecopy_header.jsp" %>
+<div class="container">
 	<div class="container-header">
 		<div class="inner">
 			<h1 class="tit-page">회원가입</h1>
@@ -61,7 +61,7 @@
 			<!--// Contents -->
 		</div>
 	</div>
-	<%@ include file="../sourcecopy_bottom.jsp" %>
 </div>
+<%@ include file="../sourcecopy_bottom.jsp" %>
 </body>
 </html>

@@ -6,10 +6,14 @@ create table event
     e_postdate date default sysdate,
     e_id varchar2(50) not null,
     e_hits number not null,
+    h_name varchar2(200) not null,
         
     primary key(e_num),
-    foreign key(e_id) references hospital_member(mem_id)
+    foreign key(e_id) references hospital_member(mem_id),
+    foreign key(h_name) references hospital_t(hp_name)
 );
+
+drop table event;
 
 insert into event values (1, 'º¸Åå½º', 'º¸Åå½º 1È¸ ºñ¿ë',sysdate, 'a',0);
 

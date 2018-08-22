@@ -67,9 +67,8 @@ String mem_flag = request.getParameter("mem_flag");
 <script src="../bootstrap3.3.7/jquery/jquery-3.2.1.min.js"></script> -->
 </head>
 <body>
+<%@ include file="../sourcecopy_header.jsp" %>
 	<div id="container">
-		<!-- include : header -->
-		<%@ include file="../sourcecopy_header.jsp" %>
 		<!-- container-header -->
 		<div class="container-header">
 			<div class="inner">
@@ -283,8 +282,8 @@ String mem_flag = request.getParameter("mem_flag");
 		</div>
 		<!--// contents-wrap -->
 		<!-- include : bottom -->
-		<%@ include file="../sourcecopy_bottom.jsp" %>
+		
 	</div>
-
+<%@ include file="../sourcecopy_bottom.jsp" %>
 </body>
 </html>

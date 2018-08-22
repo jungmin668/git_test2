@@ -15,8 +15,8 @@ session.setAttribute("vkey", vkey);
 <script src="<%=request.getContextPath() %>/bootstrap3.3.7/jquery/jquery-3.2.1.min.js"></script>
 </head>
 <body>
+<%@ include file="../sourcecopy_header.jsp" %>
 <div class="container">
-	<%@ include file="../sourcecopy_header.jsp" %>
 	<br/>
 	<form action="../CaptchaRes">
 		<h3>먼저 자동생성문자를 입력해주세요</h3><br/>
@@ -24,8 +24,8 @@ session.setAttribute("vkey", vkey);
 		<input type="text" name = "inputText" />
 		<button type="submit" class="btn btn-danger">확인</button>
 	</form>
-	<br/>
-	<%@ include file="../sourcecopy_bottom.jsp" %>
+	<br/>	
 </div>
+<%@ include file="../sourcecopy_bottom.jsp" %>
 </body>
 </html>

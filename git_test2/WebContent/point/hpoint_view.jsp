@@ -40,8 +40,8 @@ dao.close();//DB자원반납
 <script src="../bootstrap3.3.7/jquery/jquery-3.2.1.min.js"></script>
 </head>
 <body>
-<div class="container">
-	<%@ include file="../sourcecopy_header.jsp" %>
+<%@ include file="../sourcecopy_header.jsp" %>
+<div class="container">	
 	<div class="inner">
 		<!-- aside -->
 		<aside id="aside">
@@ -177,9 +177,8 @@ td{
 		</article>
 		<!--// Contents -->
 	</div>
-	<br/><br/>
-
-	<%@ include file="../sourcecopy_bottom.jsp" %>
+	<br/><br/>	
 </div>
+<%@ include file="../sourcecopy_bottom.jsp" %>
 </body>
 </html>
