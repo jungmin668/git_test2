@@ -165,7 +165,7 @@
 								</div>
 							</div>
 						</li>
-						<li><a href="<%=request.getContextPath() %>/point/hpoint.jsp" class="depth01">평점관리</a>
+						<li><a href="<%=request.getContextPath() %>/point/HpointList" class="depth01">평점관리</a>
 							<div class="depth02">
 								<div class="inner">
 									<span class="tit_depth02">이용안내</span>

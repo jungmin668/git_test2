@@ -1,6 +1,7 @@
 <%@page import="util.PagingUtil"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%
 
 //한글깨짐처리
@@ -38,6 +39,16 @@ dao.close();//DB자원반납
 <title>아파GO 평점관리</title>
 <link rel="stylesheet" href="../bootstrap3.3.7/css/bootstrap.min.css" />
 <script src="../bootstrap3.3.7/jquery/jquery-3.2.1.min.js"></script>
+<script src="../bootstrap3.3.7/js/bootstrap.min.js"></script>
+<script>
+function searchCheck(f){
+	if(f.searchWord.value==""){
+		alert("검색할 단어를 입력하세요");
+		f.searchWord.focus();
+		return false;
+	}
+}
+</script>
 </head>
 <body>
 <%@ include file="../sourcecopy_header.jsp" %>
@@ -83,7 +94,7 @@ td{
 <!-- 검색 -->
 <div class="row text-right" style="margin-bottom:20px;
 	padding-right:50px;">
-<form class="form-inline">
+<form class="form-inline" onsubmit="return searchCheck(this);">
 	<div class="form-group">
 		<select name="searchColumn" class="form-control">
 			<option value="title">제목</option>
@@ -121,47 +132,32 @@ td{
 	</tr>
 </thead>
 <tbody>
-<%
-/* 
-if(bbs.isEmpty()){
-	//컬렉션에 저장된 데이터가 없는경우
- */
-%>
-		<tr>
-			<td colspan="4" align="center">
-				등록된 게시물이 없습니다
-			</td>
-		</tr>
-<%
-/* 
-}
-else
-{
-	//컬렉션에 저장된 데이터가 있는경우 for-each문을통해
-	//내용 출력
-	int vNum = 0;
-	int countNum = 0;
- 	for(HomepyBoardDTO dto : bbs){
- 		pageContext.setAttribute("dto", dto);
- 		vNum = totalRecordCount - 
-			(((nowPage-1)*pageSize)+countNum++);
- 		//String fileName = request.getServletContext().getRealPath("/Upload")+File.separator+dto.getChumfile();
- */
-%>	
-	<!-- 반복시작 -->	
-	<tr>
-		<td class="text-center">1</td>
-		<td class="text-left"><a href="hpoint_view.jsp?num=">고객님이 남겨주신 우리 병원 평점 1</a></td>
-		<td class="text-center">2018-08-21</td>
-		<td class="text-center">5점</td>		
-	</tr>
-	<!-- 반복끝 -->
-<%
-/* 
-	}//for-each문 끝
-}//if문 끝
- */
-%>
+	<c:choose>
+		<c:when test="${empty lists }">
+			<tr>
+				<td colspan="4">
+					등록된 글이 없습니다
+				</td>
+			</tr>
+		</c:when>
+		<c:otherwise>
+			<!-- 등록된 글이 있을 때 반복하면서 리스트 출력 -->
+			<c:forEach items="${lists }" var="row" varStatus="loop">
+				<tr>
+					<td class="text-center">
+					${map.totalCount - (((map.nowPage - 1) * map.pageSize) + loop.index) }</td>
+					<td class="text-left">
+						<a href="../DataRoom/DataView?idx=${row.idx }&nowPage=${param.nowPage}">
+						병원 평점 ${loop.index }
+						</a>
+					</td>
+					<td class="text-center">${row.p_visitdate }</td>
+					<td class="text-center">${row.p_total }</td>
+				</tr>
+			</c:forEach>
+		</c:otherwise>
+	</c:choose>	
+</tbody>
 </table>
 </form>
 				

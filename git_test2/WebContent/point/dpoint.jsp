@@ -7,6 +7,7 @@
 <title>아파GO 평점관리</title>
 <link rel="stylesheet" href="../bootstrap3.3.7/css/bootstrap.min.css" />
 <script src="../bootstrap3.3.7/jquery/jquery-3.2.1.min.js"></script>
+<script src="../bootstrap3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <%@ include file="../sourcecopy_header.jsp" %>
@@ -62,7 +63,7 @@
 											<li><i>전문분야</i> <span>임플란트, 보존</span></li>
 										</ul>
 										<div class="btn-area w150">
-											<a href="/seoul/dept/profile_popup_inc.asp?d=300670" class="btn btn-song btn-line" onclick="ajaxPopup('.ajaxPopup', '', this.href, this, '.doctor-introduce'); return false;"><em>평점</em></a>
+											<a data-toggle="modal" href="#myModal" class="btn btn-song btn-line"><em>평점</em></a>
 										</div>
 									</div>
 								</div>
@@ -78,23 +79,61 @@
 											<li><i>전문분야</i> <span>보철</span></li>
 										</ul>
 										<div class="btn-area w150">
-											<a href="/seoul/dept/profile_popup_inc.asp?d=300659" class="btn btn-song btn-line" onclick="ajaxPopup('.ajaxPopup', '', this.href, this, '.doctor-introduce'); return false;"><em>평점</em></a>
+											<a data-toggle="modal" href="#myModal" class="btn btn-song btn-line"><em>평점</em></a>
 										</div>
 									</div>
 								</div>
 							</li>
 							
 						</ul>
+<!-- 평점 모달 창 -->
+<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal-dialog">
+	<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">				
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">평점(의사)</h4>
+			</div>
+			<div class="modal-body">
+				<p class="form-inline">
+				<table class="table table-bordered table-striped" style="font-size:1.2em;">
+					<tr>
+						<th>친절도</th>
+						<td>1점</td>
+					</tr>
+					<tr>
+						<th>진료만족도</th>
+						<td>2점</td>
+					</tr>
+					<tr>
+						<th>총 평점</th>
+						<td>3점</td>
+					</tr>
+					<tr>
+						<th>병원내원일</th>
+						<td>4점</td>
+					</tr>										
+				</table>
+				</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>		  
+	</div>
+</div>
 					</div>
 					
 				</div>
 			</div>
 		</div>
-
 		</article>
 		<!--// Contents -->
 	</div>	
 </div>
+
+
 <%@ include file="../sourcecopy_bottom.jsp" %>
 </body>
 </html>
