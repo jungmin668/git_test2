@@ -2,6 +2,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+request.setCharacterEncoding("UTF-8");
+String mem_flag = request.getParameter("mem_flag");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -93,6 +97,7 @@
 						method="post" onsubmit="return mValidate(this);">
 						<input type="hidden" name="edit" value="ins"> <input
 							type="hidden" name="hpid" value="DA">
+						<input type="hid-den" name="mem_flag" value="<%=mem_flag%>">
 						<div class="table-wrap">
 							<table class="table-row">
 								<caption>필수입력사항</caption>
@@ -101,13 +106,6 @@
 									<col>
 								</colgroup>
 								<tbody>
-									<input type="hid-den" name="h_idx" value=""/>
-									<tr>
-										<th>회원구분</th>
-										<td style="text-align: left;"><input type="radio"
-											name="mem_flag" value="일반" /> 일반 &nbsp;&nbsp;&nbsp;<input
-											type="radio" name="mem_flag" value="병원관리자" />병원관리자</td>
-									</tr>
 									<tr>
 										<th>이름</th>
 										<td style="text-align: left;"><input type="text"

@@ -17,13 +17,12 @@ public class HospitalMemberDTO {
    private String addr1;
    private String addr2;
    private String email;
-   private String h_idx; 
 
    public HospitalMemberDTO() {}
 
    public HospitalMemberDTO(String mem_flag, String mem_name, String mem_gender, String mem_age, String mem_id,
 		String mem_pass, String mem_dis, String tel, String mobile, String zipcode, String addr1, String addr2,
-		String email, String h_idx) {
+		String email) {
 	
 	this.mem_flag = mem_flag;
 	this.mem_name = mem_name;
@@ -38,7 +37,6 @@ public class HospitalMemberDTO {
 	this.addr1 = addr1;
 	this.addr2 = addr2;
 	this.email = email;
-	this.h_idx = h_idx;
    }
 
 
@@ -149,14 +147,6 @@ public String getMem_flag() {
       this.email = email;
    }
 
-	public String geth_idx() {
-		return h_idx;
-	}
-	
-	public void seth_idx(String h_idx) {
-		this.h_idx = h_idx;
-	}
-	   
-	   
+	  
  
 }

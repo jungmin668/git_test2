@@ -48,15 +48,15 @@ public class HospitalDAO {
    }
    
    //회원 가입 
-   public int memberRegist(HospitalMemberDTO dto) {
+   public int memberRegist_mgr(HospitalMemberDTO dto) {
       //적용된 행의 갯수확인을 위한 변수
       int affected = 0;
       System.out.println("dd");
       try {
-         String query = "INSERT INTO hospital_member ( "
+         String query = "INSERT INTO hospital_member (mem_idx, "
             + " mem_flag, mem_name, mem_gender, mem_bir, mem_id, mem_pass, mem_dis, "
             + " tel, mobile, zipcode, addr1, addr2, email ) "
-            + " VALUES ( "
+            + " VALUES (seq_hp.nextval, "
             + " ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? , ? )";
          psmt = con.prepareStatement(query); 
          psmt.setString(1, dto.getMem_flag());

@@ -85,7 +85,7 @@ public class captchaResult extends HttpServlet{
 					+ "</script>"; 
 			out.println(str);
 			*/
-			resp.sendRedirect("./member/join.jsp");
+			resp.sendRedirect("./member/join_agree.jsp");
         }else {
         	//한글처리
 			resp.setContentType("text/html;charset=UTF-8");
