@@ -197,7 +197,7 @@
 								</div>
 							</div>
 						</li>
-						<li><a href="#" class="depth01">이벤트관리</a>
+						<li><a href="<%=request.getContextPath() %>/event/e_list.jsp" class="depth01">이벤트관리</a>
 							<div class="depth02">
 								<div class="inner">
 									<span class="tit_depth02">건강정보</span>

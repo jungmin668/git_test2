@@ -17,32 +17,35 @@ public class HospitalMemberDTO {
    private String addr1;
    private String addr2;
    private String email;
-    
+   private String h_idx; 
 
-   public HospitalMemberDTO() {
-   }
+   public HospitalMemberDTO() {}
 
    public HospitalMemberDTO(String mem_flag, String mem_name, String mem_gender, String mem_age, String mem_id,
-         String mem_pass, String mem_dis, String tel, String mobile, String zipcode, String addr1, String addr2,
-         String email ) {
-    
-      this.mem_flag = mem_flag;
-      this.mem_name = mem_name;
-      this.mem_gender = mem_gender;
-      this.mem_age = mem_age;
-      this.mem_id = mem_id;
-      this.mem_pass = mem_pass;
-      this.mem_dis = mem_dis;
-      this.tel = tel;
-      this.mobile = mobile;
-      this.zipcode = zipcode;
-      this.addr1 = addr1;
-      this.addr2 = addr2;
-      this.email = email;
-       
+		String mem_pass, String mem_dis, String tel, String mobile, String zipcode, String addr1, String addr2,
+		String email, String h_idx) {
+	
+	this.mem_flag = mem_flag;
+	this.mem_name = mem_name;
+	this.mem_gender = mem_gender;
+	this.mem_age = mem_age;
+	this.mem_id = mem_id;
+	this.mem_pass = mem_pass;
+	this.mem_dis = mem_dis;
+	this.tel = tel;
+	this.mobile = mobile;
+	this.zipcode = zipcode;
+	this.addr1 = addr1;
+	this.addr2 = addr2;
+	this.email = email;
+	this.h_idx = h_idx;
    }
 
-   public String getMem_flag() {
+
+
+
+
+public String getMem_flag() {
       return mem_flag;
    }
 
@@ -145,5 +148,15 @@ public class HospitalMemberDTO {
    public void setEmail(String email) {
       this.email = email;
    }
+
+	public String geth_idx() {
+		return h_idx;
+	}
+	
+	public void seth_idx(String h_idx) {
+		this.h_idx = h_idx;
+	}
+	   
+	   
  
 }

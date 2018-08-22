@@ -52,9 +52,10 @@ public class register extends HttpServlet {
       String addr1 = req.getParameter("addr1");
       String addr2 = req.getParameter("addr2");
       String email = req.getParameter("email1") + "@" + req.getParameter("email2");
-
+      String h_idx = req.getParameter("h_idx");
+      
       HospitalMemberDTO dto = new HospitalMemberDTO(flag, name, gender, bir, id, pass, dis, mobile, tel, zipcode,
-            addr1, addr2, email);
+            addr1, addr2, email, h_idx);
       HospitalDAO dao = new HospitalDAO();
                   
       int af = dao.memberRegist(dto);

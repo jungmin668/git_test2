@@ -1,3 +1,4 @@
+<%@page import="model.HospitalMemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -70,18 +71,6 @@
 			<div class="inner">
 				<h1 class="tit-page">회원가입</h1>
 				<p class="summary">회원가입을 하시면 다양한 서비스를 편리하게 이용하실 수 있습니다.</p>
-				<!-- quick medical -->
-				<div class="quick-medical">
-					<ul>
-						<li><a href="/seoul/treatment/search.asp"><i
-								class="ico ico-srch5"></i><span>의료진검색</span></a></li>
-						<li><a href="/seoul/reservation/reservation.asp"><i
-								class="ico ico-cal4"></i><span>온라인예약</span></a></li>
-						<li><a href="/seoul/reservation/certificate.asp?tabIndex=1"><i
-								class="ico ico-certificate4"></i><span>증명서발급</span></a></li>
-					</ul>
-				</div>
-				<!--// quick medical -->
 			</div>
 		</div>
 		<!--// container-header -->
@@ -112,6 +101,7 @@
 									<col>
 								</colgroup>
 								<tbody>
+									<input type="hid-den" name="h_idx" value=""/>
 									<tr>
 										<th>회원구분</th>
 										<td style="text-align: left;"><input type="radio"
