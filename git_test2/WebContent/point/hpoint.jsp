@@ -12,25 +12,6 @@ request.setCharacterEncoding("UTF-8");
   대신 수정, 삭제의 경우에만 회원인증을 통하여 작성자
 본인만 할수 있도록 처리한다.
 */
-String num = request.getParameter("num");
-/* 
-//커넥션풀로 변경
-HomepyDAO dao = new HomepyDAO();
-
-//조회수 증가
-dao.updateVisitCount(num); 
-
-//게시물 가져오기
-HomepyBoardDTO dto = dao.selectView(num,board_flag);
-
-//EL식 사용위해 페이지 영역에 저장하기
-pageContext.setAttribute("dto", dto);
-System.out.println(dto.getNum());
-
-List<CommentBoardDTO> bbs = dao.selectList_c(); 
-
-dao.close();//DB자원반납
- */
 %>
 <!DOCTYPE html>
 <html>
@@ -62,7 +43,7 @@ function searchCheck(f){
 				<nav class="snb">
 					<ul>
 						<li class="current">
-							<a href="hpoint.jsp" class="depth1">우리 병원 평점</a>
+							<a href="../point/HpointList" class="depth1">우리 병원 평점</a>
 						</li>
 						<li>
 							<a href="dpoint.jsp" class="depth1">의사별 평점</a>
@@ -147,7 +128,7 @@ td{
 					<td class="text-center">
 					${map.totalCount - (((map.nowPage - 1) * map.pageSize) + loop.index) }</td>
 					<td class="text-left">
-						<a href="../DataRoom/DataView?idx=${row.p_num }&nowPage=${param.nowPage}">
+						<a href="../point/HpointView?p_num=${row.p_num }&nowPage=${param.nowPage}">
 						병원 평점 ${map.totalCount - (((map.nowPage - 1) * map.pageSize) + loop.index) }
 						</a>
 					</td>

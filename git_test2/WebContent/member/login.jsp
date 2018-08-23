@@ -24,15 +24,6 @@
          <div class="inner">
             <h1 class="tit-page">로그인</h1>
             <p class="summary">로그인을 하시면 다양한 서비스를 편리하게 이용하실 수 있습니다.</p>
-            <!-- quick medical -->
-                        <div class="quick-medical">
-               <ul>
-                  <li><a href="/seoul/treatment/search.asp"><i class="ico ico-srch5"></i><span>의료진검색</span></a></li>
-                  <li><a href="/seoul/reservation/reservation.asp"><i class="ico ico-cal4"></i><span>온라인예약</span></a></li>
-                  <li><a href="/seoul/reservation/certificate.asp?tabIndex=1"><i class="ico ico-certificate4"></i><span>증명서발급</span></a></li>
-               </ul>
-            </div>
-            <!--// quick medical -->
          </div>
       </div>
       <!--// container-header -->

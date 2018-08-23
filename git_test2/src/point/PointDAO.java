@@ -1,6 +1,7 @@
-package controller;
+package point;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
@@ -15,18 +16,18 @@ public class PointDAO {
 	Connection con;//오라클 서버와 연결
 	PreparedStatement psmt;//오라클 서버와 쿼리전송 
 	ResultSet rs;//쿼리의 결과를 받을때
-	
+	/*
 	public PointDAO() {
 		
 		try {
 			Context ctx = new InitialContext();
-			/*
+			
 			※ConnectionPool.jsp에서는 두번의 lookup을 통해 커넥션
 			객체를 가져왔으나, 합쳐서 한번의 lookup으로 쓸 수 있다.
 			톰캣의 루트디렉토리 하위에서 jdbc의 이름을 가져오는것이기 때문이다.
 			Context ctx = (Context)initCtx.lookup("java:comp/env");
 			DataSource source = (DataSource)ctx.lookup("jdbc/myoracle");
-			 */
+			 
 			DataSource source = (DataSource)ctx.lookup("java:comp/env/jdbc/myoracle");
 			
 			con = source.getConnection();
@@ -36,6 +37,21 @@ public class PointDAO {
 			e.printStackTrace();
 		}
 	}
+	*/
+	public PointDAO() {
+      String driver = "oracle.jdbc.OracleDriver";
+      String url = "jdbc:oracle:thin:@localhost:1522:orcl";   
+      try {
+         Class.forName(driver);
+         String id = "kosmo";
+         String pw = "1234";
+         con = DriverManager.getConnection(url, id, pw);
+         System.out.println("DB연결성공^^*");
+      }
+      catch(Exception e) {
+         System.out.println("DB연결실패ㅜㅜ;");
+      }
+   }
 	
 	public void close() {
 		try {
@@ -56,6 +72,7 @@ public class PointDAO {
 				sql += " WHERE "+map.get("Column")+" "
 					+ " LIKE '%"+map.get("Word") + "%' ";
 			}
+			sql += " WHERE p_cvn is NOT NULL";
 			psmt = con.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			rs.next();
@@ -82,7 +99,7 @@ public class PointDAO {
 		sql += " ORDER BY p_num DESC "
 		+ "	) Tb "
 		+ " ) "
-		+ " WHERE rNum BETWEEN ? and ?";
+		+ " WHERE (rNum BETWEEN ? and ?) and (p_cvn is NOT NULL)";
 		
 		System.out.println("쿼리문:"+sql);
 		
@@ -116,7 +133,7 @@ public class PointDAO {
 		return bbs;
 	}
 	
-	public PointDTO selectView(String idx) {
+	public PointDTO selectView(int p_num) {
 		PointDTO dto = null;
 		
 		String sql = "SELECT * FROM point "
@@ -124,7 +141,7 @@ public class PointDAO {
 		
 		try {
 			psmt = con.prepareStatement(sql);
-			psmt.setString(1, idx);
+			psmt.setInt(1, p_num);
 			rs = psmt.executeQuery();
 			if(rs.next()) {
 				dto = new PointDTO();

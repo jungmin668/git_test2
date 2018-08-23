@@ -79,7 +79,7 @@
 	<!-- 병원평점 리스트 -->
 	<servlet>
 		<servlet-name>HpointList</servlet-name>
-		<servlet-class>controller.ListCtrl</servlet-class>
+		<servlet-class>point.ListCtrl</servlet-class>
 		<init-param>
 			<param-name>PAGE_SIZE</param-name>
 			<param-value>10</param-value>
@@ -94,7 +94,23 @@
 		<url-pattern>/point/HpointList</url-pattern>
 	</servlet-mapping>
     
-    
+    <servlet>
+		<servlet-name>HpointView</servlet-name>
+		<servlet-class>point.ViewCtrl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HpointView</servlet-name>
+		<url-pattern>/point/HpointView</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>HpointComList</servlet-name>
+		<servlet-class>point.ListComCtrl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HpointComList</servlet-name>
+		<url-pattern>/point/HpointComList</url-pattern>
+	</servlet-mapping>
     
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

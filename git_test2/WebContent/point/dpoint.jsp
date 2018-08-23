@@ -21,7 +21,7 @@
 				<nav class="snb">
 					<ul>
 						<li class="current">
-							<a href="hpoint.jsp" class="depth1">우리 병원 평점</a>
+							<a href="../point/HpointList" class="depth1">우리 병원 평점</a>
 						</li>
 						<li>
 							<a href="dpoint.jsp" class="depth1">의사별 평점</a>
@@ -115,6 +115,35 @@
 						<td>4점</td>
 					</tr>										
 				</table>
+				</p>
+				<p class="form-inline">
+				<!-- 댓글리스트 시작-->
+				<%
+				/* 
+				for(CommentBoardDTO dto_c : bbs)
+				{
+				 */
+				for(int i=0;i<5;i++){
+				%>
+				<div class="media">	
+					<div class="media-body row text-left">
+						<p style="font-size:1.1em;">
+							<code>작성자</code> : b&nbsp;&nbsp;&nbsp;&nbsp;
+							<code>작성일</code> : 2018-08-21
+						</p>
+						<p class="bg-info" style="padding:10px; font-size:1.1em;">
+							댓글 내용
+						</p>
+					</div>		
+				</div>
+				<hr>
+				<%
+				}
+				/* 
+				}
+				 */
+				%>
+				<!-- 댓글리스트 끝-->
 				</p>
 			</div>
 			<div class="modal-footer">

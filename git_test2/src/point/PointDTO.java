@@ -1,4 +1,4 @@
-package controller;
+package point;
 
 import java.sql.Date;
 
@@ -109,5 +109,4 @@ public class PointDTO {
 	public void setDname(String dname) {
 		this.dname = dname;
 	}
-	
 }

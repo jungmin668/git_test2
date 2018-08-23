@@ -1,6 +1,7 @@
 <%@page import="util.PagingUtil"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%
 
 //한글깨짐처리
@@ -11,25 +12,6 @@ request.setCharacterEncoding("UTF-8");
   대신 수정, 삭제의 경우에만 회원인증을 통하여 작성자
 본인만 할수 있도록 처리한다.
 */
-String num = request.getParameter("num");
-/* 
-//커넥션풀로 변경
-HomepyDAO dao = new HomepyDAO();
-
-//조회수 증가
-dao.updateVisitCount(num); 
-
-//게시물 가져오기
-HomepyBoardDTO dto = dao.selectView(num,board_flag);
-
-//EL식 사용위해 페이지 영역에 저장하기
-pageContext.setAttribute("dto", dto);
-System.out.println(dto.getNum());
-
-List<CommentBoardDTO> bbs = dao.selectList_c(); 
-
-dao.close();//DB자원반납
- */
 %>
 <!DOCTYPE html>
 <html>
@@ -38,6 +20,7 @@ dao.close();//DB자원반납
 <title>아파GO 평점관리</title>
 <link rel="stylesheet" href="../bootstrap3.3.7/css/bootstrap.min.css" />
 <script src="../bootstrap3.3.7/jquery/jquery-3.2.1.min.js"></script>
+<script src="../bootstrap3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <%@ include file="../include/sourcecopy_header.jsp" %>
@@ -51,7 +34,7 @@ dao.close();//DB자원반납
 				<nav class="snb">
 					<ul>
 						<li class="current">
-							<a href="hpoint.jsp" class="depth1">우리 병원 평점</a>
+							<a href="../point/HpointList" class="depth1">우리 병원 평점</a>
 						</li>
 						<li>
 							<a href="dpoint.jsp" class="depth1">의사별 평점</a>
@@ -90,55 +73,39 @@ td{
 	<tr>
 		<th class="text-center" 
 			style="vertical-align:middle;">총 평점</th>
-		<td>${dto.name }</td>
+		<td>${dto.p_total }</td>
 	</tr>
 	<tr>
 		<th class="text-center" 
 			style="vertical-align:middle;">병원내원일</th>
-		<td>${dto.postDate }</td>
+		<td>${dto.p_visitdate }</td>
 	</tr>
 	<tr>
 		<th class="text-center" 
 			style="vertical-align:middle;">청결도</th>
-		<td>${dto.email }</td>
+		<td>${dto.p_clean }</td>
 	</tr>
 	<tr>
 		<th class="text-center"
 			style="vertical-align:middle;">편의시설</th>
 		<td>
-			${dto.title }
+			${dto.p_cvn }
 		</td>
 	</tr>
 	<tr>
 		<th class="text-center"
 			style="vertical-align:middle;">대기시간</th>
 		<td>
-			${dto.content }
+			${dto.p_wtime }
 		</td>
 	</tr>
 </tbody>
 </table>
 
 <!-- 각종 버튼 -->
-<div class="row text-center" style="padding-right:50px;">
-	<!-- 
-	<button type="button" class="btn btn-primary"
-		onclick="location.href='WriteSkin.jsp';">
-		글쓰기</button>
-	
-	<button type="submit" class="btn btn-default">
-		전송하기</button>
-	<button type="reset" class="btn">	
-		Reset</button>
-	 -->	 
-	<!-- <button type="button" class="btn btn-success" onclick="location.href='sub03_edit.jsp?num=${dto.num}&board_flag=${dto.board_flag }';">
-		수정하기</button>
-	<button type="button" class="btn btn-info" onclick="isDelete();">
-		삭제하기</button>
-	<button type="button" class="btn btn-warning" onclick="location.href='WriteSkin.jsp'">
-		답글쓰기</button> -->
+<div class="row text-center" style="padding-right:50px;"> 
 	<button type="button" class="btn btn-danger"
-		onclick="location.href='hpoint.jsp';">
+		onclick="location.href='../point/HpointList';">
 		리스트보기</button>
 </div>	
 							

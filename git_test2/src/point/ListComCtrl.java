@@ -1,4 +1,4 @@
-package controller;
+package point;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import util.PagingUtil;
 
-public class ListCtrl extends HttpServlet{
+public class ListComCtrl extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
