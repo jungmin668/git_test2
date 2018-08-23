@@ -1,8 +1,8 @@
-<%@page import="controller.HptDTO"%>
+<%@page import="HptIntro.HptDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>
-<%@page import="controller.HptDAO"%>
+<%@page import="HptIntro.HptDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
