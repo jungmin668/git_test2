@@ -12,7 +12,7 @@
 <script src="<%=request.getContextPath() %>/bootstrap3.3.7/js/bootstrap.min.js"></script>
 <body>
 <div class="container">
-   <%@ include file="../include/sourcecopy_header.jsp" %>
+   <%@ include file="/include/sourcecopy_header.jsp" %>
    <center>
    <div id="wrap">
       
@@ -87,7 +87,7 @@
 
    </center>
    
-   <%@ include file="../include/sourcecopy_bottom.jsp" %>
+   <%@ include file="/include/sourcecopy_bottom.jsp" %>
 </div>
  </body>
 </html>

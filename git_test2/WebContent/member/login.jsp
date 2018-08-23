@@ -19,7 +19,7 @@
 
 <div id="container">
       <!-- container-header -->
-      <%@ include file="../sourcecopy_header.jsp" %>
+      <%@ include file="../include/sourcecopy_header.jsp" %>
       <div class="container-header">
          <div class="inner">
             <h1 class="tit-page">로그인</h1>
@@ -178,7 +178,7 @@
          </div>
       </div>
       <!--// contents-wrap -->
-      <%@ include file="../sourcecopy_bottom.jsp" %>
+      <%@ include file="../include/sourcecopy_bottom.jsp" %>
    </div>
 
 </body>

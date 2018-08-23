@@ -1,6 +1,6 @@
 package HptIntro;
 
-import java.awt.List;
+import java.util.List;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -12,10 +12,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-
-
-
-
 public class HptDAO {
 	
 	Connection con; //오라클 서버와 연결할때 사용
@@ -24,7 +20,7 @@ public class HptDAO {
 	
 	public HptDAO() {
 		String driver = "oracle.jdbc.OracleDriver";
-		String url = "jdbc:oracle:thin:@localhost:1521:orcl";	
+		String url = "jdbc:oracle:thin:@localhost:1522:orcl";	
 		try {
 			Class.forName(driver);
 			String id = "kosmo";

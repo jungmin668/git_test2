@@ -15,7 +15,7 @@ session.setAttribute("vkey", vkey);
 <script src="<%=request.getContextPath() %>/bootstrap3.3.7/jquery/jquery-3.2.1.min.js"></script>
 </head>
 <body>
-<%@ include file="../sourcecopy_header.jsp" %>
+<%@ include file="../include/sourcecopy_header.jsp" %>
 <div class="container">
 	<br/>
 	<form action="../CaptchaRes">
@@ -26,6 +26,6 @@ session.setAttribute("vkey", vkey);
 	</form>
 	<br/>	
 </div>
-<%@ include file="../sourcecopy_bottom.jsp" %>
+<%@ include file="../include/sourcecopy_bottom.jsp" %>
 </body>
 </html>

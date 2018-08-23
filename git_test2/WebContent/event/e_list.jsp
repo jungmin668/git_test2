@@ -79,7 +79,7 @@ dao.close();
 <link rel="stylesheet" href="<%=request.getContextPath() %>/bootstrap3.3.7/css/bootstrap.min.css" />
 <script src="<%=request.getContextPath() %>/bootstrap3.3.7/js/bootstrap.min.js"></script>
 <body>
-<%@ include file="../sourcecopy_header.jsp" %>
+<%@ include file="../include/sourcecopy_header.jsp" %>
 <div class="container">	
 	<center>
 	<div id="wrap">
@@ -231,6 +231,6 @@ dao.close();
 	</center>
 		
 </div>
-<%@ include file="../sourcecopy_bottom.jsp" %>
+<%@ include file="../include/sourcecopy_bottom.jsp" %>
  </body>
 </html>

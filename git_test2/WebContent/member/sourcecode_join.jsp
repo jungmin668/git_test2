@@ -60,7 +60,7 @@ function focusMove(obj, m_length, next_obj){
 <body>
 <div id="container">
 	<!-- include : header -->
-	<%@ include file="../sourcecopy_header.jsp" %>
+	<%@ include file="../include/sourcecopy_header.jsp" %>
 		<!-- container-header -->
 		<div class="container-header">
 			<div class="inner">
@@ -248,7 +248,7 @@ function focusMove(obj, m_length, next_obj){
 		</div>
 		<!--// contents-wrap -->
 	<!-- include : bottom -->
-	<%@ include file="../sourcecopy_bottom.jsp" %>
+	<%@ include file="../include/sourcecopy_bottom.jsp" %>
 	</div>
 
 </body>

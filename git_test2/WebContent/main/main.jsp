@@ -114,7 +114,7 @@
    <!--// banner -->
 
    <!-- header -->
-   <%@include file="../sourcecopy_header.jsp" %>
+   <%@include file="../include/sourcecopy_header.jsp" %>
 
              
             <span class="lnb-line left"></span>

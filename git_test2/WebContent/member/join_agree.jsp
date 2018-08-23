@@ -9,7 +9,7 @@
 <script src="../common/bootstrap3.3.7/jquery/jquery-3.2.1.min.js"></script>
 </head>
 <body>
-<%@ include file="../sourcecopy_header.jsp" %>
+<%@ include file="../include/sourcecopy_header.jsp" %>
 <div class="container">
 	<div class="container-header">
 		<div class="inner">
@@ -62,6 +62,6 @@
 		</div>
 	</div>
 </div>
-<%@ include file="../sourcecopy_bottom.jsp" %>
+<%@ include file="../include/sourcecopy_bottom.jsp" %>
 </body>
 </html>

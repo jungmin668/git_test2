@@ -51,7 +51,7 @@ function searchCheck(f){
 </script>
 </head>
 <body>
-<%@ include file="../sourcecopy_header.jsp" %>
+<%@ include file="../include/sourcecopy_header.jsp" %>
 <div class="container">
 	<div class="inner">
 		<!-- aside -->
@@ -174,6 +174,6 @@ td{
 		<!--// Contents -->
 	</div>
 </div>
-<%@ include file="../sourcecopy_bottom.jsp" %>
+<%@ include file="../include/sourcecopy_bottom.jsp" %>
 </body>
 </html>
