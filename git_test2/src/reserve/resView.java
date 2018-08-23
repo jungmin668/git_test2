@@ -26,9 +26,9 @@ public class resView extends HttpServlet {
 /*		
  		//줄바꿈처리
 		dto.setContent(dto.getContent().replaceAll("\r\n", "<br/>"));
-		dao.close();
 */
-
+		dao.close();
+		 
 		//리퀘스트 영역에 저장
 		req.setAttribute("dto", dto);		
 		
