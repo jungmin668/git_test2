@@ -19,7 +19,7 @@ public class reserveDAO {
 	
 	public reserveDAO() {
 		String driver = "oracle.jdbc.OracleDriver";
-		String url = "jdbc:oracle:thin:@localhost:1521:orcl";	
+		String url = "jdbc:oracle:thin:@localhost:1522:orcl";	
 		try {
 			Class.forName(driver);
 			String id = "kosmo";

@@ -28,8 +28,8 @@
 	}
 </script>
 <body>
-	<div class="container">
 		<%@ include file="../include/sourcecopy_header.jsp"%>
+	<div class="container">
 		<center>
 			<div id="wrap">
 
@@ -96,7 +96,7 @@
 			</div>
 
 		</center>
-		<%@ include file="../include/sourcecopy_bottom.jsp"%>
 	</div>
+		<%@ include file="../include/sourcecopy_bottom.jsp"%>
 </body>
 </html>

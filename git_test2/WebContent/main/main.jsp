@@ -101,7 +101,7 @@
 	<div class="row">
 		프론트페이지 컨테츠 내용입니다
 		<br />
-		<img src="../images/inner1.jpg" width="100%" height="600px;" />
+		<img src="../images/inner1.jpg" width="80%" height="600px;" />
 	<br /><br /><br /><br /><br />
 	<br /><br /><br /><br /><br />
 	<br /><br /><br /><br /><br />

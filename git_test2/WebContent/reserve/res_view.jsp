@@ -11,8 +11,8 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/bootstrap3.3.7/css/bootstrap.min.css" />
 <script src="<%=request.getContextPath() %>/bootstrap3.3.7/js/bootstrap.min.js"></script>
 <body>
-<div class="container">
    <%@ include file="../include/sourcecopy_header.jsp" %>
+<div class="container">
    <center>
    <div id="wrap">
       
@@ -94,7 +94,7 @@
 
    </center>
    
-   <%@ include file="../include/sourcecopy_bottom.jsp" %>
 </div>
+   <%@ include file="../include/sourcecopy_bottom.jsp" %>
  </body>
 </html>
