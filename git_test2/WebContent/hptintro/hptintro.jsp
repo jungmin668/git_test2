@@ -2,7 +2,7 @@
 <%@page import="java.util.List"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>
-<%@page import="controller.HptDAO"%> 
+<%@page import="controller.HptDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -16,11 +16,13 @@ HptDAO dao = new HptDAO();
 //매개변수 저장을 위한 컬렉션 생성(DAO로 전달)
 Map<String,Object> param = new HashMap<String,Object>();
 
-String num = "1";
+String hp_name = "탑클래스성형외과";
 
-HptDTO dto = dao.selectIntro(num);
+HptDTO dto = dao.selectIntro(hp_name);
+//HptDTO docdto = dao.selectDoc(hp_name);
 
 pageContext.setAttribute("dto", dto);
+//pageContext.setAttribute("docdto", docdto);
 
 dao.close();
 %>    
@@ -36,13 +38,13 @@ dao.close();
 <title>병원소개</title>
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/base.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/ui_style.css?180711">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/common.css?180604">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/layout.css?180315">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/content.css?1807172">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/colorChange.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/content_seoul.css?1805141">
+<link rel="stylesheet" href="../common/css/base.css">
+<link rel="stylesheet" href="../common/css/ui_style.css?180711">
+<link rel="stylesheet" href="../common/css/common.css?180604">
+<link rel="stylesheet" href="../common/css/layout.css?180315">
+<link rel="stylesheet" href="../common/css/content.css?1807172">
+<link rel="stylesheet" href="../common/css/colorChange.css">
+<link rel="stylesheet" href="../common/css/content_seoul.css?1805141">
 <!-- <script type="text/javascript" src="../common/js/libs/jquery-1.11.2.js"></script>
 <script type="text/javascript" src="../common/js/libs/jquery-ui-1.12.1.js"></script>
 <script type="text/javascript" src="../common/js/libs/jquery.browser.check.js"></script>
@@ -52,11 +54,7 @@ dao.close();
 <!--[if lt IE 9]>
 <script type="text/javascript" src="/common/js/libs/html5shiv-printshiv.js"></script>
 <![endif]-->
-<style>
-h3, div{
-	font-size:1.1em;
-}
-</style>
+
 <script>
 /* $(document).ready(function(){
 	//setSnb('snb1');
@@ -68,17 +66,13 @@ h3, div{
 </script>
 </head>
 <body>
-<%@ include file="../sourcecopy_header.jsp" %>
-<div id="wrapper">
-	<!-- header -->
+<div class="container">
+	<!-- 상단 영역 -->	
+	<%@ include file="../include/sourcecopy_header.jsp" %>	
 	
-	
-	<!--// header -->
-	<hr>
-
-	<!-- container -->
-	<div id="container">
-		<!-- container-header -->
+	<!--// 상단영역 끝 -->
+		
+		<!-- 컨텐츠 영역 -->
 		<div class="container-header">
 			<div class="inner">
 				<h1 class="tit-page">${dto.hp_name }</h1>
@@ -86,9 +80,9 @@ h3, div{
 				<!-- quick medical -->
 								<div class="quick-medical">
 					<ul>
-						<li><a href="/seoul/treatment/search.asp"><i class="ico ico-srch5"></i><span>의료진검색</span></a></li>
-						<li><a href="/seoul/reservation/reservation.asp"><i class="ico ico-cal4"></i><span>온라인예약</span></a></li>
-						<li><a href="/seoul/reservation/certificate.asp?tabIndex=1"><i class="ico ico-certificate4"></i><span>증명서발급</span></a></li>
+						<li><a href=""><i class="ico ico-srch5"></i><span>의료진검색</span></a></li>
+						<li><a href=""><i class="ico ico-cal4"></i><span>온라인예약</span></a></li>
+						<li><a href=""><i class="ico ico-certificate4"></i><span>증명서발급</span></a></li>
 					</ul>
 				</div>
 				<!--// quick medical -->
@@ -106,7 +100,7 @@ h3, div{
 					<!--// snb wrap -->
 				</aside>
 				<!--// aside -->
-				<hr>
+			
 				<!-- contents -->
 				<!-- <article class="contents"> -->					
 					
@@ -118,7 +112,7 @@ h3, div{
 									<img src="../images/inner1.jpg" alt="병원사진" style="width:750px">
 								</div>
 								<br />
-								<div>
+								<div style="font-size:2em;">
 								${dto.hp_explain }
 								</div>
 							</div>							
@@ -153,28 +147,20 @@ h3, div{
 							</div>
 					</div>
 
-					
-				<!--// Contents -->
+					<div class="btn-area mar-t50">
+						<button type="button" class="btn btn-md btn-info" onclick="location.href='hptintro_edit.jsp?hp_name=<%=dto.getHp_name() %>'"><em>수정하기</em></button>
+					</div>	
+				<!--// 컨텐츠 영역 끝 -->
 			</div>
-		</div>
-		<!--// contents-wrap -->
-	</div>
-	<!--// Container -->
+		
 	<hr>
 
-	<!-- Footer -->
-	
-		<!--// footer_menu -->
-	
+	<!-- 하단영역 -->
+	<%@ include file="../include/sourcecopy_bottom.jsp" %>
 
-	<!-- ajax 공통팝업 -->
-	<div class="ajaxPopup">
-	</div>
-	<!-- ajax 공통팝업 -->
-
-	<!--// Footer -->
+		
+	<!--// 하단영역 끝 -->
 </div>
-<%@ include file="../sourcecopy_bottom.jsp" %>
 </body>
 </html>
 
