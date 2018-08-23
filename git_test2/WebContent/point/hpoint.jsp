@@ -147,8 +147,8 @@ td{
 					<td class="text-center">
 					${map.totalCount - (((map.nowPage - 1) * map.pageSize) + loop.index) }</td>
 					<td class="text-left">
-						<a href="../DataRoom/DataView?idx=${row.idx }&nowPage=${param.nowPage}">
-						병원 평점 ${loop.index }
+						<a href="../DataRoom/DataView?idx=${row.p_num }&nowPage=${param.nowPage}">
+						병원 평점 ${map.totalCount - (((map.nowPage - 1) * map.pageSize) + loop.index) }
 						</a>
 					</td>
 					<td class="text-center">${row.p_visitdate }</td>
