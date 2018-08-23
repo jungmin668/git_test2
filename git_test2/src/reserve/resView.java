@@ -26,14 +26,14 @@ public class resView extends HttpServlet {
 /*		
  		//줄바꿈처리
 		dto.setContent(dto.getContent().replaceAll("\r\n", "<br/>"));
-		dao.close();
 */
-
+		dao.close();
+		 
 		//리퀘스트 영역에 저장
 		req.setAttribute("dto", dto);		
 		
 		//상세보기 페이지로 포워드
-		RequestDispatcher dis = req.getRequestDispatcher("/reserve_manager/res_view.jsp");
+		RequestDispatcher dis = req.getRequestDispatcher("/reserve/res_view.jsp");
 		dis.forward(req, resp);
 	}
 }

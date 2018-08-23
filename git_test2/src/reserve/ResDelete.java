@@ -7,9 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import community.CommunityDAO;
-import community.CommunityDTO;
-import community.FileUtil;
+
 
 public class ResDelete extends HttpServlet{
 

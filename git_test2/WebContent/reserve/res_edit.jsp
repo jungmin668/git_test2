@@ -12,7 +12,7 @@
 <script src="<%=request.getContextPath() %>/bootstrap3.3.7/js/bootstrap.min.js"></script>
 <body>
 <div class="container">
-   <%@ include file="/include/sourcecopy_header.jsp" %>
+   <%@ include file="../include/sourcecopy_header.jsp" %>
    <center>
    <div id="wrap">
       
@@ -59,9 +59,15 @@
 									value="${dto.res_sub }" /></td>
 							</tr>
 							<tr>
-								<th class="text-center" style="vertical-align: middle;">예약일</th>
-								<td colspan="3"><input type="text" class="form-control"
-									name="res_time" value="${dto.res_time }" /></td>
+								<th class="text-center" style="vertical-align: middle;">예약날짜</th>
+								<td>
+								<input type="text" class="form-control" name="res_date" value="${dto.res_date }" />
+								</td>
+								
+								<th class="text-center" style="vertical-align: middle;">예약시간</th>
+								<td>
+								<input type="text" class="form-control" name="res_time" value="${dto.res_time }" />
+								</td>
 							</tr>
 							<tr>
 								<th class="text-center" style="vertical-align: middle;">예약내용</th>
@@ -93,7 +99,7 @@
 
    </center>
    
-   <%@ include file="/include/sourcecopy_bottom.jsp" %>
+   <%@ include file="../include/sourcecopy_bottom.jsp" %>
 </div>
  </body>
 </html>

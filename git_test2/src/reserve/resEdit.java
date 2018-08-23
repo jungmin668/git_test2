@@ -1,6 +1,7 @@
 package reserve;
 
 import java.io.IOException;
+import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -45,6 +46,7 @@ public class resEdit extends HttpServlet {
 		String res_id = req.getParameter("res_id");
 		String res_hname = req.getParameter("res_hname");
 		String res_sub = req.getParameter("res_sub");
+		String res_date = req.getParameter("res_date");		
 		String res_time = req.getParameter("res_time");
 		String res_note = req.getParameter("res_note");
 		//System.out.println(req.getParameter("res_note")+ req.getParameter("res_time")+req.getParameter("res_sub"));
@@ -54,6 +56,7 @@ public class resEdit extends HttpServlet {
 		dto.setRes_id(res_id);
 		dto.setRes_hname(res_hname);
 		dto.setRes_sub(res_sub);
+		dto.setRes_date(res_date);
 		dto.setRes_time(res_time);
 		dto.setRes_note(res_note);
 
@@ -63,13 +66,15 @@ public class resEdit extends HttpServlet {
 		reserveDAO dao = new reserveDAO();
 
 		int sucOrFail = dao.update(dto);
+		
+		System.out.println("업데이트"+sucOrFail);
 
 		// 리퀘스트영역에 메세지 출력을 위한 저장
 		if (sucOrFail == 1) {
-
 			System.out.println("업데이트 성공");
 			req.getRequestDispatcher("/reserve/resView").forward(req, resp);
-		} else {
+		} 
+		else {
 			System.out.println("업데이트 실패 ");
 		}
 	}
