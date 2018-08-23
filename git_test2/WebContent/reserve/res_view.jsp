@@ -12,7 +12,7 @@
 <script src="<%=request.getContextPath() %>/bootstrap3.3.7/js/bootstrap.min.js"></script>
 <body>
 <div class="container">
-   <%@ include file="/include/sourcecopy_header.jsp" %>
+   <%@ include file="../include/sourcecopy_header.jsp" %>
    <center>
    <div id="wrap">
       
@@ -41,18 +41,25 @@
 						<tr>
 							<th class="text-center" style="vertical-align: middle;">예약번호</th>
 							<td>${dto.res_num }</td>
+							
 							<th class="text-center" style="vertical-align: middle;">아이디</th>
 							<td>${dto.res_id }</td>
 						</tr>
+						
 						<tr>
 							<th class="text-center" style="vertical-align: middle;">병원명</th>
 							<td>${dto.res_hname }</td>
+							
 							<th class="text-center" style="vertical-align: middle;">진료과목</th>
 							<td>${dto.res_sub }</td>
 						</tr>
+						
 						<tr>
-							<th class="text-center" style="vertical-align: middle;">예약일</th>
-							<td colspan="3">${dto.res_time }</td>
+							<th class="text-center" style="vertical-align: middle;">예약날짜</th>
+							<td >${dto.res_date }</td>
+							
+							<th class="text-center" style="vertical-align: middle;">예약시간</th>
+							<td >${dto.res_time }</td>
 						</tr>
 						<tr>
 							<th class="text-center" style="vertical-align: middle;">예약내용</th>
@@ -87,7 +94,7 @@
 
    </center>
    
-   <%@ include file="/include/sourcecopy_bottom.jsp" %>
+   <%@ include file="../include/sourcecopy_bottom.jsp" %>
 </div>
  </body>
 </html>
