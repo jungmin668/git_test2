@@ -31,7 +31,7 @@
 	<!-- header -->
 	<header id="header">
 		<div class="inner">
-			<div class="logo"><a href="<%=request.getContextPath() %>/main/main.jsp"><img src="<%=request.getContextPath() %>/images/go_big.png" style="width:300px; height:60px;" alt="apago_logo" /></a></div>
+			<div class="logo"><a href="<%=request.getContextPath() %>/member/login.jsp"><img src="<%=request.getContextPath() %>/images/go_big.png" style="width:300px; height:60px;" alt="apago_logo" /></a></div>
 			<div class="gnb">
 				<ul>
 					
@@ -67,7 +67,7 @@
 							<div class="lnb-body">
 								<div class="row">
 									<div class="col col3">
-										<h3 class="lnb-sub-header"><a href="<%=request.getContextPath() %>/hptintro/hptintro.jsp">병원소개</a></h3>
+										<h3 class="lnb-sub-header">병원소개</h3>
 										<div id="lnbAllMenu1" class="depth02"></div>
 									</div>
 									<div class="col col3">
@@ -135,7 +135,7 @@
 								</div>
 							</div>
 						</li>
-						<li><a href="<%=request.getContextPath() %>/reserve/resList" class="depth01">예약관리</a>
+						<li><a href="#" class="depth01">예약관리</a>
 							<div class="depth02">
 								<div class="inner">
 									<span class="tit_depth02">의료진/<span class="dis_inBlock">진료과</span></span>
@@ -197,7 +197,7 @@
 								</div>
 							</div>
 						</li>
-						<li><a href="<%=request.getContextPath() %>/Event/EventList" class="depth01">이벤트관리</a>
+						<li><a href="<%=request.getContextPath() %>/event/e_list.jsp" class="depth01">이벤트관리</a>
 							<div class="depth02">
 								<div class="inner">
 									<span class="tit_depth02">건강정보</span>
@@ -223,7 +223,7 @@
 								</div>
 							</div>
 						</li>
-						<li><a href="<%=request.getContextPath() %>/stats/sourcecopy_analyzer.jsp" class="depth01">통계</a>
+						<li><a href="#" class="depth01">통계</a>
 							<div class="depth02">
 								<div class="inner">
 									<span class="tit_depth02">병원소개</span>
