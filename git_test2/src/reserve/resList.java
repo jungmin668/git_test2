@@ -110,7 +110,7 @@ public class resList extends HttpServlet{
 		req.setAttribute("map", param);//파라미터
 		
 		
-		RequestDispatcher forw = req.getRequestDispatcher("../reserve_manager/res_list.jsp");
+		RequestDispatcher forw = req.getRequestDispatcher("../reserve/res_list.jsp");
 		forw.forward(req, resp);
 	}
 		

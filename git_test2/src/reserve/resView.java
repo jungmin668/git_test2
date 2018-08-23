@@ -33,7 +33,7 @@ public class resView extends HttpServlet {
 		req.setAttribute("dto", dto);		
 		
 		//상세보기 페이지로 포워드
-		RequestDispatcher dis = req.getRequestDispatcher("/reserve_manager/res_view.jsp");
+		RequestDispatcher dis = req.getRequestDispatcher("/reserve/res_view.jsp");
 		dis.forward(req, resp);
 	}
 }
