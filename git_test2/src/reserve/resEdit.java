@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tomcat.util.http.fileupload.FileUtils;
 
-import com.oreilly.servlet.MultipartRequest;
+//import com.oreilly.servlet.MultipartRequest;
 
 public class resEdit extends HttpServlet {
 
