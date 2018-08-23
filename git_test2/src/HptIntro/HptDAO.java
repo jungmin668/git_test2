@@ -1,14 +1,18 @@
-package controller;
+package HptIntro;
 
+import java.awt.List;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
+import java.util.Vector;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+
+
 
 
 
@@ -20,7 +24,7 @@ public class HptDAO {
 	
 	public HptDAO() {
 		String driver = "oracle.jdbc.OracleDriver";
-		String url = "jdbc:oracle:thin:@localhost:1522:orcl";	
+		String url = "jdbc:oracle:thin:@localhost:1521:orcl";	
 		try {
 			Class.forName(driver);
 			String id = "kosmo";
@@ -80,15 +84,16 @@ public class HptDAO {
       }      
    }
    
-   public HptDTO selectIntro(String num)
+   //병원 정보 상세보기
+   public HptDTO selectIntro(String hname)
    {
 	   HptDTO dto = new HptDTO();
 		
-		String query = " SELECT * from hospital_t WHERE idx=? ";		
+		String query = " SELECT * from hospital_t WHERE hp_name=? ";		
 		
 		try {
 			psmt = con.prepareStatement(query);
-			psmt.setString(1, num);
+			psmt.setString(1, hname);
 			rs = psmt.executeQuery();
 			if(rs.next()) {
 				dto.setIdx(rs.getString(1));
@@ -119,4 +124,103 @@ public class HptDAO {
 		//System.out.println("DB에서 데이터 가져오기 성공");		
 		return dto;
    }
+   
+   //의사 정보 가져오기
+   public HptDTO selectDoc(String hname)
+   {
+	   
+	    HptDTO dto = new HptDTO();
+	    List<HptDTO> doclist = new Vector<HptDTO>();
+		
+		String query = " SELECT * from doctor WHERE hp_name=? ";		
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, hname);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				dto.setDoc_name(rs.getString("doc_name"));
+				dto.setDoc_major(rs.getString("doc_major"));				
+				dto.setDoc_gender(rs.getString("doc_gender"));
+				dto.setDoc_age(rs.getString("doc_age"));
+				dto.setDoc_career(rs.getString("doc_career"));
+				dto.setDoc_sc(rs.getString("doc_sc"));
+				doclist.add(dto);
+			}
+		}
+		catch(Exception e) {
+			System.out.println("의사 정보 가져오기시 예외발생");
+			e.printStackTrace();
+		}				
+		//System.out.println("DB에서 데이터 가져오기 성공");		
+		return dto;
+   }
+   
+   
+   
+   //병원정보 수정하기
+   public int hptIntroEdit(HptDTO dto) 
+ 	{		
+ 		int affected = 0;
+ 		
+ 		try {
+ 			String query = "UPDATE hospital_t SET" 					
+ 					+ " hp_explain=?, hp_addr=?, hp_tel=? "
+ 					+ " WHERE hp_name=?";
+ 			
+ 			psmt = con.prepareStatement(query);
+ 			
+ 			psmt.setString(1, dto.getHp_explain());
+ 			psmt.setString(2, dto.getHp_addr());
+ 			psmt.setString(3, dto.getHp_tel());
+ 			psmt.setString(4, dto.getHp_name());
+ 			
+ 			affected = psmt.executeUpdate();
+ 		}
+ 		catch(Exception e) {
+ 			System.out.println("병원정보수정 중 예외발생");
+ 			e.printStackTrace();
+ 		}
+ 				
+ 		return affected;
+ 	}
+
+   //의사정보 수정하기
+   public int docEdit(HptDTO dto) 
+ 	{		
+ 		int affected = 0;
+ 		
+ 		try {
+ 			String query = "insert into doctor (doc_name, doc_major, doc_gender, doc_age, doc_career, doc_sc, hp_name) values " 					
+ 					+ " ( ?, ?, ?, ?, ?, ?, ? ) ";
+ 				
+ 			
+ 			psmt = con.prepareStatement(query);
+ 			
+ 			psmt.setString(1, dto.getDoc_name());
+ 			psmt.setString(2, dto.getDoc_major());
+ 			psmt.setString(3, dto.getDoc_gender());
+ 			psmt.setString(4, dto.getDoc_age());
+ 			psmt.setString(5, dto.getDoc_career());
+ 			psmt.setString(6, dto.getDoc_sc());
+ 			psmt.setString(7, dto.getHp_name());
+ 			//psmt.setString(2, dto.getHp_name());
+ 			/*psmt.setString(3, dto.getTel());
+ 			psmt.setString(4, dto.getMobile());
+ 			psmt.setString(5, dto.getEmail());
+ 			psmt.setString(6, dto.getZipcode());
+ 			psmt.setString(7, dto.getAddr1());
+ 			psmt.setString(8, dto.getAddr2());
+ 			
+ 			psmt.setString(9, dto.getHp);*/
+ 			
+ 			affected = psmt.executeUpdate();
+ 		}
+ 		catch(Exception e) {
+ 			System.out.println("의사정보입력 중 예외발생");
+ 			e.printStackTrace();
+ 		}
+ 				
+ 		return affected;
+ 	}
 }
