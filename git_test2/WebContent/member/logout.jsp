@@ -4,15 +4,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	//로그아웃처리	
-	if (session.getAttribute("ID_SAVE") != null) {
+	if (session.getAttribute("USER_ID") != null) {
 		session.removeAttribute("USER_NAME");
 		session.removeAttribute("USER_PASS");
+		session.removeAttribute("USER_EMAIL");
+		session.removeAttribute("IDX");
 
 	} else {
+		/* 
 		session.removeAttribute("USER_ID");
 		session.removeAttribute("USER_NAME");
 		session.invalidate();//세션영역을 비워준다.
-
+		 */
 	}
 
 	//response.sendRedirect("../main/main.jsp");
