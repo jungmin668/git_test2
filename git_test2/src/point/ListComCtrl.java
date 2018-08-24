@@ -72,7 +72,7 @@ public class ListComCtrl extends HttpServlet{
 		req.setAttribute("map", param);
 		
 		//뷰 호출
-		RequestDispatcher dis = req.getRequestDispatcher("/point/hpoint.jsp");
+		RequestDispatcher dis = req.getRequestDispatcher("/point/hpoint_view.jsp");
 		dis.forward(req, resp);
 	}
 	

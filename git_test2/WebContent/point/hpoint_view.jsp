@@ -107,36 +107,24 @@ td{
 	<button type="button" class="btn btn-danger"
 		onclick="location.href='../point/HpointList';">
 		리스트보기</button>
-</div>	
+</div>						
 							
-							
-			<!-- 댓글리스트 시작-->
-			<%
-			/* 
-			for(CommentBoardDTO dto_c : bbs)
-			{
-			 */
-			for(int i=0;i<5;i++){
-			%>
-			<div class="media">	
-				<div class="media-body row text-left">
-					<p style="font-size:1.1em;">
-						<code>작성자</code> : b&nbsp;&nbsp;&nbsp;&nbsp;
-						<code>작성일</code> : 2018-08-21
-					</p>
-					<p class="bg-info" style="padding:10px; font-size:1.1em;">
-						댓글 내용
-					</p>
-				</div>		
-			</div>
-			<hr>
-			<%
-			}
-			/* 
-			}
-			 */
-			%>
-			<!-- 댓글리스트 끝-->
+		<!-- 댓글리스트 시작-->
+		<c:forEach items="${c_lists }" var="row" varStatus="loop">
+		<div class="media">	
+			<div class="media-body row text-left">
+				<p style="font-size:1.1em;">
+					<code>작성자</code> : ${row.com_id }&nbsp;&nbsp;&nbsp;&nbsp;
+					<code>작성일</code> : ${row.com_postdate }
+				</p>
+				<p class="bg-info" style="padding:10px; font-size:1.1em;">
+					${row.com_content }
+				</p>
+			</div>		
+		</div>
+		<hr>
+		</c:forEach>
+		<!-- 댓글리스트 끝-->
 				
 				</div>
 			</div>
