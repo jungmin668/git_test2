@@ -22,6 +22,8 @@
 		session.setAttribute("USER_ID", memberInfo.get("id"));
 		session.setAttribute("USER_NAME", memberInfo.get("name"));
 		session.setAttribute("USER_EMAIL", memberInfo.get("email"));
+		session.setAttribute("IDX", memberInfo.get("idx"));
+
 		if (auto_login != null) {
 			Cookie ck = new Cookie ("USER_ID",id);
 			ck.setPath(request.getContextPath());

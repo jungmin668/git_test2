@@ -13,11 +13,12 @@ public class PointDTO {
 	private int p_total;
 	private String hname;
 	private String dname;
+	private int mem_idx;
 	
 	public PointDTO() {}
 
 	public PointDTO(int p_num, int p_clean, int p_cvn, int p_wtime, Date p_visitdate, int p_kind, int p_sat,
-			int p_total, String hname, String dname) {
+			int p_total, String hname, String dname, int mem_idx) {
 		this.p_num = p_num;
 		this.p_clean = p_clean;
 		this.p_cvn = p_cvn;
@@ -28,6 +29,7 @@ public class PointDTO {
 		this.p_total = p_total;
 		this.hname = hname;
 		this.dname = dname;
+		this.mem_idx = mem_idx;
 	}
 
 	public int getP_num() {
@@ -109,4 +111,13 @@ public class PointDTO {
 	public void setDname(String dname) {
 		this.dname = dname;
 	}
+
+	public int getMem_idx() {
+		return mem_idx;
+	}
+
+	public void setMem_idx(int mem_idx) {
+		this.mem_idx = mem_idx;
+	}
+	
 }

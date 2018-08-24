@@ -82,14 +82,16 @@ public class PointDAO {
 		return totalCount;
 	}
 	
-	public List<PointDTO> selectPaging(Map map){
+	public List<PointDTO> selectPaging(Map map, int idx){
 		
 		List<PointDTO> bbs = new Vector<PointDTO>();
 		
 		String sql = "" 
 				+ " SELECT * FROM ( "
 				+ "	SELECT Tb.*, rownum rNum FROM ( "
-				+ "		SELECT * FROM point ";
+				+ "	SELECT P.* "
+				+ "	FROM point P INNER JOIN hospital_member M	 "
+				+ "	ON P.mem_idx = M.mem_idx	 ";
 		
 		if(map.get("Word")!=null) {
 			sql += " WHERE "+map.get("Column")+ " "
@@ -99,7 +101,7 @@ public class PointDAO {
 		sql += " ORDER BY p_num DESC "
 		+ "	) Tb "
 		+ " ) "
-		+ " WHERE (rNum BETWEEN ? and ?) and (p_cvn is NOT NULL)";
+		+ " WHERE (rNum BETWEEN ? AND ?) AND (p_cvn IS NOT NULL) AND (mem_idx = '"+idx+"') ";
 		
 		System.out.println("쿼리문:"+sql);
 		

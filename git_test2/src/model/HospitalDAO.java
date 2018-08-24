@@ -88,7 +88,7 @@ public class HospitalDAO {
       
       Map<String, String> maps = new HashMap<String, String>();
       
-      String query = " SELECT mem_id , mem_pass , mem_name , email FROM hospital_member WHERE mem_id = ? and mem_pass = ? ";
+      String query = " SELECT mem_id , mem_pass , mem_name , email, mem_idx FROM hospital_member WHERE mem_id = ? and mem_pass = ? ";
       try {
          psmt = con.prepareStatement(query);
          psmt.setString(1, id);
@@ -102,6 +102,7 @@ public class HospitalDAO {
             maps.put("pass", rs.getString(2));
             maps.put("name", rs.getString(3));
             maps.put("email", rs.getString(4));
+            maps.put("idx", rs.getString(5));
          }
          else {
             System.out.println("결과셋이 없습니다.");

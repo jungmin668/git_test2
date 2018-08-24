@@ -29,21 +29,15 @@ public class LoginProc extends HttpServlet {
 		//함수호출
 		Map<String, String> memberInfo = 
 				dao.memberLogin(id, pass);
-		
 		//로그인 성공여부 체크
 		if(memberInfo.get("name")!=null) {
 			//로그인에 성공
 			
 			//서블릿에서 세션객체를 얻어온다.
 			HttpSession session = req.getSession();
-			
-			session.setAttribute("USER_ID", 
-					memberInfo.get("id"));
-			session.setAttribute("USER_NAME", 
-					memberInfo.get("name"));
-			session.setAttribute("USER_EMAIL", 
-					memberInfo.get("email"));
-			
+			session.setAttribute("USER_ID", memberInfo.get("id"));
+			session.setAttribute("USER_NAME", memberInfo.get("name"));
+			session.setAttribute("USER_EMAIL", memberInfo.get("email"));
 			//다시 로그인 페이지로 이동(서블릿에서 페이지
 			//이동시 포워드, 리다이렉트 모두 가능함)
 			if(backUrl == null || backUrl.equals("")){

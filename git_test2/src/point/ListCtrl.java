@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import util.PagingUtil;
 
@@ -60,7 +61,10 @@ public class ListCtrl extends HttpServlet{
 		param.put("totalCount", totalRecordCount);//전체 레코드 수
 		param.put("pageSize", pageSize);//한 페이지에 출력되는 레코드 수
 		
-		List<PointDTO> lists = dao.selectPaging(param);
+		HttpSession session = req.getSession();
+		int idx = Integer.parseInt(session.getAttribute("IDX").toString());
+				
+		List<PointDTO> lists = dao.selectPaging(param, idx);
 		
 		String pagingImg = PagingUtil.pagingImgServlet(totalRecordCount, pageSize, blockPage, nowPage, 
 				"./Point/HpointList?"+addQueryString);
