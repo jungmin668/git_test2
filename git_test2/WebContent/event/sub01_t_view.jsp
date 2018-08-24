@@ -39,7 +39,7 @@
 
 						<div>
 
-
+							<br/><br/>
 
 							<form name="writeFrm">
 								<%-- <input type = "hid-den" name = "e_num" value="<%=dto.getE_num()%>"/> --%>
@@ -86,8 +86,8 @@
 								</div>
 							</form>
 
-
-
+							<br/><br/>	
+							
 
 						</div>
 					</div>

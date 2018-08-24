@@ -22,14 +22,15 @@
          <div class="right_contents">
             
             <div>
-<div class="row text-right" style="margin-bottom:20px;
+<div class="row text-center" style="margin-bottom:20px;
       padding-right:50px;">
 <!-- 검색부분 -->
 <!-- 내용이 나오는 부분s -->
          <!-- Contents 시작 -->
 				<h3>
-					게시판[상세보기] - <small>자료실형 게시판입니다.</small>
+					예약관리 게시판[상세보기]
 				</h3>
+				<br/>
 				<table class="table table-bordered table-striped">
 					<colgroup>
 						<col width="20%" />
