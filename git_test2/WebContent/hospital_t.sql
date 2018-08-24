@@ -60,5 +60,8 @@ INSERT INTO hospital_member VALUES(seq_hp.nextval, '병원관리자', 'BK동양성형외과
 INSERT INTO hospital_member VALUES(seq_hp.nextval, '병원관리자', '레알성형외과', null, null, 'j', 'j', '강남구 신사동 위치, 쌍꺼풀, 코성형, 가슴성형, 안면윤곽, 가상성형 등 비용 상담.', '02-512-1616', null, null, '서울특별시 강남구 신사동 580', '아세아빌딩 202호', null);
 INSERT INTO hospital_member VALUES(seq_hp.nextval, '병원관리자', '세미성형외과', null, null, 'k', 'k', '압구정역 인근 위치, 성형외과 눈, 코, 가슴성형, 지방흡입 등 시술.', '02-517-5200', null, null, '서울특별시 강남구 신사동 582','청박메니컬센터 3층', null);
 
+INSERT INTO hospital_member values (1, '일반','1','남','1','1','1','1','1','1','1','1','1','1');
+INSERT INTO hospital_member values (2, '일반','2','여','2','2','2','2','2','2','2','2','2','2');
+select * from hospital_member
 
 commit;
