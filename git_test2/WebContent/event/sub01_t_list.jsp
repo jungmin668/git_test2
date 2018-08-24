@@ -107,7 +107,7 @@
 						<!-- 각종 버튼 -->
 						<div class="row text-right" style="padding-right:50px;">
 							<button type="button" class="btn btn-primary"
-								onclick="location.href='../Community/CommWrite';">
+								onclick="location.href='../event/write';">
 								글쓰기</button>
 						</div> 
 						

@@ -30,9 +30,8 @@
 										onsubmit="return searchCheck(this);">
 										<div class="form-group">
 											<select name="searchColumn" class="form-control">
-												<option value="title">아이디</option>
-												<option value="content">예약번호</option>
-												<option value="name">병원명</option>
+												<option value="res_id">아이디</option>											
+												<option value="res_hname">병원명</option>
 											</select>
 										</div>
 										<div class="input-group">

@@ -26,7 +26,7 @@ public class resEdit extends HttpServlet {
 
 		req.setAttribute("dto", dto);
 		
-		req.getRequestDispatcher("/reserve_manager/res_edit.jsp").forward(req, resp);
+		req.getRequestDispatcher("/reserve/res_edit.jsp").forward(req, resp);
 	} 
 
 	@Override

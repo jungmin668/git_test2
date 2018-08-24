@@ -3,7 +3,7 @@ package event;
 import java.sql.Date;
 
 public class HospitalMemberDTO {
-	private String mem_flag;
+	private String mem_idx;
 	private String mem_name;
 	private String mem_gender;
 	private String mem_age;
@@ -22,11 +22,11 @@ public class HospitalMemberDTO {
 	public HospitalMemberDTO() {
 	}
 
-	public HospitalMemberDTO(String mem_flag, String mem_name, String mem_gender, String mem_age, String mem_id,
+	public HospitalMemberDTO(String mem_idx, String mem_name, String mem_gender, String mem_age, String mem_id,
 			String mem_pass, String mem_dis, String tel, String mobile, String zipcode, String addr1, String addr2,
 			String email ) {
 	 
-		this.mem_flag = mem_flag;
+		this.mem_idx = mem_idx;
 		this.mem_name = mem_name;
 		this.mem_gender = mem_gender;
 		this.mem_age = mem_age;
@@ -42,12 +42,12 @@ public class HospitalMemberDTO {
 		 
 	}
 
-	public String getMem_flag() {
-		return mem_flag;
+	public String getMem_idx() {
+		return mem_idx;
 	}
 
-	public void setMem_flag(String mem_flag) {
-		this.mem_flag = mem_flag;
+	public void setMem_idx(String mem_idx) {
+		this.mem_idx = mem_idx;
 	}
 
 	public String getMem_name() {

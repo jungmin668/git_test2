@@ -1,6 +1,6 @@
 package event;
 
-import java.sql.Connection; 
+import java.sql.Connection;  
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,27 +13,25 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
  
-
 public class HospitalDAO {
 
-	Connection con; //오라클 서버와 연결할때 사용
-	PreparedStatement psmt;//오라클 서버와 쿼리전송 역활
-	ResultSet rs;//쿼리의 결과를 받을때 사용
-	
+	Connection con; // 오라클 서버와 연결할때 사용
+	PreparedStatement psmt;// 오라클 서버와 쿼리전송 역활
+	ResultSet rs;// 쿼리의 결과를 받을때 사용
+
 	public HospitalDAO() {
-		String driver = "oracle.jdbc.OracleDriver";
-		String url = "jdbc:oracle:thin:@localhost:1522:orcl";	
 		try {
-			Class.forName(driver);
-			String id = "kosmo";
-			String pw = "1234";
-			con = DriverManager.getConnection(url, id, pw);
-			System.out.println("DB연결성공^^*");
-		}
-		catch(Exception e) {
-			System.out.println("DB연결실패ㅜㅜ;");
+			Context ctx = new InitialContext();
+			DataSource source = (DataSource) ctx.lookup("java:comp/env/jdbc/myoracle");
+
+			con = source.getConnection();
+			System.out.println("DBCP연결성공");
+		} catch (Exception e) {
+			System.out.println("DBCP연결실패");
+			e.printStackTrace();
 		}
 	}
+
 	public void close() {
 		try {
 			if (rs != null)
@@ -49,18 +47,18 @@ public class HospitalDAO {
 	}
 
 	// 회원 가입
-	public int memberRegist(HospitalMemberDTO dto) {
+	public int memberRegist(HospitalMemberDTO dto) {  
 		// 적용된 행의 갯수확인을 위한 변수
 		int affected = 0;
 		 
 		try {
 			String query = "INSERT INTO hospital_member ( "
-					+ " mem_flag, mem_name, mem_gender, mem_bir, mem_id, mem_pass, mem_dis, "
+					+ " mem_idx, mem_name, mem_gender, mem_bir, mem_id, mem_pass, mem_dis, "
 					+ " tel, mobile, zipcode, addr1, addr2, email ) " 
 					+ " VALUES ( "
 					+ " ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? , ? )";
 			psmt = con.prepareStatement(query);
-			psmt.setString(1, dto.getMem_flag());
+			psmt.setString(1, dto.getMem_idx());
 			psmt.setString(2, dto.getMem_name());
 			psmt.setString(3, dto.getMem_gender());
 			psmt.setString(4, dto.getMem_age());
@@ -83,11 +81,11 @@ public class HospitalDAO {
 		return affected;
 	}
 
-	public Map<String, String> memberLogin(String id, String pwd) {
+	public Map<String, String> memberLogin(String id, String pwd) {  
 
 		Map<String, String> maps = new HashMap<String, String>();
 
-		String query = " SELECT mem_id , mem_pass , mem_name , email FROM hospital_member WHERE mem_id = ? and mem_pass = ? ";
+		String query = " SELECT mem_id , mem_pass , mem_name , mem_idx  FROM hospital_member WHERE mem_id = ? and mem_pass = ? ";
 		try {
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, id);
@@ -101,6 +99,7 @@ public class HospitalDAO {
 				maps.put("pass", rs.getString(2));
 				maps.put("name", rs.getString(3));
 				maps.put("email", rs.getString(4));
+				maps.put("idx", rs.getString(5)); 
 			} else {
 				System.out.println("결과셋이 없습니다.");
 			}
@@ -113,7 +112,7 @@ public class HospitalDAO {
 	}
 
 	// 게시판 리스트 가져오기(검색처리, 페이지처리)
-	public List<EventDTO> selectList(Map<String, Object> map) {
+	public List<EventDTO> selectList(Map<String, Object> map) { 
 
 		// 1.결과 레코드셋을 담기위한 리스트계열 컬렉션생성
 		List<EventDTO> bbs = new Vector<EventDTO>();
@@ -122,15 +121,15 @@ public class HospitalDAO {
 		String query = " " + " SELECT * FROM ( " + "	 SELECT Tb.*, ROWNUM rNum FROM ( "
 				+ "	    SELECT E.* FROM event E ";
 
-		if (map.get("Word") != null) {
-			if (map.get("Column").equals("both")) {
-				query += " WHERE " + "title LIKE '%" + map.get("Word") + "%' " + " OR " + " content LIKE '%"
-						+ map.get("Word") + "%' ";
+		if (map.get("searchWord") != null) {
+			if (map.get("searchColumn").equals("both")) {
+				query += " WHERE " + "title LIKE '%" + map.get("searchWord") + "%' " + " OR " + " content LIKE '%"
+						+ map.get("searchWord") + "%' ";
 			} else {
-				query += " WHERE " + map.get("Column") + " " + " LIKE '%" + map.get("Word") + "%' ";
+				query += " WHERE " + map.get("searchColumn") + " " + " LIKE '%" + map.get("searchWord") + "%' ";
 			}
 		} else {
-			query += "    	ORDER BY num DESC " + "    ) Tb " + " ) " + " WHERE rNum BETWEEN ? AND ?";
+			query += "    	ORDER BY e_num DESC " + "    ) Tb " + " ) " + " WHERE rNum BETWEEN ? AND ?";
 		}
 		System.out.println("쿼리문:" + query);
 
@@ -154,7 +153,7 @@ public class HospitalDAO {
 				dto.setE_postdate(rs.getDate(4));
 				dto.setE_id(rs.getString("id"));
 				dto.setE_hits(rs.getInt(6));
-				dto.setH_idx(rs.getInt(7));
+				 
 				// 7.DTO객체를 컬렉션에 추가
 				bbs.add(dto);
 			}
@@ -167,13 +166,13 @@ public class HospitalDAO {
 	}
 
 	// 게시판테이블의 전체 레코드 갯수 얻기 
-	public int getTotalRecordCount(Map map) { 
+	public int getTotalRecordCount(Map map) {  
 		int totalCount = 0;
 		try {
 			String sql = "SELECT COUNT(*) FROM event ";
 
 			if (map.get("Word") != null) {
-				sql += " WHERE " + map.get("Column") + " " + " LIKE '%" + map.get("Word") + "%' ";
+				sql += " WHERE " + map.get("Column") + " LIKE '%" + map.get("Word") + "%' ";
 			}
 
 			psmt = con.prepareStatement(sql);
@@ -189,10 +188,13 @@ public class HospitalDAO {
 	public List<EventDTO> selectPaging(Map map) { 
 		List<EventDTO> bbs = new Vector<EventDTO>();
 
-		String sql = "" + "SELECT * FROM (" + "    SELECT Tb.*, rownum rNum FROM (" + "        SELECT * FROM event ";
+		String sql = "" 
+		+ "SELECT * FROM (" 
+		+ "    SELECT Tb.*, rownum rNum FROM (" 
+		+ "        SELECT * FROM event ";
 
-		if (map.get("Word") != null) {
-			sql += " WHERE " + map.get("Column") + " " + " LIKE '%" + map.get("Word") + "%' ";
+		if (map.get("searchWord") != null) {
+			sql += " WHERE " + map.get("searchColumn") + " LIKE '%" + map.get("searchWord") + "%' ";
 		}
 
 		sql += "  "
@@ -228,11 +230,65 @@ public class HospitalDAO {
 			e.printStackTrace();
 		}
 
+		System.out.println(map.get("searchWord"));
+		
 		return bbs;
 	}
-
+ 
+	
+	/*//수정사항 셀렉페이징 
+	public List<EventDTO> selectPaging(Map map, int idx){ 
+	      
+	      List<EventDTO> bbs = new Vector<EventDTO>();
+	      
+	      String sql = "" 
+	            + " SELECT * FROM ( "
+	            + "   SELECT Tb.*, rownum rNum FROM ( "
+	            + "   SELECT E.* "
+	            + "   FROM event E INNER JOIN hospital_member M    "
+	            + "   ON E.mem_idx = M.h_idx    ";
+	      
+	      if(map.get("Word")!=null) {
+	         sql += " WHERE "+map.get("Column")+ " "
+	            + " LIKE '%"+map.get("Word")+"%' ";
+	      }
+	      
+	      sql += " ORDER BY p_num DESC "
+	      + "   ) Tb "
+	      + " ) "
+	      + " WHERE (rNum BETWEEN ? AND ?) AND (mem_idx = '"+idx+"') ";
+	      
+	      System.out.println("쿼리문:"+sql);
+	      
+	      try {
+	         
+	         psmt = con.prepareStatement(sql);
+	         
+	         psmt.setInt(1, Integer.parseInt(map.get("start").toString()));
+	         psmt.setInt(2, Integer.parseInt(map.get("end").toString()));
+	         
+	         rs = psmt.executeQuery();
+	         while(rs.next()) {
+	            EventDTO dto = new EventDTO();
+	            
+	            dto.setE_num(rs.getString(1));
+				dto.setE_title(rs.getString(2));
+				dto.setE_content(rs.getString(3));
+				dto.setE_postdate(rs.getDate(4));
+				dto.setE_id(rs.getString(5));
+				dto.setE_hits(rs.getInt(6));// 조회수 추가
+				dto.setH_idx(rs.getInt(7));// 병원 꼭다리값
+	            
+	            bbs.add(dto);
+	         }
+	      }catch(Exception e) {
+	         e.printStackTrace();
+	      }
+	      return bbs;
+	   }
+*/	
 	// 게시물 읽기(view)
-	public EventDTO selectView(String idx) {  
+	public EventDTO selectView(String idx) {   
 		EventDTO dto = null;
 
 		String sql = "SELECT * FROM event WHERE e_num = ? ";
@@ -274,16 +330,17 @@ public class HospitalDAO {
 			int affected = 0;
 			try {
 				String query = "UPDATE event SET"
-						+ " e_title=?, e_id=?, e_content=? "
+						+ " e_title=?, e_content=? "
 						+ " WHERE e_num=?";
 			 
 				psmt = con.prepareStatement(query);
 				psmt.setString(1, dto.getE_title());
-				psmt.setString(2, dto.getE_id());				
-				psmt.setString(3, dto.getE_content());  
+				 			
+				psmt.setString(2, dto.getE_content());  
 				//게시물수정을 위한 추가부분
-				psmt.setString(4, dto.getE_num());
+				psmt.setString(3, dto.getE_num());
 				affected = psmt.executeUpdate();
+				System.out.println(affected);
 			}
 			catch(Exception e) {
 				System.out.println("update중 예외발생");
@@ -293,23 +350,52 @@ public class HospitalDAO {
 			return affected;		
 		}
 		
-		//게시물 삭제하기
-		public int delete(String idx) {
-			int affected = 0;
-			try {
-				String query = "DELETE FROM event "
-						+ " WHERE e_num=?";
-				
-				psmt = con.prepareStatement(query);			
-				psmt.setString(1, idx);
-				 
-				affected = psmt.executeUpdate();
-			}
-			catch(Exception e) {
-				System.out.println("delete중 예외발생");
-				e.printStackTrace();
-			}
+	//게시물 삭제하기
+	public int delete(String idx) {
+		int affected = 0;
+		try {
+			String query = "DELETE FROM event "
+					+ " WHERE e_num=?";
 			
-			return affected;	
+			psmt = con.prepareStatement(query);			
+			psmt.setString(1, idx);
+			 
+			affected = psmt.executeUpdate();
+		}
+		catch(Exception e) {
+			System.out.println("delete중 예외발생");
+			e.printStackTrace();
+		}
+		
+		return affected;	
+	}
+	//게시물 작성하기(write)
+	public int insert(EventDTO dto) 
+		{		
+			int affected = 0;//적용된 행의갯수
+			try{
+				/*
+				답변형게시판에서 원글의 경우 idx와 bgroup은
+				항상 동일한 번호를 가진다.
+				답변글인 경우 원글의 idx값을 bgroup으로 가지게
+				된다. 
+				*/
+				String sql = "INSERT INTO event (" 
+						+ "  e_num , e_title , e_content , e_postdate , e_id , e_hits , h_idx ) "
+						+ " VALUES ("
+						+ " seq_h.NEXTVAL,?,?,sysdate,?,0,154306 )";
+				psmt = con.prepareStatement(sql);
+				psmt.setString(1, dto.getE_title()); // 타이틀 
+				psmt.setString(2, dto.getE_content()); //컨텐츠 
+				psmt.setString(3, dto.getE_id()); // 아이디 
+				
+				
+				affected = psmt.executeUpdate();
+				System.out.println(affected);
+			}
+			catch(Exception e){
+				e.printStackTrace();
+			}		
+			return affected;
 		}
 }

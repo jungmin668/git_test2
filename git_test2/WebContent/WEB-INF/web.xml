@@ -233,6 +233,15 @@
      <servlet-name>eventModify</servlet-name>
      <url-pattern>/event/modify</url-pattern>
   </servlet-mapping>
+  <servlet>
+     <servlet-name>Write</servlet-name>
+     <servlet-class>event.EventWrite</servlet-class>
+  </servlet>
+  <servlet-mapping>
+     <servlet-name>Write</servlet-name>
+     <url-pattern>/event/write</url-pattern>
+  </servlet-mapping>
+  
 <!-- 이벤트관리 끝 -->
 
     

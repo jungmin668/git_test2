@@ -6,7 +6,7 @@
 	//로그아웃처리	
 	if (session.getAttribute("USER_ID") != null) {
 		session.removeAttribute("USER_NAME");
-		session.removeAttribute("USER_PASS");
+		session.removeAttribute("USER_ID");
 		session.removeAttribute("USER_EMAIL");
 		session.removeAttribute("IDX");
 

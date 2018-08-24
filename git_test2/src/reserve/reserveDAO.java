@@ -52,12 +52,12 @@ public class reserveDAO {
 		try {
 			String sql = "SELECT COUNT(*) FROM reserve ";
 
-			if (map.get("Word") != null) {
+			if (map.get("searchWord") != null) {
 				sql += " WHERE " 
-						+ map.get("Column") 
+						+ map.get("searchColumn") 
 						+ " " 
 						+ " LIKE '%" 
-						+ map.get("Word") 
+						+ map.get("searchWord") 
 						+ "%' ";
 			}
 
