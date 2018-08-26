@@ -111,6 +111,15 @@
 		<servlet-name>HpointComList</servlet-name>
 		<url-pattern>/point/HpointComList</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>HpointReply</servlet-name>
+		<servlet-class>point.ReplyCtrl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HpointReply</servlet-name>
+		<url-pattern>/point/HpointReply</url-pattern>
+	</servlet-mapping>  
    
   <!-- 
  게시판 페이지 처리 관련 파라미터

@@ -10,7 +10,7 @@
 <meta http-equiv="Pragma" CONTENT="no-cache">
 <meta http-equiv="Expires" CONTENT="-1">
 
-<meta name="Description" content="아파고 병원">
+<meta name="Description" content="아파고병원">
 <title>인제대학교 서울백병원</title>
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">

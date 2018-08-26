@@ -62,16 +62,18 @@ public class ListCtrl extends HttpServlet{
 		param.put("pageSize", pageSize);//한 페이지에 출력되는 레코드 수
 		
 		HttpSession session = req.getSession();
-		int idx = Integer.parseInt(session.getAttribute("IDX").toString());
-				
-		List<PointDTO> lists = dao.selectPaging(param, idx);
 		
+		if(session.getAttribute("IDX") != null) {
+			int idx = Integer.parseInt(session.getAttribute("IDX").toString());
+			List<PointDTO> lists = dao.selectPaging(param, idx);
+			req.setAttribute("lists", lists);
+		}		
+				
 		String pagingImg = PagingUtil.pagingImgServlet(totalRecordCount, pageSize, blockPage, nowPage, 
 				"./Point/HpointList?"+addQueryString);
 		
 		dao.close();
-		
-		req.setAttribute("lists", lists);
+				
 		req.setAttribute("pagingImg", pagingImg);
 		req.setAttribute("map", param);
 		

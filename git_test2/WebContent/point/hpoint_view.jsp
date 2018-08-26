@@ -63,7 +63,8 @@ td{
 		<div class="col-xs-9 col-md-9">
 		 -->					
 			<!-- Contents 시작 -->
-<br/><br/>			
+<br/><br/>	
+<form>		
 <table class="table table-bordered table-striped">
 <colgroup>
 	<col width="30%"/>
@@ -99,17 +100,25 @@ td{
 			${dto.p_wtime }
 		</td>
 	</tr>
+	<tr>
+		<th class="text-center"
+			style="vertical-align:middle;">기타 내용</th>
+		<td>
+			${dto.p_content }
+		</td>
+	</tr>
 </tbody>
 </table>
 
 <!-- 각종 버튼 -->
 <div class="row text-center" style="padding-right:50px;"> 
-	<button type="button" class="btn btn-danger"
-		onclick="location.href='../point/HpointList';">
-		리스트보기</button>
-</div>						
+	<button type="button" class="btn btn-warning" onclick="location.href='../point/HpointReply?p_num=${dto.p_num}&nowPage=${param.nowPage}';">답글달기</button>
+	<button type="button" class="btn btn-danger" 		
+	onclick="location.href='../point/HpointList';">리스트보기</button>
+</div>
+</form>						
 							
-		<!-- 댓글리스트 시작-->
+		<!-- 댓글리스트
 		<c:forEach items="${c_lists }" var="row" varStatus="loop">
 		<div class="media">	
 			<div class="media-body row text-left">
@@ -124,7 +133,7 @@ td{
 		</div>
 		<hr>
 		</c:forEach>
-		<!-- 댓글리스트 끝-->
+		-->
 				
 				</div>
 			</div>

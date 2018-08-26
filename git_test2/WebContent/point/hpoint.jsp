@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="../include/login_check.jsp" %>
 <%
 
 //한글깨짐처리
@@ -127,11 +128,22 @@ td{
 				<tr>
 					<td class="text-center">
 					${map.totalCount - (((map.nowPage - 1) * map.pageSize) + loop.index) }</td>
-					<td class="text-left">
-						<a href="../point/HpointView?p_num=${row.p_num }&nowPage=${param.nowPage}">
-						병원 평점 ${map.totalCount - (((map.nowPage - 1) * map.pageSize) + loop.index) }
-						</a>
-					</td>
+					<c:choose>
+					<c:when test="${row.bstep eq 0}">
+						<td class="text-left">
+							<a href="../point/HpointView?p_num=${row.p_num }&nowPage=${param.nowPage}">
+								평점 ${map.totalCount - (((map.nowPage - 1) * map.pageSize) + loop.index) }
+							</a>
+						</td>			
+					</c:when>
+					<c:otherwise>
+						<td class="text-left">
+							<a href="../point/HpointView?p_num=${row.p_num }&nowPage=${param.nowPage}">
+							${row.title }
+							</a>
+						</td>
+					</c:otherwise>
+					</c:choose>
 					<td class="text-center">${row.p_visitdate }</td>
 					<td class="text-center">${row.p_total }</td>
 				</tr>
@@ -141,7 +153,7 @@ td{
 </tbody>
 </table>
 </form>
-				
+<!-- 각종 버튼 -->
 				<!-- 페이지번호 -->
 				<div class="row text-center">
 				<!-- 페이지 번호 부분 -->

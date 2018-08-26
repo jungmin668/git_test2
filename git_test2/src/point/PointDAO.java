@@ -98,10 +98,11 @@ public class PointDAO {
 				+ " LIKE '%"+map.get("Word")+"%' ";
 		}
 		
-		sql += " ORDER BY p_num DESC "
+		sql += " ORDER BY bgroup DESC, bstep ASC "
+		//sql += " ORDER BY p_num DESC "
 		+ "	) Tb "
 		+ " ) "
-		+ " WHERE (rNum BETWEEN ? AND ?) AND (p_cvn IS NOT NULL) AND (mem_idx = '"+idx+"') ";
+		+ " WHERE (rNum BETWEEN ? AND ?) AND (flag='hospital') AND (mem_idx = '"+idx+"') ";
 		
 		System.out.println("쿼리문:"+sql);
 		
@@ -116,6 +117,20 @@ public class PointDAO {
 			while(rs.next()) {
 				PointDTO dto = new PointDTO();
 				
+				//답변글처리를 위한 로직추가
+				int indentNum = rs.getInt(14);
+				String spacer = "";
+				
+				dto.setBgroup(rs.getInt(12));
+				dto.setBstep(rs.getInt(13));
+				dto.setBindent(indentNum);
+				if(indentNum>0){
+					for(int i=1 ; i<=indentNum ; i++){
+						spacer += "&nbsp;&nbsp;";
+					}
+					spacer += spacer+"<img src='../images/re2.gif'>";
+				}
+								
 				dto.setP_num(rs.getInt(1));
 				dto.setP_clean(rs.getInt(2));
 				dto.setP_cvn(rs.getInt(3));
@@ -126,6 +141,10 @@ public class PointDAO {
 				dto.setP_total(rs.getInt(8));
 				dto.setHname(rs.getString(9));
 				dto.setDname(rs.getString(10));
+				dto.setMem_idx(rs.getInt(11));
+				dto.setTitle(spacer+rs.getString(15));
+				dto.setP_content(rs.getString(16));
+				dto.setFlag(rs.getString(17));
 				
 				bbs.add(dto);
 			}
@@ -158,6 +177,13 @@ public class PointDAO {
 				dto.setP_total(rs.getInt(8));
 				dto.setHname(rs.getString(9));
 				dto.setDname(rs.getString(10));
+				dto.setMem_idx(rs.getInt(11));
+				dto.setBgroup(rs.getInt(12));
+				dto.setBstep(rs.getInt(13));
+				dto.setBindent(rs.getInt(14));
+				dto.setTitle(rs.getString(15));
+				dto.setP_content(rs.getString(16));
+				dto.setFlag(rs.getString(17));
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -165,5 +191,48 @@ public class PointDAO {
 		
 		return dto;
 	}
+	//게시물에 답변글 쓰기
+	public int reply(PointDTO dto) {
+		
+		/*답변글을 쓰기 전에 bstep을 +1 증가시킴
+		답변글을 중간에 끼워넣어야 하는 경우가 
+		발생될때 해당 답변글보다 bstep이 큰 게시물이 있다면
+		일괄적으로 +1 처리한다.*/
+		replyStepUpdate(dto.getBgroup(), dto.getBstep());
+		
+		int affected = 0;
+		
+		try {
+			/*답변형게시판에서 원글의 경우 idx와 bgroup은 항상 동일한 번호임.
+			답변글인 경우 원글의 idx값을 bgroup으로 가지게 됨*/
+			String sql = "INSERT INTO point (p_num, title, p_content, mem_idx, flag, bgroup, bstep, bindent) "
+					+ " VALUES (seq_point.NEXTVAL, ?, ?, ?, 'hospital', ?, ?, ?)";
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, dto.getTitle());
+			psmt.setString(2, dto.getP_content());
+			psmt.setInt(3, dto.getMem_idx());
+			psmt.setInt(4, dto.getBgroup());
+			psmt.setInt(5, dto.getBstep()+1);
+			psmt.setInt(6, dto.getBindent()+1);
+			
+			affected = psmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return affected;
+	}
 	
+	public void replyStepUpdate(int groupNum, int stepNum) {
+		try {
+			String sql = "UPDATE point SET bstep=bstep+1 "
+					+ " WHERE bgroup=? AND bstep>?";
+			psmt = con.prepareStatement(sql);
+			psmt.setInt(1, groupNum);
+			psmt.setInt(2, stepNum);
+			psmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

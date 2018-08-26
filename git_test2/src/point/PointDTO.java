@@ -14,11 +14,18 @@ public class PointDTO {
 	private String hname;
 	private String dname;
 	private int mem_idx;
+	private int bgroup;
+	private int bstep;
+	private int bindent;
+	private String title;
+	private String p_content;
+	private String flag;
 	
 	public PointDTO() {}
 
 	public PointDTO(int p_num, int p_clean, int p_cvn, int p_wtime, Date p_visitdate, int p_kind, int p_sat,
-			int p_total, String hname, String dname, int mem_idx) {
+			int p_total, String hname, String dname, int mem_idx, int bgroup, int bstep, int bindent, String title,
+			String p_content, String flag) {
 		this.p_num = p_num;
 		this.p_clean = p_clean;
 		this.p_cvn = p_cvn;
@@ -30,6 +37,12 @@ public class PointDTO {
 		this.hname = hname;
 		this.dname = dname;
 		this.mem_idx = mem_idx;
+		this.bgroup = bgroup;
+		this.bstep = bstep;
+		this.bindent = bindent;
+		this.title = title;
+		this.p_content = p_content;
+		this.flag = flag;
 	}
 
 	public int getP_num() {
@@ -119,5 +132,53 @@ public class PointDTO {
 	public void setMem_idx(int mem_idx) {
 		this.mem_idx = mem_idx;
 	}
+
+	public int getBgroup() {
+		return bgroup;
+	}
+
+	public void setBgroup(int bgroup) {
+		this.bgroup = bgroup;
+	}
+
+	public int getBstep() {
+		return bstep;
+	}
+
+	public void setBstep(int bstep) {
+		this.bstep = bstep;
+	}
+
+	public int getBindent() {
+		return bindent;
+	}
+
+	public void setBindent(int bindent) {
+		this.bindent = bindent;
+	}
 	
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getP_content() {
+		return p_content;
+	}
+
+	public void setP_content(String p_content) {
+		this.p_content = p_content;
+	}
+
+	public String getFlag() {
+		return flag;
+	}
+
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}		
+		
 }
