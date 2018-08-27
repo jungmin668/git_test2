@@ -1,5 +1,31 @@
+<%@page import="point.PointDAO"%>
+<%@page import="point.PointDTO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+request.setCharacterEncoding("UTF-8");
+PointDAO dao = new PointDAO();
+int idx = Integer.parseInt(session.getAttribute("IDX").toString());
+//게시물 가져오기
+List<PointDTO> bbs = dao.selectList(idx); 
+//공유, 김태희의 게시물 2개가 bbs에 저장됨
+
+int num1 = 0, num2 = 0;
+for(PointDTO dto : bbs){
+	if(dto.getDname().equals("공유")){
+		num1 = dto.getP_num();
+	}else if(dto.getDname().equals("김태희")){
+		num2 = dto.getP_num();
+	}
+}
+//PointDTO dto = dao.selectView(p_num);
+PointDTO dto1 = dao.selectView_d(num1);
+PointDTO dto2 = dao.selectView_d(num2);
+System.out.println(dto1.getP_kind());
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,7 +89,7 @@
 											<li><i>전문분야</i> <span>임플란트, 보존</span></li>
 										</ul>
 										<div class="btn-area w150">
-											<a data-toggle="modal" href="#myModal" class="btn btn-song btn-line"><em>평점</em></a>
+											<a data-toggle="modal" href="#myModal" class="btn btn-song btn-line" id="doctor1" data-id="<%=num1%>"><em>평점</em></a>
 										</div>
 									</div>
 								</div>
@@ -79,41 +105,72 @@
 											<li><i>전문분야</i> <span>보철</span></li>
 										</ul>
 										<div class="btn-area w150">
-											<a data-toggle="modal" href="#myModal" class="btn btn-song btn-line"><em>평점</em></a>
+											<a data-toggle="modal" href="#myModal" class="btn btn-song btn-line" id="doctor2" data-id="<%=num2%>"><em>평점</em></a>
 										</div>
 									</div>
 								</div>
 							</li>
 							
 						</ul>
+<script type="text/javascript">
+    $(function () {
+        $("#doctor1").click(function () {
+            var num1 = $(this).data('id');
+            var kind1 = '<%=dto1.getP_kind()%>';
+            var sat1 = '<%=dto1.getP_sat()%>'; 
+            var total1 = '<%=dto1.getP_total()%>';
+            var visitdate1 = '<%=dto1.getP_visitdate()%>';
+            $(".modal-body #hiddenValue").val(num1);
+            $(".modal-body #kind").text(kind1);
+            $(".modal-body #sat").text(sat1);
+            $(".modal-body #total").text(total1);
+            $(".modal-body #visitdate").text(visitdate1);
+        })
+        $("#doctor2").click(function () {
+            var num2 = $(this).data('id');
+            var kind2 = '<%=dto2.getP_kind()%>';
+            var sat2 = '<%=dto2.getP_sat()%>'; 
+            var total2 = '<%=dto2.getP_total()%>';
+            var visitdate2 = '<%=dto2.getP_visitdate()%>';
+            $(".modal-body #hiddenValue").val(num2);
+            $(".modal-body #kind").text(kind2);
+            $(".modal-body #sat").text(sat2);
+            $(".modal-body #total").text(total2);
+            $(".modal-body #visitdate").text(visitdate2);
+        })
+    });
+</script>
 <!-- 평점 모달 창 -->
 <div class="modal fade" id="myModal" role="dialog">
 	<div class="modal-dialog">
+	<form name="dpointFrm">
+		
 	<!-- Modal content-->
 		<div class="modal-content">
 			<div class="modal-header">				
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">평점(의사)</h4>
+				<h4 class="modal-title">평점(의사)</h4>				
 			</div>
 			<div class="modal-body">
 				<p class="form-inline">
+				<input type="hid-den" name="p_num" id="hiddenValue" value=""/>
 				<table class="table table-bordered table-striped" style="font-size:1.2em;">
-					<tr>
-						<th>친절도</th>
-						<td>1점</td>
-					</tr>
-					<tr>
-						<th>진료만족도</th>
-						<td>2점</td>
-					</tr>
-					<tr>
-						<th>총 평점</th>
-						<td>3점</td>
-					</tr>
-					<tr>
-						<th>병원내원일</th>
-						<td>4점</td>
-					</tr>										
+				<tr>
+					<th>친절도</th>
+					<td><span id="kind"></span>점</td>
+				</tr>
+				<tr>
+					<th>진료만족도</th>
+					<td><span id = "sat"></span>점</td>
+				</tr>
+				<tr>
+					<th>총 평점</th>
+					<td><span id = "total"></span>점</td>
+				</tr>
+				<tr>
+					<th>병원내원일</th>
+					<td><span id = "visitdate"></span></td>
+				</tr>									
 				</table>
 				</p>
 				<p class="form-inline">
@@ -149,7 +206,8 @@
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div>
-		</div>		  
+		</div>
+		</form>		  
 	</div>
 </div>
 					</div>

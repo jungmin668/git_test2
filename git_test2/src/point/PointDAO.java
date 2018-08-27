@@ -89,7 +89,7 @@ public class PointDAO {
 		String sql = "" 
 				+ " SELECT * FROM ( "
 				+ "	SELECT Tb.*, rownum rNum FROM ( "
-				+ "	SELECT P.* "
+				+ "	SELECT P.*, M.mem_name "
 				+ "	FROM point P INNER JOIN hospital_member M	 "
 				+ "	ON P.mem_idx = M.mem_idx	 ";
 		
@@ -136,8 +136,6 @@ public class PointDAO {
 				dto.setP_cvn(rs.getInt(3));
 				dto.setP_wtime(rs.getInt(4));
 				dto.setP_visitdate(rs.getDate(5));
-				dto.setP_kind(rs.getInt(6));
-				dto.setP_sat(rs.getInt(7));
 				dto.setP_total(rs.getInt(8));
 				dto.setHname(rs.getString(9));
 				dto.setDname(rs.getString(10));
@@ -152,6 +150,90 @@ public class PointDAO {
 			e.printStackTrace();
 		}
 		return bbs;
+	}
+	
+	public List<PointDTO> selectList(int idx){
+		
+		List<PointDTO> bbs = new Vector<PointDTO>();
+		
+		String sql = "" 
+				+ " SELECT * FROM ( "
+				+ "	SELECT Tb.*, rownum rNum FROM ( "
+				+ "	SELECT P.* "
+				+ "	FROM point P INNER JOIN hospital_member M	 "
+				+ "	ON P.mem_idx = M.mem_idx	 ";
+				
+		sql += " ORDER BY p_num DESC "
+		+ "	) Tb "
+		+ " ) "
+		+ " WHERE (flag='doctor') AND (mem_idx = '"+idx+"') ";
+		
+		System.out.println("쿼리문:"+sql);
+		
+		try {
+			
+			psmt = con.prepareStatement(sql);
+			
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				PointDTO dto = new PointDTO();
+				
+				dto.setP_num(rs.getInt(1));
+				dto.setP_visitdate(rs.getDate(5));
+				dto.setP_kind(rs.getInt(6));
+				dto.setP_sat(rs.getInt(7));
+				dto.setP_total(rs.getInt(8));
+				dto.setHname(rs.getString(9));
+				dto.setDname(rs.getString(10));
+				dto.setMem_idx(rs.getInt(11));
+				dto.setTitle(rs.getString(15));
+				dto.setP_content(rs.getString(16));
+				dto.setFlag(rs.getString(17));
+				
+				bbs.add(dto);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return bbs;
+	}	
+
+	public PointDTO selectView_d(int p_num) {
+		PointDTO dto = null;
+		
+		String sql = "SELECT * FROM point "
+				+ " WHERE p_num = ?";
+		
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setInt(1, p_num);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				dto = new PointDTO();
+				
+				dto.setP_num(rs.getInt(1));
+				dto.setP_clean(rs.getInt(2));
+				dto.setP_cvn(rs.getInt(3));
+				dto.setP_wtime(rs.getInt(4));
+				dto.setP_visitdate(rs.getDate(5));
+				dto.setP_kind(rs.getInt(6));
+				dto.setP_sat(rs.getInt(7));
+				dto.setP_total(rs.getInt(8));
+				dto.setHname(rs.getString(9));
+				dto.setDname(rs.getString(10));
+				dto.setMem_idx(rs.getInt(11));
+				dto.setBgroup(rs.getInt(12));
+				dto.setBstep(rs.getInt(13));
+				dto.setBindent(rs.getInt(14));
+				dto.setTitle(rs.getString(15));
+				dto.setP_content(rs.getString(16));
+				dto.setFlag(rs.getString(17));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return dto;
 	}
 	
 	public PointDTO selectView(int p_num) {
