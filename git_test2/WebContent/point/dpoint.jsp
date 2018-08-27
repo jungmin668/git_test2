@@ -1,3 +1,5 @@
+<%@page import="point.CommentDTO"%>
+<%@page import="point.CommentDAO"%>
 <%@page import="point.PointDAO"%>
 <%@page import="point.PointDTO"%>
 <%@page import="java.util.List"%>
@@ -11,6 +13,7 @@ int idx = Integer.parseInt(session.getAttribute("IDX").toString());
 //게시물 가져오기
 List<PointDTO> bbs = dao.selectList(idx); 
 //공유, 김태희의 게시물 2개가 bbs에 저장됨
+CommentDAO dao_c = new CommentDAO();
 
 int num1 = 0, num2 = 0;
 for(PointDTO dto : bbs){
@@ -23,8 +26,7 @@ for(PointDTO dto : bbs){
 //PointDTO dto = dao.selectView(p_num);
 PointDTO dto1 = dao.selectView_d(num1);
 PointDTO dto2 = dao.selectView_d(num2);
-System.out.println(dto1.getP_kind());
-
+List<CommentDTO> board = null;
 %>
 <!DOCTYPE html>
 <html>
@@ -119,12 +121,26 @@ System.out.println(dto1.getP_kind());
             var kind1 = '<%=dto1.getP_kind()%>';
             var sat1 = '<%=dto1.getP_sat()%>'; 
             var total1 = '<%=dto1.getP_total()%>';
-            var visitdate1 = '<%=dto1.getP_visitdate()%>';
+            var visitdate1 = '<%=dto1.getP_visitdate()%>'; 
             $(".modal-body #hiddenValue").val(num1);
             $(".modal-body #kind").text(kind1);
             $(".modal-body #sat").text(sat1);
             $(".modal-body #total").text(total1);
             $(".modal-body #visitdate").text(visitdate1);
+            <%
+            board = dao_c.selectPaging(num1);
+			for(CommentDTO dto_c : board)
+			{
+			%>
+            var writer1 = '<%=dto_c.getMem_name()%>';
+            var postdate1 = '<%=dto_c.getCom_postdate()%>';
+            var contents1 = '<%=dto_c.getCom_content()%>'
+            $(".modal-body #writer").text(writer1);
+            $(".modal-body #postdate").text(postdate1);
+            $(".modal-body #contents").text(contents1);
+            <%
+			}
+            %>
         })
         $("#doctor2").click(function () {
             var num2 = $(this).data('id');
@@ -137,6 +153,20 @@ System.out.println(dto1.getP_kind());
             $(".modal-body #sat").text(sat2);
             $(".modal-body #total").text(total2);
             $(".modal-body #visitdate").text(visitdate2);
+            <%
+            board = dao_c.selectPaging(num2);
+			for(CommentDTO dto_c : board)
+			{
+			%>
+            var writer2 = '<%=dto_c.getMem_name()%>';
+            var postdate2 = '<%=dto_c.getCom_postdate()%>';
+            var contents2 = '<%=dto_c.getCom_content()%>'
+            $(".modal-body #writer").text(writer2);
+            $(".modal-body #postdate").text(postdate2);
+            $(".modal-body #contents").text(contents2);
+            <%
+			}
+            %>
         })
     });
 </script>
@@ -177,25 +207,23 @@ System.out.println(dto1.getP_kind());
 				<!-- 댓글리스트 시작-->
 				<%
 				/* 
-				for(CommentBoardDTO dto_c : bbs)
+				for(CommentDTO dto_c : board)
 				{
 				 */
-				for(int i=0;i<5;i++){
 				%>
 				<div class="media">	
 					<div class="media-body row text-left">
 						<p style="font-size:1.1em;">
-							<code>작성자</code> : b&nbsp;&nbsp;&nbsp;&nbsp;
-							<code>작성일</code> : 2018-08-21
+							<code>작성자</code> : <span id="writer"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+							<code>작성일</code> : <span id="postdate"></span>
 						</p>
 						<p class="bg-info" style="padding:10px; font-size:1.1em;">
-							댓글 내용
+							<span id="contents"></span>
 						</p>
 					</div>		
 				</div>
 				<hr>
 				<%
-				}
 				/* 
 				}
 				 */

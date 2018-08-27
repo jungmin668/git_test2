@@ -8,15 +8,18 @@ public class CommentDTO {
 	private String com_content;
 	private java.sql.Date com_postdate;
 	private int com_bnum;
+	private String mem_name;
 	
 	public CommentDTO() {}
 
-	public CommentDTO(int com_idx, String com_id, String com_content, Date com_postdate, int com_bnum) {
+	public CommentDTO(int com_idx, String com_id, String com_content, Date com_postdate, int com_bnum,
+			String mem_name) {
 		this.com_idx = com_idx;
 		this.com_id = com_id;
 		this.com_content = com_content;
 		this.com_postdate = com_postdate;
 		this.com_bnum = com_bnum;
+		this.mem_name = mem_name;
 	}
 
 	public int getCom_idx() {
@@ -57,6 +60,14 @@ public class CommentDTO {
 
 	public void setCom_bnum(int com_bnum) {
 		this.com_bnum = com_bnum;
+	}
+
+	public String getMem_name() {
+		return mem_name;
+	}
+
+	public void setMem_name(String mem_name) {
+		this.mem_name = mem_name;
 	}
 	
 	

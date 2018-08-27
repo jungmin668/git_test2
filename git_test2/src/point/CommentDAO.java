@@ -39,18 +39,20 @@ public class CommentDAO {
 		}
 	}
 	
-	public List<CommentDTO> selectPaging(){
+	public List<CommentDTO> selectPaging(int com_bnum){
 		
 		List<CommentDTO> bbs = new Vector<CommentDTO>();
 		
 		String sql = "" 
 				+ " SELECT * FROM ( "
 				+ "	SELECT Tb.*, rownum rNum FROM ( "
-				+ "		SELECT * FROM comboard ";
+				+ "		SELECT C.*, M.mem_name FROM comboard C"
+				+ " INNER JOIN hospital_member M "
+				+ " ON C.com_id = M.mem_id ";
 		
 		sql += " ORDER BY com_idx DESC "
 		+ "	) Tb "
-		+ " ) ";
+		+ " ) WHERE com_bnum = '"+com_bnum+"'";
 		
 		System.out.println("쿼리문:"+sql);
 		
@@ -67,6 +69,7 @@ public class CommentDAO {
 				dto.setCom_content(rs.getString(3));
 				dto.setCom_postdate(rs.getDate(4));
 				dto.setCom_bnum(rs.getInt(5));
+				dto.setMem_name(rs.getString(6));
 				
 				bbs.add(dto);
 			}

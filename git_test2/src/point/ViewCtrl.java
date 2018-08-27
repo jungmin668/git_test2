@@ -24,14 +24,14 @@ public class ViewCtrl extends HttpServlet{
 		dao.close();
 		
 		req.setAttribute("dto", dto);
-		
+		/*
 		CommentDAO c_dao = new CommentDAO();
 		
 		List<CommentDTO> c_lists = c_dao.selectPaging();
-		
+		*/
 		dao.close();
 		
-		req.setAttribute("c_lists", c_lists);
+		//req.setAttribute("c_lists", c_lists);
 		
 		RequestDispatcher dis = req.getRequestDispatcher("/point/hpoint_view.jsp");
 		dis.forward(req, resp);
