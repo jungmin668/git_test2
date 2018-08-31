@@ -28,8 +28,8 @@
 	}
 </script>
 <body>
-		<%@ include file="../include/sourcecopy_header.jsp"%>
 	<div class="container">
+		<%@ include file="../include/sourcecopy_header.jsp"%>
 		<center>
 			<div id="wrap">
 				<div class="contents_box">
@@ -50,20 +50,20 @@
 										<tr>
 											<th class="text-center" style="vertical-align: middle;">작성자</th>
 											<td><input type="text" class="form-control"
-												style="width: 100px;" name="id" value="${dto.e_id }" /></td>
+												style="width: 100px;" name="id" value="${dto.e_id }" disabled/></td>
 
 										</tr>
 										<tr>
 											<th class="text-center" style="vertical-align: middle;">작성일</th>
 											<td><input type="text" class="form-control" style="width:100px;" name="postdate"
-											value="${dto.e_postdate }"/>
+											value="${dto.e_postdate }"disabled/>
 											</td>
 										</tr>
 										<tr>
 
 											<th class="text-center" style="vertical-align: middle;">조회수</th>
 											<td><input type="text" class="form-control"
-												name="visitcount" value="${dto.e_hits }" /></td>
+												name="visitcount" value="${dto.e_hits }"disabled /></td>
 										</tr>
 										<tr>
 											<th class="text-center" style="vertical-align: middle;">제목</th>
@@ -84,7 +84,7 @@
 									<button type="submit" class="btn btn-default">전송하기</button>
 									<button type="reset" class="btn">Reset</button>
 									<button type="button" class="btn btn-danger"
-										onclick="location.href='../event/modify';">리스트보기</button>
+										onclick="location.href='../Event/EventList';">리스트보기</button>
 								</div>
 							</form>
 							<!-- 내용 삽입 e -->
@@ -95,7 +95,7 @@
 			</div>
 
 		</center>
-	</div>
 		<%@ include file="../include/sourcecopy_bottom.jsp"%>
+	</div>
 </body>
 </html>

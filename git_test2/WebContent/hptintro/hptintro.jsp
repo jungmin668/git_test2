@@ -1,164 +1,127 @@
-<%@page import="HptIntro.HptDTO"%>
 <%@page import="java.util.List"%>
-<%@page import="java.util.HashMap"%>
-<%@page import="java.util.Map"%>
-<%@page import="HptIntro.HptDAO"%>
+<%@page import="hptintro.docDTO"%>
+<%@page import="hptintro.introDTO"%>
+<%@page import="hptintro.introDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-//한글처리
-request.setCharacterEncoding("UTF-8");
-
-//DB연결
-HptDAO dao = new HptDAO();
-
-
-//매개변수 저장을 위한 컬렉션 생성(DAO로 전달)
-Map<String,Object> param = new HashMap<String,Object>();
-
-String hp_name = "탑클래스성형외과";
-
-HptDTO dto = dao.selectIntro(hp_name);
-//HptDTO docdto = dao.selectDoc(hp_name);
-
-pageContext.setAttribute("dto", dto);
-//pageContext.setAttribute("docdto", docdto);
-
-dao.close();
-%>    
-<!DOCTYPE html>
-<html lang="ko">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<meta http-equiv="Pragma" CONTENT="no-cache">
-<meta http-equiv="Expires" CONTENT="-1">
-
-<meta name="Description" content="병원소개">
-<title>병원소개</title>
-<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-<link rel="icon" href="/favicon.ico" type="image/x-icon">
-<!-- <link rel="stylesheet" href="../common/css/base.css">
-<link rel="stylesheet" href="../common/css/ui_style.css?180711">
-<link rel="stylesheet" href="../common/css/common.css?180604">
-<link rel="stylesheet" href="../common/css/layout.css?180315">
-<link rel="stylesheet" href="../common/css/content.css?1807172">
-<link rel="stylesheet" href="../common/css/colorChange.css">
-<link rel="stylesheet" href="../common/css/content_seoul.css?1805141"> -->
-<!-- <script type="text/javascript" src="../common/js/libs/jquery-1.11.2.js"></script>
-<script type="text/javascript" src="../common/js/libs/jquery-ui-1.12.1.js"></script>
-<script type="text/javascript" src="../common/js/libs/jquery.browser.check.js"></script>
-<script type="text/javascript" src="../common/js/libs/modernizr.min.js?180413"></script>
-<script type="text/javascript" src="../common/js/plugins.js"></script>
-<script type="text/javascript" src="../common/js/ui.js?1807051"></script> -->
-<!--[if lt IE 9]>
-<script type="text/javascript" src="/common/js/libs/html5shiv-printshiv.js"></script>
-<![endif]-->
-
-<script>
-/* $(document).ready(function(){
-	//setSnb('snb1');
-    //Tab 호출
-    $(".tab-wrap").tabs();
-	$(".img-thumb img").css("width","335px");
-	$(".magazine-list ul li a img").css("width","126px");
-}); */
-</script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>병원관리</title>
+<link rel="stylesheet" href="../bootstrap3.3.7/css/bootstrap.min.css" />
+<script src="../bootstrap3.3.7/jquery/jquery-3.2.1.min.js"></script>
+<script src="../bootstrap3.3.7/js/bootstrap.min.js"></script>
 </head>
+<%
+//String mem_idx = "154306";
+
+//세션영역에 저장된 병원 idx 를 가져온다.
+String mem_idx = 
+	session.getAttribute("IDX").toString();
+//dao에 정의한 getMemberInfo 메소드를 호출한다.
+/* HomepyMemberDTO dto = dao.getMemberInfo(HPT_IDX); */
+introDAO dao = new introDAO(); 
+
+introDTO dto = dao.selectView(mem_idx);
+List<docDTO> bbs = dao.docList(mem_idx);
+//String hpt_image = request.getAttribute("chumfile").toString();
+
+//EL식 사용위해 페이지 영역에 저장하기
+pageContext.setAttribute("dto", dto);
+
+dao.close();//DB자원반납
+%>
 <body>
-<%@ include file="../include/sourcecopy_header.jsp" %>	
+<%@ include file="../include/sourcecopy_header.jsp" %>
 <div class="container">
-	<!-- 상단 영역 -->	
-	
-	
-	<!--// 상단영역 끝 -->
-		
-		<!-- 컨텐츠 영역 -->
-		<div class="container-header">
-			<div class="inner">
-				<h1 class="tit-page">${dto.hp_name }</h1>
-				<p class="summary">${dto.hp_genre_name }</p>
-				<!-- quick medical -->
-								<div class="quick-medical">
-					<ul>
-						<li><a href=""><i class="ico ico-srch5"></i><span>의료진검색</span></a></li>
-						<li><a href=""><i class="ico ico-cal4"></i><span>온라인예약</span></a></li>
-						<li><a href=""><i class="ico ico-certificate4"></i><span>증명서발급</span></a></li>
-					</ul>
-				</div>
-				<!--// quick medical -->
-			</div>
+	<div class="inner">
+	<!-- <h3>병원관리 메뉴 메인 페이지 입니다</h3> -->
+	<!-- aside -->
+	<aside id="aside">
+		<!-- snb wrap -->
+		<div class="snb-wrap">
+			<h2 class="tit-snb">병원 소개</h2>
+			<nav class="snb">
+				<ul>
+					<li>
+						<a href="../hptintro/infoShow?mem_idx=<%=mem_idx %>" class="depth1">병원정보관리</a>
+					</li>
+					<li>
+						<a href="../hptintro/docShow?mem_idx=<%=mem_idx %>" class="depth1">의사관리</a>
+					</li>
+					<li>
+						<a href="../hptintro/imageShow?mem_idx=<%=mem_idx %>" class="depth1">병원사진관리</a>
+					</li>
+				</ul>
+			</nav>
 		</div>
-		<!--// container-header -->
-
-		<!-- contents-wrap -->
-		<div class="contents-wrap">
-			<div class="inner">
-				<!-- aside -->
-				<aside id="aside">
-					<!-- snb wrap -->
-						
-					<!--// snb wrap -->
-				</aside>
-				<!--// aside -->
-			
-				<!-- contents -->
-				<!-- <article class="contents"> -->					
-					
-					<h3 class="tit-noneBold">병원소개</h3>
-					<div class="periodical-wrap">
-						<div class="row">
-							<div class="thumb-wrap">
-								<div class="thumb-frame">
-									<img src="../images/inner1.jpg" alt="병원사진" style="width:750px">
-								</div>
-								<br />
-								<div style="font-size:2em;">
-								${dto.hp_explain }
-								</div>
-							</div>							
-						</div>
-					</div>
-						<br />							
-						<h3 class="tit-noneBold">의료진</h3>
-							<div class="periodical-wrap">
-								윤뎅이 전공의
-							</div>
-						
-						<br />							
-						<h3 class="tit-noneBold">진료시간</h3>
-							<div class="periodical-wrap">
-								평일 오전9시~오후6시
-							</div>
-						
-						<br />						
-						<h3 class="tit-noneBold">주소</h3>						
-							<div class="periodical-wrap">						
-							${dto.hp_addr }
-							</div>
-						<br />												
-						<h3 class="tit-noneBold">전화번호</h3>
-							<div class="periodical-wrap">						
-							${dto.hp_tel }
-							</div>
-						<br />
-						<h3 class="tit-noneBold">홈페이지</h3>
-							<div class="periodical-wrap">						
-							<a href="${dto.hp_url }">바로가기</a>
-							</div>
-					</div>
-
-					<div class="btn-area mar-t50">
-						<button type="button" class="btn btn-md btn-info" onclick="location.href='hptintro_edit.jsp?hp_name=<%=dto.getHp_name() %>'"><em>수정하기</em></button>
-					</div>	
-				<!--// 컨텐츠 영역 끝 -->
-			</div>
-		
-	<hr>
-
-
+		<!--// snb wrap -->
+	</aside>
+	<br />
+	
+	<!-- contents -->
+	<article class="contents">
+	<table class="table table-bordered">
+		<tr>
+			<td colspan="6" style="text-align:center;">
+				<img src="../Upload/${dto.mem_img }" />
+			</td>
+		</tr>		
+		<tr class="success">
+			<td style="width:30%;"><span class="dis_inBlock">병원명</span></td>
+			<td colspan="5" style="width:*;">${dto.mem_name }</td>
+		</tr>
+		<tr>
+			<td>주소1</td>
+			<td colspan="5">${dto.addr1 }</td>
+		</tr>
+		<tr>
+			<td>주소2</td>
+			<td colspan="5">${dto.addr2 }</td>
+		</tr>
+		<tr>
+			<td>전화번호</td>
+			<td colspan="5">${dto.tel }</td>
+		</tr>
+		<tr style="height:300px;">
+			<td>병원소개</td>
+			<td colspan="5">${dto.mem_dis }</td>
+		</tr>
+		<tr>
+			<td colspan="6">의사소개</td>
+		</tr>
+		<tr>
+			<th>성명</th>
+			<th>진료과목</th>
+			<th>성별</th>
+			<th>연령</th>
+			<th>경력</th>
+			<th>스케줄</th>
+		</tr>
+	<%
+		for(docDTO dto2 : bbs){
+	%>		
+		<!-- 의사 리스트 반복 -->
+		<tr>
+			<td><%=dto2.getDoc_name() %></td>
+			<td><%=dto2.getDoc_major() %></td>
+			<td><%=dto2.getDoc_gender() %></td>
+			<td><%=dto2.getDoc_age() %></td>
+			<td><%=dto2.getDoc_career() %></td>
+			<td><%=dto2.getDoc_sc() %></td>
+		</tr>
+		<!-- 의사 리스트반복 -->		
+	
+	<%
+		}
+	%>	
+	</table>	
+	</div>
+	</article>
+		<!--// Contents -->
+	</div>
 </div>
 <%@ include file="../include/sourcecopy_bottom.jsp" %>
 </body>
 </html>
-

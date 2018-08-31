@@ -1,13 +1,13 @@
 package event;
 
-import java.io.IOException;
+import java.io.IOException;  
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.MultipartRequest;
 
 import event.EventDTO;
 import event.HospitalDAO;
@@ -45,13 +45,13 @@ public class EventEdit extends HttpServlet {
 			//수정처리후 상세보기로 이동하므로 idx저장해야함
 			req.setAttribute("e_num", idx);
 			req.setAttribute("nowPage", nowPage);
-			
+			 
 			//나머지 파라미터를 MultipartRequest객체를 통해받음
 			String id = req.getParameter("id");
 			String title = req.getParameter("title"); 
 			String content = req.getParameter("content");
 			String postdate = req.getParameter("postdate");
-			   	
+			System.out.println(id);
 			EventDTO dto = new EventDTO();
 		 
 			dto.setE_content(content);
@@ -64,7 +64,8 @@ public class EventEdit extends HttpServlet {
 			HospitalDAO dao = new HospitalDAO();
 			sucOrFail = dao.update(dto);
 			
-			System.out.println(sucOrFail);
+			 
+			System.out.println(sucOrFail+"이거야");
 			//업데이트가 성공이고, 새로운 파일을 업로드 했다면
 			if(sucOrFail==1)
 			{

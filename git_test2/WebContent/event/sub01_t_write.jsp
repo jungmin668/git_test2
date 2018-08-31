@@ -16,7 +16,7 @@
 	src="<%=request.getContextPath()%>/bootstrap3.3.7/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-	 
+	
 </script>
 <body>
 	<div class="container">
@@ -30,8 +30,8 @@
 
 						<div>
 							<!-- 컨텐츠 영역 -->
-							<form name="writeFrm" method="post" action="../event/write"
-								onsubmit="return isValidate(this);">
+							<form name="writeFrm" method="post" action="../event/write_proc.jsp"
+								enctype="multipart/form-data" onsubmit="return isValidate(this);">
 
 								<table class="table table-bordered">
 									<colgroup>
@@ -55,7 +55,11 @@
 											<td><textarea rows="10" class="form-control"
 													name="content"></textarea></td>
 										</tr>
-
+										<tr>
+											<th class="text-center" style="vertical-align: middle;">첨부파일</th>
+											<td><input type="file" name="chumfile"
+												class="form-control" /></td>
+										</tr>
 									</tbody>
 								</table>
 
@@ -64,7 +68,7 @@
 
 									<button type="submit" class="btn btn-danger">전송하기</button>
 									<button type="reset" class="btn">Reset</button>
-									<button type="butto n" class="btn btn-warning"
+									<button type="button" class="btn btn-warning"
 										onclick="location.href='../Event/EventList';">리스트보기</button>
 								</div>
 							</form>

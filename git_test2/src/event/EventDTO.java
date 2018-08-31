@@ -4,12 +4,15 @@ import java.sql.Date;
  
 public class EventDTO {
 	private String e_num; // idx 
-	private String e_content; //내용  
 	private String e_title; // 타이틀 
+	private String e_content; //내용  
 	private java.sql.Date e_postdate; //날짜  
 	private int e_hits; //조회수 
 	private String e_id; // 아이디 
 	private int h_idx; // 병원 일련번호 
+	
+	private String chumfile;//첨부파일
+	private String e_flag; //게시판 플래그 
 	
 	public EventDTO() {}
 	
@@ -21,6 +24,20 @@ public class EventDTO {
 		this.e_id = e_id;
 		this.e_hits = e_hits;
 		this.h_idx = h_idx;
+	}
+	
+	public EventDTO(String e_num, String e_title, String e_content, Date e_postdate, int e_hits, String e_id, int h_idx,
+			String e_flag, String chumfile) {
+		 
+		this.e_num = e_num;
+		this.e_title = e_title;
+		this.e_content = e_content;
+		this.e_postdate = e_postdate;
+		this.e_hits = e_hits;
+		this.e_id = e_id;
+		this.h_idx = h_idx;
+		this.e_flag = e_flag;
+		this.chumfile = chumfile;
 	}
 
 	public String getE_num() {
@@ -77,6 +94,22 @@ public class EventDTO {
 
 	public void setH_idx(int h_idx) {
 		this.h_idx = h_idx;
+	}
+
+	public String getE_flag() {
+		return e_flag;
+	}
+
+	public void setE_flag(String e_flag) {
+		this.e_flag = e_flag;
+	}
+
+	public String getChumfile() {
+		return chumfile;
+	}
+
+	public void setChumfile(String chumfile) {
+		this.chumfile = chumfile;
 	}
  	
 }

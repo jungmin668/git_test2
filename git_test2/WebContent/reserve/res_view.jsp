@@ -22,15 +22,10 @@
          <div class="right_contents">
             
             <div>
-<div class="row text-center" style="margin-bottom:20px;
-      padding-right:50px;">
+<div class="row text-right" style="margin-bottom:20px; padding-right:50px;">
 <!-- 검색부분 -->
 <!-- 내용이 나오는 부분s -->
          <!-- Contents 시작 -->
-				<h3>
-					예약관리 게시판[상세보기]
-				</h3>
-				<br/>
 				<table class="table table-bordered table-striped">
 					<colgroup>
 						<col width="20%" />
@@ -61,6 +56,21 @@
 							
 							<th class="text-center" style="vertical-align: middle;">예약시간</th>
 							<td >${dto.res_time }</td>
+						</tr>
+						<!-- 환자 인적사항 추가  -->
+						<tr>
+							<th class="text-center" style="vertical-align: middle;">환자명</th>
+							<td >${dto.mem_name }</td>
+							
+							<th class="text-center" style="vertical-align: middle;">전화번호</th>
+							<td >${dto.tel }</td>
+						</tr>
+						<tr>
+							<th class="text-center" style="vertical-align: middle;">생년월일</th>
+							<td >${dto.mem_bir }</td>
+							
+							<th class="text-center" style="vertical-align: middle;">성별</th>
+							<td >${dto.mem_gender }</td>
 						</tr>
 						<tr>
 							<th class="text-center" style="vertical-align: middle;">예약내용</th>

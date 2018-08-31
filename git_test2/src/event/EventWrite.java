@@ -2,11 +2,15 @@ package event;
 
 import java.io.IOException; 
 
+import javax.servlet.GenericServlet;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.oreilly.servlet.MultipartRequest;
 
 import event.EventDTO;
 import event.HospitalDAO;
@@ -25,24 +29,39 @@ public class EventWrite extends HttpServlet {
 
 		// 한글처리
 		req.setCharacterEncoding("UTF-8");
-
+		
+		
+		  ServletContext context = req.getSession().getServletContext();
+		String realFolder = context.getRealPath("upload"); 
+		 
+		MultipartRequest mr = FileUtil.upload(req, ((GenericServlet) resp).getServletContext().getRealPath("/Upload"));
+		 
 		// DB입력성공시:1, 실패시:0, 파일용량초과시:-1
 		int sucOrFail;
-
+		
+		if(mr != null){
 		// 나머지 파라미터를 MultipartRequest객체를 통해받음
-		String name = req.getParameter("name");
-		String title = req.getParameter("title");
-		String content = req.getParameter("content");
-
+		String name = mr.getParameter("name");
+		String title = mr.getParameter("title");
+		String content = mr.getParameter("content");
+		String chumfile = mr.getFilesystemName("chumfile");
+		
 		EventDTO dto = new EventDTO();
 
 		dto.setE_id(name);
 		dto.setE_content(content);
 		dto.setE_title(title);
-
+	 
+		 
+		 
 		HospitalDAO dao = new HospitalDAO();
 		sucOrFail = dao.insert(dto);
+		sucOrFail = 1;
 		dao.close();
+		}
+		else {
+			sucOrFail = -1;
+		}
 
 		if (sucOrFail == 1) {
 			// DB입력성공일때

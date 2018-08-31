@@ -61,9 +61,6 @@
 							<div class="ui-select-wrap">
 								<ul class="ui-select-menu">
 									<li class="current"><a href="http://www.paik.ac.kr/seoul/main.asp" target="_blank" title="새창 열기">KOR</a></li>
-									<li><a href="http://www.paik.ac.kr/seoul/eng/main.asp" target="_blank" title="새창 열기">ENG</a></li>
-									<li><a href="http://www.paik.ac.kr/seoul/chn/main.asp" target="_blank" title="새창 열기">CHN</a></li>
-									<li><a href="http://www.paik.ac.kr/seoul/jpn/main.asp" target="_blank" title="새창 열기">JPN</a></li>
 								</ul>
 							</div>
 						</div>
@@ -125,7 +122,7 @@
 				<!-- LNB -->
 				<nav class="lnb">
 					<ul>
-						<li><a href="<%=request.getContextPath() %>/hptintro/hptintro.jsp" class="depth01">병원소개</a>
+						<li><a href="<%=request.getContextPath() %>/hptintro/introShow" class="depth01">병원소개</a>
 							<div class="depth02">
 								<div class="inner">
 									<span class="tit_depth02">예약/조회/<span class="dis_inBlock">발급</span></span>
@@ -238,7 +235,7 @@
 								</div>
 							</div>
 						</li>
-						<li><a href="<%=request.getContextPath() %>/stats/sourcecopy_analyzer.jsp" class="depth01">통계</a>
+						<li><a href="<%=request.getContextPath() %>/stats/statistic_main1_year_gender.jsp" class="depth01">통계</a>
 							<div class="depth02">
 								<div class="inner">
 									<span class="tit_depth02">병원소개</span>

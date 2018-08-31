@@ -201,59 +201,165 @@
 	<url-pattern>/reserve/ResDelete</url-pattern>
 </servlet-mapping>
 
+<!-- 게시판 선택 삭제기능 -->
+<servlet>
+	<servlet-name>CheckDelete</servlet-name>
+	<servlet-class>reserve.CheckDelete</servlet-class>
+	<init-param>
+		<param-name>PAGE_SIZE</param-name>
+		<param-value>5</param-value>
+	</init-param>
+	<init-param>
+		<param-name>BLOCK_PAGE</param-name>
+		<param-value>2</param-value>
+	</init-param>
+</servlet>
+<servlet-mapping>
+	<servlet-name>CheckDelete</servlet-name>
+	<url-pattern>/reserve/checkDelete</url-pattern>
+
+</servlet-mapping>
+
 <!-- 팀프로젝트 예약관리(관리자) 끝 -->
   
-<!-- 이벤트 관리 -->
- <!-- 리스트 -->
-  <servlet>
-     <servlet-name>Event</servlet-name>
-     <servlet-class>event.EventList</servlet-class>
-       <init-param>
-        <param-name>PAGE_SIZE</param-name>
-        <param-value>5</param-value>
-     </init-param>
-     <init-param>
-        <param-name>BLOCK_PAGE</param-name>
-        <param-value>2</param-value>
-     </init-param> 
-  </servlet>
-  <servlet-mapping>
-     <servlet-name>Event</servlet-name>
-     <url-pattern>/Event/EventList</url-pattern>
-  </servlet-mapping>
-  
-  
-  
-  <!-- 서블릿 게시판 상세보기 -->
-  <servlet>
-    <servlet-name>eventView</servlet-name>
-    <servlet-class>event.EventView</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>eventView</servlet-name>
-    <url-pattern>/View/eventView</url-pattern>
-  </servlet-mapping>
+<!-- 현기 이벤트 부분 시작 -->
+ 
+<servlet>
+   <servlet-name>Event</servlet-name>
+   <servlet-class>event.EventList</servlet-class>
+   <init-param>
+      <param-name>PAGE_SIZE</param-name>
+      <param-value>5</param-value>
+   </init-param>
+   <init-param>
+      <param-name>BLOCK_PAGE</param-name>
+      <param-value>2</param-value>
+   </init-param>
+</servlet>
+<servlet-mapping>
+   <servlet-name>Event</servlet-name>
+   <url-pattern>/Event/EventList</url-pattern>
+</servlet-mapping>
 
-  <servlet>
-     <servlet-name>eventModify</servlet-name>
-     <servlet-class>event.EventEdit</servlet-class>
-  </servlet>
-  <servlet-mapping>
-     <servlet-name>eventModify</servlet-name>
-     <url-pattern>/event/modify</url-pattern>
-  </servlet-mapping>
-  <servlet>
-     <servlet-name>Write</servlet-name>
-     <servlet-class>event.EventWrite</servlet-class>
-  </servlet>
-  <servlet-mapping>
-     <servlet-name>Write</servlet-name>
-     <url-pattern>/event/write</url-pattern>
-  </servlet-mapping>
-  
-<!-- 이벤트관리 끝 -->
+<!-- 서블릿 게시판 상세보기 -->
+<servlet>
+   <servlet-name>eventView</servlet-name>
+   <servlet-class>event.EventView</servlet-class>
+</servlet>
+<servlet-mapping>
+   <servlet-name>eventView</servlet-name>
+   <url-pattern>/View/eventView</url-pattern>
+</servlet-mapping>
+<!-- 수정 -->
+<servlet>
+   <servlet-name>eventModify</servlet-name>
+   <servlet-class>event.EventEdit</servlet-class>
+</servlet>
+<servlet-mapping>
+   <servlet-name>eventModify</servlet-name>
+   <url-pattern>/event/modify</url-pattern>
+</servlet-mapping>
 
-    
+<servlet>
+   <servlet-name>Write</servlet-name>
+   <servlet-class>event.EventWrite</servlet-class>
+</servlet>
+<servlet-mapping>
+   <servlet-name>Write</servlet-name>
+   <url-pattern>/event/write</url-pattern>
+</servlet-mapping>
+
+<servlet>
+   <servlet-name>Delete</servlet-name>
+   <servlet-class>event.EventDelete</servlet-class>
+</servlet>
+<servlet-mapping>
+   <servlet-name>Delete</servlet-name>
+   <url-pattern>/event/delete</url-pattern>
+</servlet-mapping>
+
+<servlet>
+   <servlet-name>Push</servlet-name>
+   <servlet-class>event.push</servlet-class>
+   <init-param>
+      <param-name>PAGE_SIZE</param-name>
+      <param-value>5</param-value>
+   </init-param>
+   <init-param>
+      <param-name>BLOCK_PAGE</param-name>
+      <param-value>2</param-value>
+   </init-param>
+</servlet>
+<servlet-mapping>
+   <servlet-name>Push</servlet-name>
+   <url-pattern>/event/push</url-pattern>
+</servlet-mapping>
+<!-- 현기 이벤트 부분 끝 -->
+
+<!-- 병원 관리 메뉴 매핑 작업시작 -->
+  <!-- 병원 메뉴 메인 띄우기 -->
+ <servlet>
+ 	<servlet-name>IntroMain</servlet-name>
+ 	<servlet-class>hptintro.introShow</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ 	<servlet-name>IntroMain</servlet-name>
+ 	<url-pattern>/hptintro/introShow</url-pattern>
+ </servlet-mapping>
+
+ <!-- 병원 정보 관리 -->
+ <servlet>
+ 	<servlet-name>InfoMSG</servlet-name>
+ 	<servlet-class>hptintro.infoShow</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ 	<servlet-name>InfoMSG</servlet-name>
+ 	<url-pattern>/hptintro/infoShow</url-pattern>
+ </servlet-mapping>
+ 
+ <!-- 병원 정보 수정 -->
+ <servlet>
+ 	<servlet-name>InfoEdit</servlet-name>
+ 	<servlet-class>hptintro.infoEdit</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ 	<servlet-name>InfoEdit</servlet-name>
+ 	<url-pattern>/hptintro/infoEdit</url-pattern>
+ </servlet-mapping>
+ 
+ <!-- 의사 정보 수정 -->
+ <servlet>
+ 	<servlet-name>docEdit</servlet-name>
+ 	<servlet-class>hptintro.docShow</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ 	<servlet-name>docEdit</servlet-name>
+ 	<url-pattern>/hptintro/docShow</url-pattern>
+ </servlet-mapping>
+ 
+ <!-- 병원 이미지 수정 --> 
+ <servlet>
+ 	<servlet-name>imageEdit</servlet-name>
+ 	<servlet-class>hptintro.imageShow</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ 	<servlet-name>imageEdit</servlet-name>
+ 	<url-pattern>/hptintro/imageShow</url-pattern>
+ </servlet-mapping>
+ 
+ <!-- 병원 관리 메뉴 매핑 작업끝 -->
+
+<!-- xml -->
+<!-- 통계 -->
+<!-- 선택한 1년 조회수 확인 -->
+<servlet>
+	<servlet-name>StatsViewYear</servlet-name>
+	<servlet-class>stats.YearCtrl</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>StatsViewYear</servlet-name>
+	<url-pattern>/stats/Year</url-pattern>
+</servlet-mapping>    
     
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

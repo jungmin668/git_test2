@@ -21,15 +21,15 @@
 		if (ans == true) {
 			//삭제처리페이지로 전송
 			var f = document.writeFrm;
-			f.action = "DeleteProc.jsp";
+			f.action = "../event/delete";
 			f.method = "post";
 			f.submit();
 		}
 	}
 </script>
 <body>
-		<%@ include file="../include/sourcecopy_header.jsp"%>
 	<div class="container">
+		<%@ include file="../include/sourcecopy_header.jsp"%>
 		<center>
 			<div id="wrap">
 
@@ -39,10 +39,7 @@
 
 						<div>
 
-							<br/><br/>
-
-							<form name="writeFrm">
-								<%-- <input type = "hid-den" name = "e_num" value="<%=dto.getE_num()%>"/> --%>
+							<form name="writeFrm"> 
 								<table class="table table-bordered">
 									<colgroup>
 										<col width="20%" />
@@ -70,7 +67,10 @@
 											<th class="text-center" style="vertical-align: middle;">내용</th>
 											<td colspan="3">${dto.e_content }</td>
 										</tr>
-
+										<tr>
+											<th class="text-center" style="vertical-align: middle;" disabled>첨부파일</th>
+											<td colspan="3">${dto.chumfile }</td>
+										</tr> 
 									</tbody>
 								</table>
 								<input type="hid-den" value="${dto.e_num }" />
@@ -79,24 +79,22 @@
 									<button type="button" class="btn btn-primary"
 										onclick="location.href='../event/modify?e_num=${dto.e_num}';">
 										수정하기</button>
-									<button type="button" class="btn btn-success"
-										onclick="isDelete();">삭제하기</button>
+									<button type="button" class="btn btn-info"
+										onclick="location.href='../event/delete?e_num=${dto.e_num}&mode=delete&nowPage=${param.nowPage }';">
+										삭제하기</button>
 									<button type="button" class="btn btn-warning"
 										onclick="location.href='../Event/EventList';">리스트보기</button>
 								</div>
-							</form>
-
-							<br/><br/>	
-							
-
+							</form> 
 						</div>
 					</div>
-				</div>
-
-			</div>
-
+				</div> 
+			</div> 
 		</center>
-	</div>
+		<br />
+		<br /></br> <br />
+		<br /></br>
 		<%@ include file="../include/sourcecopy_bottom.jsp"%>
+	</div>
 </body>
 </html>
