@@ -84,6 +84,34 @@ public class HospitalDAO {
       return affected;
    }
    
+   public Map<String, String> memberLogin2(int idx){
+	      
+      Map<String, String> maps = new HashMap<String, String>();
+      
+      String query = " SELECT mem_id , mem_pass FROM hospital_member WHERE mem_idx = ?";
+      try {
+         psmt = con.prepareStatement(query);
+         psmt.setInt(1, idx);
+         rs = psmt.executeQuery();
+         
+         //결과셋이 있는 경우에만 레코드를 읽어온다.
+         if(rs.next()) {      
+            //Map에 추가할때는 put()메소드 사용함.
+            maps.put("id", rs.getString(1)); 
+            maps.put("pass", rs.getString(2));
+         }
+         else {
+            System.out.println("결과셋이 없습니다.");
+         }
+      }
+      catch(Exception e) {
+         System.out.println("getMemberDTO오류");
+         e.printStackTrace();
+      }
+      
+      return maps;
+   }
+   
    public Map<String, String> memberLogin(String id,String pwd){
       
       Map<String, String> maps = new HashMap<String, String>();

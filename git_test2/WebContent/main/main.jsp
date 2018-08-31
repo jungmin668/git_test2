@@ -1,6 +1,53 @@
+<%@page import="model.HospitalMemberDTO"%>
+<%@page import="java.util.Map"%>
+<%@page import="model.HospitalDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+<%
+HospitalMemberDTO dto = new HospitalMemberDTO();
+String mem_idx = null;
+mem_idx = request.getParameter("mem_idx");
+System.out.println("mem_idx의 값:"+mem_idx);
+String id = null, pass = null;
+if(mem_idx != null){
+	session.setAttribute("IDX", mem_idx);
+	dto.setMem_idx(Integer.parseInt(mem_idx));
+	System.out.println("세션mem_idx"+session.getAttribute("IDX").toString());
+	System.out.println("DTOmem_idx"+dto.getMem_idx()); 
+	HospitalDAO dao = new HospitalDAO();
+	Map<String, String> memberInfo = dao.memberLogin2(Integer.parseInt(session.getAttribute("IDX").toString()));
+	id = memberInfo.get("id"); 
+	pass = memberInfo.get("pass");
+	
+	Map<String, String> memberInfo2 = dao.memberLogin(id, pass);
 
+	if (memberInfo.get("name") != null) {
+		//세션영역에 저장
+		session.setAttribute("USER_ID", memberInfo.get("id"));
+		session.setAttribute("USER_PASS", memberInfo.get("pass"));
+		session.setAttribute("USER_NAME", memberInfo.get("name"));
+		session.setAttribute("USER_EMAIL", memberInfo.get("email"));
+		session.setAttribute("IDX", memberInfo.get("idx"));
+		/* 
+		if (auto_login != null) {
+			Cookie ck = new Cookie ("USER_ID",id);
+			ck.setPath(request.getContextPath());
+			ck.setMaxAge(0);
+			response.addCookie(ck);
+		}else{
+			Cookie ck = new Cookie("USER_ID",id);
+			
+			//쿠키가 적용될 경로 지정 
+			System.out.println(request.getContextPath());
+			ck.setPath(request.getContextPath());
+			//유효기간 
+			ck.setMaxAge(60*60*24*100);
+			response.addCookie(ck);
+		}
+		 */
+	}
+}
+%>
 
 <!DOCTYPE html>
  
@@ -95,11 +142,10 @@
 <!-- 상단 영역 -->
 <%@ include file="../include/sourcecopy_header.jsp" %>
 <div class="container">
-
+	<input type="hid-den" name="mem_idx" value="<%=mem_idx%>"/>
 	
 	<!-- 컨텐츠 영역 -->
 	<div class="row">
-		프론트페이지 컨텐츠 내용입니다
 		<br />
 		<img src="../images/inner1.jpg" width="80%" height="600px;" />
 	<br /><br /><br /><br /><br />

@@ -1,12 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
+
+
 <!DOCTYPE html>
-<html>
+ 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>제목은 여기에</title>
-<!-- <link rel="stylesheet" href="../common/bootstrap3.3.7/css/bootstrap.min.css" />
-<script src="../common/bootstrap3.3.7/jquery/jquery-3.2.1.min.js"></script> -->
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta http-equiv="Pragma" CONTENT="no-cache">
+<meta http-equiv="Expires" CONTENT="-1">
+
+<meta name="Description" content="아파고병원">
+<title>인제대학교 서울백병원</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/base.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/ui_style.css?180711">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/common.css?180604">
@@ -14,15 +21,85 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/content.css?1807172">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/colorChange.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/content_seoul.css?1805141">
+<%-- <script type="text/javascript" src="<%=request.getContextPath() %>/js/libs/jquery-1.11.2.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/libs/jquery-ui-1.12.1.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/libs/jquery.browser.check.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/libs/modernizr.min.js?180413"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/plugins.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/ui.js?1807051"></script>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/common/js/libs/html5shiv-printshiv.js"></script>
+<![endif]-->
+
+<script>
+   $(function(){
+
+      if (getCookie('Mo')!='false') {
+         if(isMobile()){
+            if(confirm("모바일기기로 접근하셨습니다. 모바일페이지로 이동하시겠습니까?    ")){
+               location.href = "/m/seoul/";
+            }else{
+               setCookie('Mo', 'false', 1);
+            }
+         }
+      }
+
+      $("[data-img]").each(function(){
+         var img =  $(this).attr("data-img");
+         $(this).css("background-image","url("+img+")");
+      });
+      var infiniteLoop = null
+         , pager = null
+         , liCount = $('.img-area').find('li').length;
+
+      if (liCount <=3) {
+         infiniteLoop = false;
+         pager = false;
+      } else {
+         infiniteLoop = true;
+         pager = true;
+      }
+
+      $('.img-area .bxslider').bxSlider({
+         slideWidth: 356,
+         slideMargin: 6,
+         controls: false,
+         stopAutoOnClick: false,
+         touchEnabled: false,
+         moveSlides:1,
+         minSlides:0,
+         maxSlides:3,
+         pager: pager,
+         infiniteLoop: infiniteLoop
+      });
+
+      $(".news-ticker .bxslider").bxSlider({
+         mode: 'vertical',
+         auto: true,
+         speed: 400,
+         autoControls: false,
+         stopAutoOnClick: false,
+         controls: false,
+         touchEnabled: false,
+         pager: false
+      });
+
+      // bxsliderThumb('.img-area .bxslider',360,0,0,3,1);
+      bxsliderThumb('.banner-slider .bxslider',267,4,0,4,1);
+      bxslider('.press-box .bxslider');
+
+   });
+</script> --%>
 </head>
 <body>
+<!-- 상단 영역 -->
 <%@ include file="../include/sourcecopy_header.jsp" %>
 <div id="container">
       <!-- container-header -->
       
       <div class="container-header">
          <div class="inner">
-            <h1 class="tit-page">로그인</h1>
+            <h1 class="tit-page">총괄관리자 로그인</h1>
             <p class="summary">로그인을 하시면 다양한 서비스를 편리하게 이용하실 수 있습니다.</p>
          </div>
       </div>
@@ -58,7 +135,7 @@
    }
 </script>
                         <div class="login-input">
-                           <form method="post" action="./login_process.jsp" name="loginFrm" id="login1" onsubmit="return loginValidate(this);">
+                           <form method="post" action="./login_process_admin.jsp" name="loginFrm" id="login1" onsubmit="return loginValidate(this);">
                            <input type="hid-den" name="backUrl" value="${param.backUrl}"/>
                            <input type="hidden" name="hpid" value="DA">
                            <input type="hidden" name="r_url" id="r_url" value="/seoul/member/join.asp%3F%26rnd%3D70554">
@@ -91,10 +168,10 @@
                               </div>
                               <% }else{ %>
                                  <div class="login_box01">
-                                    ${USER_NAME }님, 반갑습니다. <br />
+                                    admin님, 반갑습니다. <br />
                                     	로그인 하셨습니다. <br /> 
-                                     <button type="button" onclick="location.href='modify_t.jsp';"> 회원정보수정</button>
-                                    <button type="button" onclick="location.href='logout.jsp';"> 로그아웃</button>
+                                     <button type="button" onclick="location.href='';"> 회원정보수정</button>
+                                    <button type="button" onclick="location.href='../member/logout.jsp';"> 로그아웃</button>
                                  </div>
                               <% } %>
                            </fieldset>
@@ -172,5 +249,6 @@
       
    </div>
 <%@ include file="../include/sourcecopy_bottom.jsp" %>
+
 </body>
 </html>

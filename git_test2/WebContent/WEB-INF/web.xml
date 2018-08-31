@@ -75,6 +75,15 @@
   	<servlet-name>NaverCheck</servlet-name>
   	<url-pattern>/NaverCheck.json</url-pattern>
   </servlet-mapping>
+  <!-- 슈퍼관리자 -->
+  <servlet>
+  	<servlet-name>AdminList</servlet-name>
+  	<servlet-class>controller.AdminListCtrl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AdminList</servlet-name>
+  	<url-pattern>/admin</url-pattern>
+  </servlet-mapping>
 
 	<!-- 병원평점 리스트 -->
 	<servlet>
