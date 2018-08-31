@@ -34,11 +34,26 @@
 			<div class="logo"><a href="<%=request.getContextPath() %>/main/main.jsp"><img src="<%=request.getContextPath() %>/images/go_big.png" style="width:300px; height:60px;" alt="apago_logo" /></a></div>
 			<div class="gnb">
 				<ul>
-					
+				
+				<%
+               //세션영역에 회원정보가 없다면...로그인 전 화면 출력
+               if(session.getAttribute("USER_ID")==null)
+               {
+               %>
+									
 					<!-- Before Login -->
 					<li><a href="<%=request.getContextPath() %>/member/login.jsp" class="btn-login">로그인</a></li>
 					<li><a href="<%=request.getContextPath() %>/Captcha" class="btn-join">회원가입</a></li>
 					<!--// Before Login -->
+					
+			  <% } else { %>
+                  <!-- 로그인후 -->
+                  <li><a href="<%=request.getContextPath() %>/member/logout.jsp">로그아웃</a></li>
+                  <li><a href="#">회원정보수정</a></li>
+               <% } %>
+                
+					
+					
 					
 					<li>
 						<div class="ui-select">

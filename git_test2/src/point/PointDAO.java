@@ -64,7 +64,7 @@ public class PointDAO {
 		}
 	}
 	
-	public int getTotalRecordCount(Map map) {
+	public int getTotalRecordCount(Map map, int idx) {
 		int totalCount = 0;
 		try {
 			String sql = "SELECT COUNT(*) FROM point ";
@@ -72,7 +72,7 @@ public class PointDAO {
 				sql += " WHERE "+map.get("Column")+" "
 					+ " LIKE '%"+map.get("Word") + "%' ";
 			}
-			sql += " WHERE p_cvn is NOT NULL";
+			sql += " WHERE (flag='hospital') AND (mem_idx = '"+idx+"')";
 			psmt = con.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			rs.next();
