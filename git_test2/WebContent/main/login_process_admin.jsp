@@ -11,13 +11,13 @@
 	//폼값받기
 	String id = request.getParameter("id");
 	String pass = request.getParameter("pass");
-	String auto_login = request.getParameter("auto_login");
+	//String auto_login = request.getParameter("auto_login");
 	//dao생성
-	HospitalDAO dao = new HospitalDAO();
-	//관리자의 아이디/pw는 admin/1234라 가정
-	if(id.equals("admin") && pass.equals("1234")){
+	//HospitalDAO dao = new HospitalDAO();
+	
+	if("admin".equals(id) && "1234".equals(pass)){
 		session.setAttribute("USER_ID", "admin");
-		request.getRequestDispatcher("../admin").forward(request, response);
+		response.sendRedirect("../super/adminList.jsp");
 	}else{
 		JavascriptUtil.jsAlertLocation("아이디와 패스워드가 불일치합니다", "index.jsp",out);
 		/* 
@@ -26,7 +26,7 @@
 		out2.println(str);
 		 */
 	}
-	
+	/* 
 	//함수호출
 	Map<String, String> memberInfo = dao.memberLogin(id, pass);
 
@@ -60,6 +60,7 @@
 		request.setAttribute("ERROR_MSG", "회원이 아닙니다.");
 		JavascriptUtil.jsAlertLocation("비밀번호가 틀립니다 다시로그인해주세요", "../join/login.jsp",out);
 	}
+ */
 %>
 
 

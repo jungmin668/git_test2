@@ -15,19 +15,23 @@ if(mem_idx != null){
 	System.out.println("세션mem_idx"+session.getAttribute("IDX").toString());
 	System.out.println("DTOmem_idx"+dto.getMem_idx()); 
 	HospitalDAO dao = new HospitalDAO();
+	
 	Map<String, String> memberInfo = dao.memberLogin2(Integer.parseInt(session.getAttribute("IDX").toString()));
 	id = memberInfo.get("id"); 
 	pass = memberInfo.get("pass");
 	
 	Map<String, String> memberInfo2 = dao.memberLogin(id, pass);
 
-	if (memberInfo.get("name") != null) {
+	if (memberInfo2.get("name") != null) {
 		//세션영역에 저장
-		session.setAttribute("USER_ID", memberInfo.get("id"));
-		session.setAttribute("USER_PASS", memberInfo.get("pass"));
-		session.setAttribute("USER_NAME", memberInfo.get("name"));
-		session.setAttribute("USER_EMAIL", memberInfo.get("email"));
-		session.setAttribute("IDX", memberInfo.get("idx"));
+		session.setAttribute("USER_ID", memberInfo2.get("id"));
+		System.out.println(session.getAttribute("USER_ID").toString());
+		session.setAttribute("USER_PASS", memberInfo2.get("pass"));
+		System.out.println(session.getAttribute("USER_PASS").toString());
+		session.setAttribute("USER_NAME", memberInfo2.get("name"));
+		System.out.println(session.getAttribute("USER_NAME").toString());
+		session.setAttribute("IDX", memberInfo2.get("idx"));
+		System.out.println(session.getAttribute("IDX").toString());
 		/* 
 		if (auto_login != null) {
 			Cookie ck = new Cookie ("USER_ID",id);

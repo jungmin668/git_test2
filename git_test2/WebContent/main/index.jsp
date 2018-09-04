@@ -93,7 +93,7 @@
 </head>
 <body>
 <!-- 상단 영역 -->
-<%@ include file="../include/sourcecopy_header.jsp" %>
+<%@ include file="../include/sourcecopy_header_admin.jsp" %>
 <div id="container">
       <!-- container-header -->
       
