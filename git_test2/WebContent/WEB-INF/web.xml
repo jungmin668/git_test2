@@ -30,7 +30,7 @@
   <!-- 회원가입 -->
   <servlet>
     <servlet-name>register</servlet-name>
-    <servlet-class>controller.register</servlet-class>
+    <servlet-class>member.register</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>register</servlet-name>
