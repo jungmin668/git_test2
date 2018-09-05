@@ -303,5 +303,43 @@ public class HospitalDAO {
 		return totalCount;
 	}
 	
+ 	public HospitalMemberDTO getMemberInfo(String id)
+	{		
+		HospitalMemberDTO dto = new HospitalMemberDTO();
+		
+		String query = " "
+			+"SELECT * FROM hospital_member "
+			+" WHERE mem_id=?";		
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, id);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				dto.setMem_idx(rs.getInt(1));
+				dto.setMem_flag(rs.getString(2));
+				dto.setMem_name(rs.getString(3));
+				dto.setMem_gender(rs.getString(4));
+				dto.setMem_age(rs.getString(5));
+				dto.setMem_id(rs.getString(6));
+				dto.setMem_pass(rs.getString(7));
+				dto.setMem_dis(rs.getString(8));
+				dto.setTel(rs.getString(9));
+				dto.setMobile(rs.getString(10));
+				dto.setZipcode(rs.getString(11));
+				dto.setAddr1(rs.getString(12));
+				dto.setAddr2(rs.getString(13));
+				dto.setEmail(rs.getString(14));
+				dto.setMem_img(rs.getString(15));
+			}
+		}
+		catch(Exception e) {
+			System.out.println("회원정보가져오기 중 "
+					+ " 예외발생");
+			e.printStackTrace();
+		}	
+		
+		return dto;
+	}
    
 }

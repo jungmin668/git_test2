@@ -49,7 +49,7 @@
 			  <% } else { %>
                   <!-- 로그인후 -->
                   <li><a href="<%=request.getContextPath() %>/member/logout.jsp">로그아웃</a></li>
-                  <li><a href="#">회원정보수정</a></li>
+                  <li><a href="<%=request.getContextPath() %>/modify">회원정보수정</a></li>
                <% } %>
                 
 					

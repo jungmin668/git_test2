@@ -85,6 +85,17 @@
   	<url-pattern>/admin</url-pattern>
   </servlet-mapping>
 
+  <!-- 회원정보수정 -->	
+  <servlet>
+  	<servlet-name>ModifyMember</servlet-name>
+  	<servlet-class>member.ModifyCtrl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ModifyMember</servlet-name>
+  	<url-pattern>/modify</url-pattern>
+  </servlet-mapping>
+  
+
 	<!-- 병원평점 리스트 -->
 	<servlet>
 		<servlet-name>HpointList</servlet-name>

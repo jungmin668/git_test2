@@ -93,7 +93,7 @@
                                  <div class="login_box01">
                                     ${USER_NAME }님, 반갑습니다. <br />
                                     	로그인 하셨습니다. <br /> 
-                                     <button type="button" onclick="location.href='modify_t.jsp';"> 회원정보수정</button>
+                                     <button type="button" onclick="location.href='../modify';"> 회원정보수정</button>
                                     <button type="button" onclick="location.href='logout.jsp';"> 로그아웃</button>
                                  </div>
                               <% } %>

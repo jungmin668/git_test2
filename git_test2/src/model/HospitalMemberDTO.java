@@ -18,6 +18,7 @@ public class HospitalMemberDTO {
    private String addr1;
    private String addr2;
    private String email;
+   private String mem_img;
 
    public HospitalMemberDTO() {}
 
@@ -41,7 +42,7 @@ public class HospitalMemberDTO {
    
    public HospitalMemberDTO(int mem_idx, String mem_flag, String mem_name, String mem_gender, String mem_age, String mem_id,
 		String mem_pass, String mem_dis, String tel, String mobile, String zipcode, String addr1, String addr2,
-		String email) {
+		String email, String mem_img) {
 	this.mem_idx = mem_idx;
 	this.mem_flag = mem_flag;
 	this.mem_name = mem_name;
@@ -56,6 +57,7 @@ public class HospitalMemberDTO {
 	this.addr1 = addr1;
 	this.addr2 = addr2;
 	this.email = email;
+	this.mem_img = mem_img;
    }
 
 
@@ -174,6 +176,14 @@ public String getMem_flag() {
       this.email = email;
    }
 
-	  
+	public String getMem_img() {
+		return mem_img;
+	}
+	
+	public void setMem_img(String mem_img) {
+		this.mem_img = mem_img;
+	}
+
+   
  
 }
