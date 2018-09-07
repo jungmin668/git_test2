@@ -114,7 +114,7 @@ td{
 <div class="row text-center" style="padding-right:50px;"> 
 	<button type="button" class="btn btn-warning" onclick="location.href='../point/HpointReply?p_num=${dto.p_num}&nowPage=${param.nowPage}';">답글달기</button>
 	<button type="button" class="btn btn-danger" 		
-	onclick="location.href='../point/HpointList';">리스트보기</button>
+	onclick="location.href='../point/HpointList?nowPage=${param.nowPage}';">리스트보기</button>
 </div>
 </form>						
 							

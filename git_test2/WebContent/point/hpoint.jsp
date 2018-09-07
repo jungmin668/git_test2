@@ -1,3 +1,5 @@
+<%@page import="point.PointDTO"%>
+<%@page import="java.util.List"%>
 <%@page import="util.PagingUtil"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -6,12 +8,16 @@
 
 //한글깨짐처리
 request.setCharacterEncoding("UTF-8");
-/*
-  상세보기의 경우 작성자 본인이 아니더라도 열람할수 
-있어야 한다.
-  대신 수정, 삭제의 경우에만 회원인증을 통하여 작성자
-본인만 할수 있도록 처리한다.
-*/
+List<PointDTO> lists = (List<PointDTO>)request.getAttribute("lists");
+int score = 0, i = 0;
+for(PointDTO dto : lists){
+	score += dto.getP_total();
+	i++;
+}
+score = score/i;
+System.out.println("score:"+score);
+System.out.println("i:"+i);
+session.setAttribute("score",score);
 %>
 <!DOCTYPE html>
 <html>
@@ -59,7 +65,7 @@ function searchCheck(f){
 		<!-- contents -->
 		<article class="contents">
 		<br/>
-	<div style="text-align:center;">
+	<div style="text-align:center;"> 
 	<b><span style="color:blue; font-size:13pt">우리 병원의 총 평점은 <%@include file="star.jsp" %>&nbsp;&nbsp;  입니다.</span></b>
 	</div>
 	<br/><br/><br/>
@@ -128,14 +134,14 @@ td{
 					<td class="text-center">
 					${map.totalCount - (((map.nowPage - 1) * map.pageSize) + loop.index) }</td>
 					<c:choose>
-					<c:when test="${row.bstep eq 0}">
+					<c:when test="${row.bstep eq 0}"> 
 						<td class="text-left">
 							<a href="../point/HpointView?p_num=${row.p_num }&nowPage=${param.nowPage}">
-								평점 ${map.totalCount - (((map.nowPage - 1) * map.pageSize) + loop.index) }
+								고객님의 평점
 							</a>
 						</td>			
 					</c:when>
-					<c:otherwise>
+					<c:otherwise> 
 						<td class="text-left">
 							<a href="../point/HpointView?p_num=${row.p_num }&nowPage=${param.nowPage}">
 							${row.title }

@@ -31,7 +31,11 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 </style>
 
 </head>
-
+<script>
+$(function(){
+	$("#p1").attr('checked', 'checked');
+});
+</script>
 <body>
 <span class="star-input">
 	<span class="input">
@@ -46,7 +50,11 @@ star-input>.input.focus{outline:1px dotted #ddd;}
     	<input type="radio" name="star-input" value="5" id="p5">
     	<label for="p5">5</label>
   	</span>
-  	<output for="star-input"><b>0</b>점</output>						
+<%
+int score_star = Integer.parseInt(session.getAttribute("score").toString());
+System.out.println("score_star:"+score_star);
+%>
+  	<output for="star-input"><b><%=score_star %></b>점</output>						
 </span>
 <script src="../bootstrap3.3.7/js/jquery-1.11.3.min.js"></script>
 <script src="../bootstrap3.3.7/js/star.js"></script>
