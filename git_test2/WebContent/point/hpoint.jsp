@@ -5,8 +5,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%
-
-//한글깨짐처리
 request.setCharacterEncoding("UTF-8");
 List<PointDTO> lists = (List<PointDTO>)request.getAttribute("lists");
 int score = 0, i = 0;

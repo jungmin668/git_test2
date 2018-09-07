@@ -3,15 +3,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%
-
-//한글깨짐처리
 request.setCharacterEncoding("UTF-8");
-/*
-  상세보기의 경우 작성자 본인이 아니더라도 열람할수 
-있어야 한다.
-  대신 수정, 삭제의 경우에만 회원인증을 통하여 작성자
-본인만 할수 있도록 처리한다.
-*/
 %>
 <!DOCTYPE html>
 <html>
