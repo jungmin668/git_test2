@@ -91,10 +91,11 @@ public class PointDAO {
 				+ "	SELECT Tb.*, rownum rNum FROM ( "
 				+ "	SELECT P.*, M.mem_name "
 				+ "	FROM point P INNER JOIN hospital_member M	 "
-				+ "	ON P.mem_idx = M.mem_idx	 ";
+				+ "	ON P.mem_idx = M.mem_idx	 "
+				+ " WHERE (flag='hospital') AND (P.mem_idx = '"+idx+"') ";
 		
 		if(map.get("Word")!=null) {
-			sql += " WHERE "+map.get("Column")+ " "
+			sql += " AND "+map.get("Column")+ " "
 				+ " LIKE '%"+map.get("Word")+"%' ";
 		}
 		
@@ -102,7 +103,7 @@ public class PointDAO {
 		//sql += " ORDER BY p_num DESC "
 		+ "	) Tb "
 		+ " ) "
-		+ " WHERE (rNum BETWEEN ? AND ?) AND (flag='hospital') AND (mem_idx = '"+idx+"') ";
+		+ " WHERE (rNum BETWEEN ? AND ?) ";
 		
 		System.out.println("쿼리문:"+sql);
 		

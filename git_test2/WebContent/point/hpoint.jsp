@@ -6,16 +6,9 @@
 <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%
 request.setCharacterEncoding("UTF-8");
-List<PointDTO> lists = (List<PointDTO>)request.getAttribute("lists");
-int score = 0, i = 0;
-for(PointDTO dto : lists){
-	score += dto.getP_total();
-	i++;
-}
-score = score/i;
-System.out.println("score:"+score);
-System.out.println("i:"+i);
-session.setAttribute("score",score);
+
+int score = Integer.parseInt(request.getAttribute("score").toString());
+System.out.println(score);
 %>
 <!DOCTYPE html>
 <html>

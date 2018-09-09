@@ -51,8 +51,9 @@ $(function(){
     	<label for="p5">5</label>
   	</span>
 <%
-int score_star = Integer.parseInt(session.getAttribute("score").toString());
-System.out.println("score_star:"+score_star);
+int score_star = 1;
+//Integer.parseInt(session.getAttribute("score").toString());
+//System.out.println("score_star:"+score_star);
 %>
   	<output for="star-input"><b><%=score_star %></b>점</output>						
 </span>

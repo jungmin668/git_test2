@@ -14,11 +14,8 @@ public class ReplyCtrl extends HttpServlet{
 		
 		//폼값받기
 		String p_num = req.getParameter("p_num");
-		
 		PointDAO dao = new PointDAO();
 		PointDTO dto = dao.selectView(Integer.parseInt(p_num));
-		
-		dto.setTitle("[RE]"+dto.getTitle());
 
 		req.setAttribute("dto", dto);
 		

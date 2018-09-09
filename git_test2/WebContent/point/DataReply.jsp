@@ -69,7 +69,7 @@
 			<tr>
 				<th class="text-center" style="vertical-align:middle;">내용</th>
 				<td>
-					<textarea rows= "10" class="form-control" name="p_content">${dto.p_content}</textarea>
+					<textarea rows= "10" class="form-control" name="p_content"></textarea>
 				</td>
 			</tr>
 		</tbody>

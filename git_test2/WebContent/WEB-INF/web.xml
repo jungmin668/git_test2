@@ -102,7 +102,7 @@
 		<servlet-class>point.ListCtrl</servlet-class>
 		<init-param>
 			<param-name>PAGE_SIZE</param-name>
-			<param-value>10</param-value>
+			<param-value>8</param-value>
 		</init-param>
 		<init-param>
 			<param-name>BLOCK_PAGE</param-name>

@@ -70,7 +70,7 @@ public class ListCtrl extends HttpServlet{
 		int pageSize = Integer.parseInt(this.getInitParameter("PAGE_SIZE"));
 		
 		int blockPage = Integer.parseInt(this.getInitParameter("BLOCK_PAGE"));
-		
+	
 		int totalPage = (int)Math.ceil((double)totalRecordCount/pageSize);
 		
 		System.out.println("전체레코드수:"+totalRecordCount);
@@ -91,9 +91,20 @@ public class ListCtrl extends HttpServlet{
 		param.put("pageSize", pageSize);//한 페이지에 출력되는 레코드 수
 		
 		String pagingImg = PagingUtil.pagingImgServlet(totalRecordCount, pageSize, blockPage, nowPage, 
-				"./point/HpointList?"+addQueryString);
+				"HpointList?"+addQueryString);
 		
 		List<PointDTO> lists = dao.selectPaging(param, idx);
+		
+		int score = 0, i = 0;
+		for(PointDTO dto : lists){
+			score += dto.getP_total();
+			i++;
+		}
+		score = score/i;
+		System.out.println("score:"+score);
+		System.out.println("i:"+i);
+		req.setAttribute("score", score);
+		
 		req.setAttribute("lists", lists);
 		
 		dao.close();
