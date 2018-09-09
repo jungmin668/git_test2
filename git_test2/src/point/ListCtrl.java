@@ -103,7 +103,7 @@ public class ListCtrl extends HttpServlet{
 		score = score/i;
 		System.out.println("score:"+score);
 		System.out.println("i:"+i);
-		req.setAttribute("score", score);
+		session.setAttribute("score", score);
 		
 		req.setAttribute("lists", lists);
 		

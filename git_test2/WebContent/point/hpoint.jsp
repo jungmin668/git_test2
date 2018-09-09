@@ -7,8 +7,8 @@
 <%
 request.setCharacterEncoding("UTF-8");
 
-int score = Integer.parseInt(request.getAttribute("score").toString());
-System.out.println(score);
+int score = Integer.parseInt(session.getAttribute("score").toString());
+System.out.println("jsp/score:"+score);
 %>
 <!DOCTYPE html>
 <html>

@@ -31,9 +31,47 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 </style>
 
 </head>
+<%
+int score_star = Integer.parseInt(session.getAttribute("score").toString());
+System.out.println("score_star:"+score_star);
+%>
 <script>
 $(function(){
+<%
+	if(score_star>=1){
+%>	
 	$("#p1").attr('checked', 'checked');
+<%
+	}
+%>
+<%
+	if(score_star>=2){
+%>	
+	$("#p2").attr('checked', 'checked');
+<%
+	}
+%>
+<%
+	if(score_star>=3){
+%>	
+	$("#p3").attr('checked', 'checked');
+<%
+	}
+%>
+<%
+	if(score_star>=4){
+%>	
+	$("#p4").attr('checked', 'checked');
+<%
+	}
+%>
+<%
+	if(score_star>=1){
+%>	
+	$("#p1").attr('checked', 'checked');
+<%
+	}
+%>
 });
 </script>
 <body>
@@ -50,11 +88,6 @@ $(function(){
     	<input type="radio" name="star-input" value="5" id="p5">
     	<label for="p5">5</label>
   	</span>
-<%
-int score_star = 1;
-//Integer.parseInt(session.getAttribute("score").toString());
-//System.out.println("score_star:"+score_star);
-%>
   	<output for="star-input"><b><%=score_star %></b>점</output>						
 </span>
 <script src="../bootstrap3.3.7/js/jquery-1.11.3.min.js"></script>
