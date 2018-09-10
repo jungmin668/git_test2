@@ -24,7 +24,7 @@ public class ListCtrl extends HttpServlet{
 		
 		HttpSession session = req.getSession();
 		
-		if(session.getAttribute("USER_ID")==null)
+		if(session.getAttribute("USER_ID") == null)
 		{
 			String backUrl = req.getRequestURI()+"?"+req.getQueryString();
 			
