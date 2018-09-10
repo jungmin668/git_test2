@@ -29,6 +29,7 @@ public class ListCtrl extends HttpServlet{
 			String backUrl = req.getRequestURI()+"?"+req.getQueryString();
 			
 			PrintWriter out = resp.getWriter();
+			resp.setContentType("text/html;charset=utf-8");
 		  String str = ""
 	               + "<script>"
 	               + "  alert('"
@@ -37,6 +38,7 @@ public class ListCtrl extends HttpServlet{
 	               + " history.go(-1); "
 	               + "</script>"; 
 	         out.println(str);
+	         out.flush();
 			/* 위의 JS함수가 동작후 return이 없으면 아래  
 			JSP코드가 실행될수 있기때문에 반드시 return으로
 			실행을 멈춰줘야 한다.*/
