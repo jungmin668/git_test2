@@ -16,7 +16,7 @@ import javax.sql.DataSource;
 public class HospitalDAO {
    
    Connection con; //오라클 서버와 연결할때 사용
-   PreparedStatement psmt;//오라클 서버와 쿼리전송 역활
+   PreparedStatement psmt;//오라클 서버와 쿼리전송 역할
    ResultSet rs;//쿼리의 결과를 받을때 사용
    /*   
    public HospitalDAO() {      
