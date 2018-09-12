@@ -97,19 +97,18 @@ public class ListCtrl extends HttpServlet{
 		
 		List<PointDTO> lists = dao.selectPaging(param, idx);
 		
-		if(Integer.parseInt(session.getAttribute("score").toString()) == 0) {
+		List<PointDTO> listPoint = dao.selectPagingPoint(param, idx);
 		
-			int score = 0, i = 0;
-			for(PointDTO dto : lists){
-				score += dto.getP_total();
-				i++;
-			}
-			score = score/i;
-			System.out.println("score:"+score);
-			System.out.println("i:"+i);
-			session.setAttribute("score", score);			
-			
-		}		
+		int score = 0, i = 0;
+		for(PointDTO dto : listPoint){
+			score += dto.getP_total();
+			i++;
+		}
+		score = score/i;
+		System.out.println("score:"+score);
+		System.out.println("i:"+i);
+		session.setAttribute("score", score);			
+					
 		req.setAttribute("lists", lists);
 		
 		dao.close();

@@ -153,6 +153,48 @@ public class PointDAO {
 		return bbs;
 	}
 	
+	public List<PointDTO> selectPagingPoint(Map map, int idx){
+		
+		List<PointDTO> bbs = new Vector<PointDTO>();
+		
+		String sql = "" 
+				+ " SELECT * FROM ( "
+				+ "	SELECT Tb.*, rownum rNum FROM ( "
+				+ "	SELECT P.*, M.mem_name "
+				+ "	FROM point P INNER JOIN hospital_member M	 "
+				+ "	ON P.mem_idx = M.mem_idx	 "
+				+ " WHERE (flag='hospital') AND (P.mem_idx = '"+idx+"') ";
+		
+		if(map.get("Word")!=null) {
+			sql += " AND "+map.get("Column")+ " "
+				+ " LIKE '%"+map.get("Word")+"%' ";
+		}
+		
+		sql += " ORDER BY bgroup DESC, bstep ASC "
+		//sql += " ORDER BY p_num DESC "
+		+ "	) Tb "
+		+ " ) ";
+		
+		System.out.println("쿼리문:"+sql);
+		
+		try {
+			
+			psmt = con.prepareStatement(sql);
+			
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				PointDTO dto = new PointDTO();
+				
+				dto.setP_total(rs.getInt(8));
+				
+				bbs.add(dto);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return bbs;
+	}
+	
 	public List<PointDTO> selectList(int idx){
 		
 		List<PointDTO> bbs = new Vector<PointDTO>();
