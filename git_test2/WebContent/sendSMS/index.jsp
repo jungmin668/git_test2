@@ -29,9 +29,7 @@
 			<tbody>
 				<tr>
 					<td>
-						<textarea class="form-control" maxlength="45" name="msg"style="height: 220px;" placeholder="보낼내용">
-						 
-						</textarea>
+						<textarea class="form-control" maxlength="45" name="msg"style="height: 220px;" placeholder="해당 병원에서 답글이 달렸습니다."></textarea>
 					</td>
 				</tr>
 				<tr>

@@ -52,7 +52,10 @@ public class ReplyCtrl extends HttpServlet{
 		dao.close();
 				
 		if(sucOrFail == 1) {
-			req.getRequestDispatcher("/point/HpointList").forward(req, resp);
+			
+			resp.sendRedirect("../sendSMS/index.jsp");
+			//req.getRequestDispatcher("/point/HpointList").forward(req, resp);
+			
 		}else {
 			req.getRequestDispatcher("/point/DataReply.jsp").forward(req, resp);
 		}
